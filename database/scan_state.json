@@ -1,0 +1,4337 @@
+{
+  "ICBP": {
+    "status": "AVOID",
+    "score": 34,
+    "updated_at": "2026-05-06T13:10:19"
+  },
+  "INDF": {
+    "status": "STRONG BUY",
+    "score": 72,
+    "updated_at": "2026-05-06T13:10:20"
+  },
+  "INCO": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "GOTO": {
+    "status": "AVOID",
+    "score": 27,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "ADMR": {
+    "status": "HOLD",
+    "score": 52,
+    "updated_at": "2026-05-06T13:09:34"
+  },
+  "AMMN": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ANTM": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "BBCA": {
+    "status": "HOLD",
+    "score": 48,
+    "updated_at": "2026-05-06T13:09:45"
+  },
+  "BBNI": {
+    "status": "HOLD",
+    "score": 46,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BBRI": {
+    "status": "ACCUMULATE",
+    "score": 58,
+    "updated_at": "2026-05-06T13:09:44"
+  },
+  "BBTN": {
+    "status": "HOLD",
+    "score": 43,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BMRI": {
+    "status": "ACCUMULATE",
+    "score": 57,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BRIS": {
+    "status": "HOLD",
+    "score": 52,
+    "updated_at": "2026-05-06T13:09:49"
+  },
+  "ESSA": {
+    "status": "AVOID",
+    "score": 32,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "EXCL": {
+    "status": "ACCUMULATE",
+    "score": 63,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "ISAT": {
+    "status": "STRONG BUY",
+    "score": 74,
+    "updated_at": "2026-05-06T13:10:22"
+  },
+  "ITMG": {
+    "status": "AVOID",
+    "score": 8,
+    "updated_at": "2026-05-06T13:10:22"
+  },
+  "MDKA": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:10:43"
+  },
+  "MEDC": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:10:42"
+  },
+  "PGAS": {
+    "status": "AVOID",
+    "score": 20,
+    "updated_at": "2026-05-06T13:10:57"
+  },
+  "PTBA": {
+    "status": "ACCUMULATE",
+    "score": 58,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "SMGR": {
+    "status": "HOLD",
+    "score": 49,
+    "updated_at": "2026-05-06T13:11:13"
+  },
+  "TLKM": {
+    "status": "HOLD",
+    "score": 49,
+    "updated_at": "2026-05-06T13:11:24"
+  },
+  "TOWR": {
+    "status": "HOLD",
+    "score": 53,
+    "updated_at": "2026-05-06T13:11:25"
+  },
+  "UNVR": {
+    "status": "STRONG BUY",
+    "score": 82,
+    "updated_at": "2026-05-06T13:11:27"
+  },
+  "ASII": {
+    "status": "AVOID",
+    "score": 6,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "BRPT": {
+    "status": "STRONG BUY",
+    "score": 86,
+    "updated_at": "2026-05-06T13:09:52"
+  },
+  "MTEL": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "ACES": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ADRO": {
+    "status": "HOLD",
+    "score": 46,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "AKRA": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:09:32"
+  },
+  "AMRT": {
+    "status": "ACCUMULATE",
+    "score": 68,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ARTO": {
+    "status": "AVOID",
+    "score": 30,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "AVIA": {
+    "status": "ACCUMULATE",
+    "score": 56,
+    "updated_at": "2026-05-06T13:09:37"
+  },
+  "AUTO": {
+    "status": "AVOID",
+    "score": 10,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "BBYB": {
+    "status": "AVOID",
+    "score": 30,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BDKR": {
+    "status": "HOLD",
+    "score": 46,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BFIN": {
+    "status": "ACCUMULATE",
+    "score": 62,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BMTR": {
+    "status": "AVOID",
+    "score": 28,
+    "updated_at": "2026-05-06T13:09:48"
+  },
+  "BNGA": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BRMS": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:09:55"
+  },
+  "BSDE": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:09:49"
+  },
+  "BTPS": {
+    "status": "AVOID",
+    "score": 15,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CMRY": {
+    "status": "STRONG BUY",
+    "score": 86,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CPIN": {
+    "status": "AVOID",
+    "score": 39,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CTRA": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "DEWA": {
+    "status": "STRONG BUY",
+    "score": 71,
+    "updated_at": "2026-05-06T13:09:59"
+  },
+  "DSNG": {
+    "status": "AVOID",
+    "score": 27,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "ELSA": {
+    "status": "AVOID",
+    "score": 39,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "EMTK": {
+    "status": "AVOID",
+    "score": 9,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "ENRG": {
+    "status": "ACCUMULATE",
+    "score": 67,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "ERAA": {
+    "status": "ACCUMULATE",
+    "score": 59,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "FILM": {
+    "status": "ACCUMULATE",
+    "score": 59,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "GGRM": {
+    "status": "STRONG BUY",
+    "score": 85,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "GJTL": {
+    "status": "AVOID",
+    "score": 26,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "HEAL": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:10:18"
+  },
+  "HMSP": {
+    "status": "STRONG BUY",
+    "score": 77,
+    "updated_at": "2026-05-06T13:10:18"
+  },
+  "HRUM": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:10:18"
+  },
+  "INET": {
+    "status": "ACCUMULATE",
+    "score": 64,
+    "updated_at": "2026-05-06T13:10:20"
+  },
+  "INDY": {
+    "status": "STRONG BUY",
+    "score": 74,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "INKP": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "INTP": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "JSMR": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:10:24"
+  },
+  "JPFA": {
+    "status": "ACCUMULATE",
+    "score": 65,
+    "updated_at": "2026-05-06T13:10:23"
+  },
+  "KIJA": {
+    "status": "HOLD",
+    "score": 40,
+    "updated_at": "2026-05-06T13:10:31"
+  },
+  "KLBF": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:10:31"
+  },
+  "KPIG": {
+    "status": "ACCUMULATE",
+    "score": 55,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "LSIP": {
+    "status": "AVOID",
+    "score": 27,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "MAPA": {
+    "status": "AVOID",
+    "score": 9,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "MBMA": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:10:36"
+  },
+  "MARK": {
+    "status": "STRONG BUY",
+    "score": 81,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "MAPI": {
+    "status": "AVOID",
+    "score": 6,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "MIKA": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MIDI": {
+    "status": "STRONG BUY",
+    "score": 71,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MNCN": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "MYOR": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "NCKL": {
+    "status": "HOLD",
+    "score": 52,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "NISP": {
+    "status": "AVOID",
+    "score": 38,
+    "updated_at": "2026-05-06T13:10:51"
+  },
+  "PANI": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:10:56"
+  },
+  "PGEO": {
+    "status": "STRONG BUY",
+    "score": 74,
+    "updated_at": "2026-05-06T13:11:00"
+  },
+  "PNLF": {
+    "status": "HOLD",
+    "score": 42,
+    "updated_at": "2026-05-06T13:10:59"
+  },
+  "RAJA": {
+    "status": "ACCUMULATE",
+    "score": 68,
+    "updated_at": "2026-05-06T13:11:04"
+  },
+  "PTPP": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "PWON": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:11:03"
+  },
+  "PTRO": {
+    "status": "ACCUMULATE",
+    "score": 67,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "SCMA": {
+    "status": "HOLD",
+    "score": 49,
+    "updated_at": "2026-05-06T13:11:10"
+  },
+  "SIDO": {
+    "status": "AVOID",
+    "score": 23,
+    "updated_at": "2026-05-06T13:11:13"
+  },
+  "SMIL": {
+    "status": "AVOID",
+    "score": 31,
+    "updated_at": "2026-05-06T13:11:13"
+  },
+  "SMRA": {
+    "status": "ACCUMULATE",
+    "score": 57,
+    "updated_at": "2026-05-06T13:11:13"
+  },
+  "SSIA": {
+    "status": "STRONG BUY",
+    "score": 78,
+    "updated_at": "2026-05-06T13:11:16"
+  },
+  "SSMS": {
+    "status": "AVOID",
+    "score": 24,
+    "updated_at": "2026-05-06T13:11:18"
+  },
+  "SRTG": {
+    "status": "ACCUMULATE",
+    "score": 59,
+    "updated_at": "2026-05-06T13:11:16"
+  },
+  "SURI": {
+    "status": "STRONG BUY",
+    "score": 87,
+    "updated_at": "2026-05-06T13:11:20"
+  },
+  "TINS": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:11:24"
+  },
+  "TKIM": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:11:23"
+  },
+  "TOBA": {
+    "status": "STRONG BUY",
+    "score": 73,
+    "updated_at": "2026-05-06T13:11:24"
+  },
+  "TPIA": {
+    "status": "STRONG BUY",
+    "score": 83,
+    "updated_at": "2026-05-06T13:11:25"
+  },
+  "UNIQ": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:11:26"
+  },
+  "UNTR": {
+    "status": "AVOID",
+    "score": 36,
+    "updated_at": "2026-05-06T13:11:27"
+  },
+  "WIFI": {
+    "status": "HOLD",
+    "score": 46,
+    "updated_at": "2026-05-06T13:11:29"
+  },
+  "AALI": {
+    "status": "STRONG BUY",
+    "score": 78,
+    "updated_at": "2026-05-06T13:09:32"
+  },
+  "ADCP": {
+    "status": "HOLD",
+    "score": 50,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ALDO": {
+    "status": "ACCUMULATE",
+    "score": 69,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ARII": {
+    "status": "ACCUMULATE",
+    "score": 56,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ADHI": {
+    "status": "STRONG BUY",
+    "score": 89,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ALII": {
+    "status": "ACCUMULATE",
+    "score": 58,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "AMAR": {
+    "status": "ACCUMULATE",
+    "score": 68,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ABDA": {
+    "status": "STRONG BUY",
+    "score": 77,
+    "updated_at": "2026-05-06T13:09:34"
+  },
+  "AGRO": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "AMOR": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:09:34"
+  },
+  "AADI": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "AGRS": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "AMAG": {
+    "status": "ACCUMULATE",
+    "score": 66,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ACST": {
+    "status": "AVOID",
+    "score": 35,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ADMF": {
+    "status": "AVOID",
+    "score": 30,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ABBA": {
+    "status": "AVOID",
+    "score": 31,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ARKO": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "APLI": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ASSA": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ASGR": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ARGO": {
+    "status": "HOLD",
+    "score": 50,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "APLN": {
+    "status": "ACCUMULATE",
+    "score": 56,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ABMM": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "APIC": {
+    "status": "ACCUMULATE",
+    "score": 65,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "AREA": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ASJT": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ACRO": {
+    "status": "ACCUMULATE",
+    "score": 59,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ADES": {
+    "status": "STRONG BUY",
+    "score": 77,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ADMG": {
+    "status": "HOLD",
+    "score": 46,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ANJT": {
+    "status": "HOLD",
+    "score": 53,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ASBI": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "AHAP": {
+    "status": "AVOID",
+    "score": 38,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ASPI": {
+    "status": "AVOID",
+    "score": 8,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ARNA": {
+    "status": "AVOID",
+    "score": 28,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "AMMS": {
+    "status": "HOLD",
+    "score": 43,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "AEGS": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ARTA": {
+    "status": "HOLD",
+    "score": 40,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "AGAR": {
+    "status": "AVOID",
+    "score": 35,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ASLI": {
+    "status": "AVOID",
+    "score": 23,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ATIC": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ATAP": {
+    "status": "AVOID",
+    "score": 36,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ASHA": {
+    "status": "STRONG BUY",
+    "score": 81,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "AKPI": {
+    "status": "ACCUMULATE",
+    "score": 63,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "APII": {
+    "status": "AVOID",
+    "score": 38,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ASRI": {
+    "status": "ACCUMULATE",
+    "score": 66,
+    "updated_at": "2026-05-06T13:09:34"
+  },
+  "ASRM": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ASLC": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "AMFG": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:09:33"
+  },
+  "ATLA": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ASPR": {
+    "status": "STRONG BUY",
+    "score": 91,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "AKSI": {
+    "status": "AVOID",
+    "score": 34,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ASDM": {
+    "status": "AVOID",
+    "score": 19,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "ASMI": {
+    "status": "HOLD",
+    "score": 46,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ARKA": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "AMAN": {
+    "status": "ACCUMULATE",
+    "score": 56,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ANDI": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "AGII": {
+    "status": "AVOID",
+    "score": 36,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "APEX": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ALKA": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "AXIO": {
+    "status": "HOLD",
+    "score": 41,
+    "updated_at": "2026-05-06T13:09:39"
+  },
+  "BABY": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:09:42"
+  },
+  "AISA": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "AIMS": {
+    "status": "AVOID",
+    "score": 35,
+    "updated_at": "2026-05-06T13:09:36"
+  },
+  "ARCI": {
+    "status": "AVOID",
+    "score": 28,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "AMIN": {
+    "status": "STRONG BUY",
+    "score": 75,
+    "updated_at": "2026-05-06T13:09:35"
+  },
+  "BACA": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:09:45"
+  },
+  "BABP": {
+    "status": "AVOID",
+    "score": 24,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "AYAM": {
+    "status": "ACCUMULATE",
+    "score": 59,
+    "updated_at": "2026-05-06T13:09:44"
+  },
+  "BANK": {
+    "status": "HOLD",
+    "score": 40,
+    "updated_at": "2026-05-06T13:09:43"
+  },
+  "AWAN": {
+    "status": "AVOID",
+    "score": 7,
+    "updated_at": "2026-05-06T13:09:37"
+  },
+  "BAJA": {
+    "status": "STRONG BUY",
+    "score": 84,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "AYLS": {
+    "status": "AVOID",
+    "score": 39,
+    "updated_at": "2026-05-06T13:09:45"
+  },
+  "BALI": {
+    "status": "AVOID",
+    "score": 3,
+    "updated_at": "2026-05-06T13:09:45"
+  },
+  "BAPI": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:09:42"
+  },
+  "BATA": {
+    "status": "AVOID",
+    "score": 8,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BATR": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:09:45"
+  },
+  "BBLD": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BBHI": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BAIK": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:09:48"
+  },
+  "BAUT": {
+    "status": "AVOID",
+    "score": 6,
+    "updated_at": "2026-05-06T13:09:44"
+  },
+  "BBMD": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:09:44"
+  },
+  "BAPA": {
+    "status": "STRONG BUY",
+    "score": 74,
+    "updated_at": "2026-05-06T13:09:51"
+  },
+  "BAYU": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:09:45"
+  },
+  "BBKP": {
+    "status": "AVOID",
+    "score": 34,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BBSI": {
+    "status": "AVOID",
+    "score": 32,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BHAT": {
+    "status": "AVOID",
+    "score": 10,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BLTZ": {
+    "status": "AVOID",
+    "score": 26,
+    "updated_at": "2026-05-06T03:09:15"
+  },
+  "BOGA": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BEEF": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BBSS": {
+    "status": "ACCUMULATE",
+    "score": 57,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BJBR": {
+    "status": "STRONG BUY",
+    "score": 100,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BEST": {
+    "status": "ACCUMULATE",
+    "score": 66,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BIRD": {
+    "status": "AVOID",
+    "score": 24,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BOBA": {
+    "status": "STRONG BUY",
+    "score": 77,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BCAP": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BELI": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:09:45"
+  },
+  "BEKS": {
+    "status": "ACCUMULATE",
+    "score": 67,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BISI": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BDMN": {
+    "status": "ACCUMULATE",
+    "score": 60,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BIPP": {
+    "status": "STRONG BUY",
+    "score": 78,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BJTM": {
+    "status": "ACCUMULATE",
+    "score": 74,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BELL": {
+    "status": "ACCUMULATE",
+    "score": 63,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BRRC": {
+    "status": "HOLD",
+    "score": 40,
+    "updated_at": "2026-05-06T13:09:54"
+  },
+  "BRNA": {
+    "status": "HOLD",
+    "score": 49,
+    "updated_at": "2026-05-06T13:09:49"
+  },
+  "BOLA": {
+    "status": "ACCUMULATE",
+    "score": 57,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BINA": {
+    "status": "AVOID",
+    "score": 24,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BBRM": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BGTG": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BMHS": {
+    "status": "AVOID",
+    "score": 37,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BMSR": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BKSL": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BIPI": {
+    "status": "ACCUMULATE",
+    "score": 67,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BHIT": {
+    "status": "AVOID",
+    "score": 10,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BEER": {
+    "status": "AVOID",
+    "score": 9,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BLUE": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BCIC": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:09:45"
+  },
+  "BKSW": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BPTR": {
+    "status": "AVOID",
+    "score": 28,
+    "updated_at": "2026-05-06T13:09:48"
+  },
+  "BMAS": {
+    "status": "HOLD",
+    "score": 51,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BCIP": {
+    "status": "STRONG BUY",
+    "score": 75,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BREN": {
+    "status": "HOLD",
+    "score": 52,
+    "updated_at": "2026-05-06T13:09:49"
+  },
+  "BNII": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BNBR": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BNBA": {
+    "status": "ACCUMULATE",
+    "score": 56,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BLOG": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BOAT": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BPFI": {
+    "status": "AVOID",
+    "score": 10,
+    "updated_at": "2026-05-06T13:09:48"
+  },
+  "BLTA": {
+    "status": "AVOID",
+    "score": 6,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BSBK": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:09:54"
+  },
+  "BTPN": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "BNLI": {
+    "status": "STRONG BUY",
+    "score": 73,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BKDP": {
+    "status": "STRONG BUY",
+    "score": 73,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BSSR": {
+    "status": "ACCUMULATE",
+    "score": 61,
+    "updated_at": "2026-05-06T13:09:53"
+  },
+  "BRAM": {
+    "status": "AVOID",
+    "score": 28,
+    "updated_at": "2026-05-06T13:09:49"
+  },
+  "BMBL": {
+    "status": "HOLD",
+    "score": 47,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BPII": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:09:48"
+  },
+  "BINO": {
+    "status": "AVOID",
+    "score": 28,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BTEK": {
+    "status": "AVOID",
+    "score": 6,
+    "updated_at": "2026-05-06T13:09:52"
+  },
+  "BOLT": {
+    "status": "STRONG BUY",
+    "score": 87,
+    "updated_at": "2026-05-06T13:09:48"
+  },
+  "BSIM": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "BLES": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:09:46"
+  },
+  "BESS": {
+    "status": "AVOID",
+    "score": 15,
+    "updated_at": "2026-05-06T13:09:47"
+  },
+  "BTON": {
+    "status": "ACCUMULATE",
+    "score": 62,
+    "updated_at": "2026-05-06T13:09:55"
+  },
+  "BSML": {
+    "status": "AVOID",
+    "score": 34,
+    "updated_at": "2026-05-06T13:09:54"
+  },
+  "BUVA": {
+    "status": "ACCUMULATE",
+    "score": 62,
+    "updated_at": "2026-05-06T13:09:55"
+  },
+  "BVIC": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:09:56"
+  },
+  "BUAH": {
+    "status": "HOLD",
+    "score": 41,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "BULL": {
+    "status": "AVOID",
+    "score": 13,
+    "updated_at": "2026-05-06T13:09:56"
+  },
+  "BUKA": {
+    "status": "AVOID",
+    "score": 23,
+    "updated_at": "2026-05-06T13:09:53"
+  },
+  "BYAN": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:09:56"
+  },
+  "BUKK": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:09:56"
+  },
+  "BUDI": {
+    "status": "HOLD",
+    "score": 43,
+    "updated_at": "2026-05-06T13:09:53"
+  },
+  "BUMI": {
+    "status": "AVOID",
+    "score": 39,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "BWPT": {
+    "status": "HOLD",
+    "score": 54,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CASH": {
+    "status": "HOLD",
+    "score": 51,
+    "updated_at": "2026-05-06T13:09:55"
+  },
+  "CARE": {
+    "status": "HOLD",
+    "score": 54,
+    "updated_at": "2026-05-06T13:09:56"
+  },
+  "CANI": {
+    "status": "ACCUMULATE",
+    "score": 55,
+    "updated_at": "2026-05-06T13:09:56"
+  },
+  "CAMP": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CARS": {
+    "status": "AVOID",
+    "score": 38,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CAKK": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CASA": {
+    "status": "AVOID",
+    "score": 34,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CBDK": {
+    "status": "ACCUMULATE",
+    "score": 65,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "BIKE": {
+    "status": "AVOID",
+    "score": 31,
+    "updated_at": "2026-05-06T13:09:51"
+  },
+  "CENT": {
+    "status": "ACCUMULATE",
+    "score": 69,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CBPE": {
+    "status": "AVOID",
+    "score": 13,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CFIN": {
+    "status": "ACCUMULATE",
+    "score": 69,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CNKO": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CGAS": {
+    "status": "STRONG BUY",
+    "score": 74,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CBUT": {
+    "status": "ACCUMULATE",
+    "score": 59,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CHEK": {
+    "status": "AVOID",
+    "score": 26,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CSRA": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CHEM": {
+    "status": "HOLD",
+    "score": 52,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CASS": {
+    "status": "HOLD",
+    "score": 48,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CEKA": {
+    "status": "ACCUMULATE",
+    "score": 67,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CNMA": {
+    "status": "AVOID",
+    "score": 38,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CMNP": {
+    "status": "AVOID",
+    "score": 27,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CLEO": {
+    "status": "HOLD",
+    "score": 53,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CLAY": {
+    "status": "HOLD",
+    "score": 52,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CITY": {
+    "status": "STRONG BUY",
+    "score": 71,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CSIS": {
+    "status": "HOLD",
+    "score": 45,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CITA": {
+    "status": "AVOID",
+    "score": 28,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CINT": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CPRO": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CDIA": {
+    "status": "STRONG BUY",
+    "score": 83,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CUAN": {
+    "status": "ACCUMULATE",
+    "score": 57,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CCSI": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "COIN": {
+    "status": "HOLD",
+    "score": 52,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "COCO": {
+    "status": "STRONG BUY",
+    "score": 80,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "COAL": {
+    "status": "AVOID",
+    "score": 37,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "DADA": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:09:59"
+  },
+  "DAAZ": {
+    "status": "AVOID",
+    "score": 28,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "DOID": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:10:02"
+  },
+  "CMNT": {
+    "status": "ACCUMULATE",
+    "score": 64,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "DCII": {
+    "status": "AVOID",
+    "score": 39,
+    "updated_at": "2026-05-06T13:09:59"
+  },
+  "CBRE": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "DNET": {
+    "status": "AVOID",
+    "score": 39,
+    "updated_at": "2026-05-06T13:10:01"
+  },
+  "CMPP": {
+    "status": "AVOID",
+    "score": 37,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "DAYA": {
+    "status": "ACCUMULATE",
+    "score": 64,
+    "updated_at": "2026-05-06T13:09:59"
+  },
+  "CHIP": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CTTH": {
+    "status": "STRONG BUY",
+    "score": 81,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CSAP": {
+    "status": "AVOID",
+    "score": 3,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "CTBN": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "DEWI": {
+    "status": "STRONG BUY",
+    "score": 87,
+    "updated_at": "2026-05-06T13:10:00"
+  },
+  "DART": {
+    "status": "HOLD",
+    "score": 54,
+    "updated_at": "2026-05-06T13:09:59"
+  },
+  "CSMI": {
+    "status": "ACCUMULATE",
+    "score": 84,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "DGIK": {
+    "status": "STRONG BUY",
+    "score": 72,
+    "updated_at": "2026-05-06T13:10:00"
+  },
+  "DGWG": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:10:00"
+  },
+  "DEPO": {
+    "status": "AVOID",
+    "score": 35,
+    "updated_at": "2026-05-06T13:09:59"
+  },
+  "CRAB": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "CYBR": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:09:59"
+  },
+  "DMAS": {
+    "status": "STRONG BUY",
+    "score": 92,
+    "updated_at": "2026-05-06T13:10:04"
+  },
+  "CRSN": {
+    "status": "ACCUMULATE",
+    "score": 69,
+    "updated_at": "2026-05-06T13:09:58"
+  },
+  "DEFI": {
+    "status": "STRONG BUY",
+    "score": 78,
+    "updated_at": "2026-05-06T13:09:59"
+  },
+  "CLPI": {
+    "status": "HOLD",
+    "score": 41,
+    "updated_at": "2026-05-06T13:09:57"
+  },
+  "DMMX": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:10:01"
+  },
+  "DILD": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:10:01"
+  },
+  "DKFT": {
+    "status": "STRONG BUY",
+    "score": 73,
+    "updated_at": "2026-05-06T13:10:00"
+  },
+  "DKHH": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:10:07"
+  },
+  "DLTA": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:10:00"
+  },
+  "DATA": {
+    "status": "AVOID",
+    "score": 31,
+    "updated_at": "2026-05-06T13:09:59"
+  },
+  "DGNS": {
+    "status": "AVOID",
+    "score": 35,
+    "updated_at": "2026-05-06T13:09:59"
+  },
+  "DIVA": {
+    "status": "STRONG BUY",
+    "score": 87,
+    "updated_at": "2026-05-06T13:10:00"
+  },
+  "DNAR": {
+    "status": "STRONG BUY",
+    "score": 92,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "DFAM": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:09:59"
+  },
+  "DMND": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:10:07"
+  },
+  "DIGI": {
+    "status": "STRONG BUY",
+    "score": 88,
+    "updated_at": "2026-05-06T13:10:02"
+  },
+  "DOSS": {
+    "status": "AVOID",
+    "score": 19,
+    "updated_at": "2026-05-06T13:10:03"
+  },
+  "DPUM": {
+    "status": "ACCUMULATE",
+    "score": 63,
+    "updated_at": "2026-05-06T13:10:07"
+  },
+  "DOOH": {
+    "status": "ACCUMULATE",
+    "score": 63,
+    "updated_at": "2026-05-06T13:10:07"
+  },
+  "DSFI": {
+    "status": "ACCUMULATE",
+    "score": 65,
+    "updated_at": "2026-05-06T13:10:04"
+  },
+  "DRMA": {
+    "status": "AVOID",
+    "score": 36,
+    "updated_at": "2026-05-06T13:10:06"
+  },
+  "DYAN": {
+    "status": "STRONG BUY",
+    "score": 79,
+    "updated_at": "2026-05-06T13:10:07"
+  },
+  "ELIT": {
+    "status": "HOLD",
+    "score": 45,
+    "updated_at": "2026-05-06T13:10:07"
+  },
+  "DSSA": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:10:06"
+  },
+  "DUTI": {
+    "status": "HOLD",
+    "score": 40,
+    "updated_at": "2026-05-06T13:10:07"
+  },
+  "EAST": {
+    "status": "STRONG BUY",
+    "score": 94,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "EKAD": {
+    "status": "AVOID",
+    "score": 34,
+    "updated_at": "2026-05-06T13:10:07"
+  },
+  "DWGL": {
+    "status": "ACCUMULATE",
+    "score": 68,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "DVLA": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:10:05"
+  },
+  "ELTY": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "ECII": {
+    "status": "ACCUMULATE",
+    "score": 56,
+    "updated_at": "2026-05-06T13:10:07"
+  },
+  "EPMT": {
+    "status": "ACCUMULATE",
+    "score": 58,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "ERAL": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "ESIP": {
+    "status": "ACCUMULATE",
+    "score": 56,
+    "updated_at": "2026-05-06T13:10:07"
+  },
+  "FISH": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "EMAS": {
+    "status": "AVOID",
+    "score": 19,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "GEMA": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "FAST": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "ENZO": {
+    "status": "STRONG BUY",
+    "score": 93,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "FLMC": {
+    "status": "HOLD",
+    "score": 50,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "GIAA": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "EMDE": {
+    "status": "AVOID",
+    "score": 10,
+    "updated_at": "2026-05-06T13:10:07"
+  },
+  "ENAK": {
+    "status": "AVOID",
+    "score": 37,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "ELPI": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:10:07"
+  },
+  "FWCT": {
+    "status": "HOLD",
+    "score": 54,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "GGRP": {
+    "status": "STRONG BUY",
+    "score": 75,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "GMFI": {
+    "status": "AVOID",
+    "score": 30,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "EURO": {
+    "status": "AVOID",
+    "score": 32,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "FOOD": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "FMII": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "FAPA": {
+    "status": "HOLD",
+    "score": 54,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "EPAC": {
+    "status": "ACCUMULATE",
+    "score": 64,
+    "updated_at": "2026-05-06T13:10:07"
+  },
+  "FUTR": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "GPRA": {
+    "status": "HOLD",
+    "score": 45,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "ESTA": {
+    "status": "ACCUMULATE",
+    "score": 60,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "ESTI": {
+    "status": "ACCUMULATE",
+    "score": 64,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "FORE": {
+    "status": "ACCUMULATE",
+    "score": 60,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "GTBO": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:10:11"
+  },
+  "GOOD": {
+    "status": "AVOID",
+    "score": 38,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "ERTX": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "GRIA": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:10:11"
+  },
+  "FIRE": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "FOLK": {
+    "status": "HOLD",
+    "score": 43,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "FITT": {
+    "status": "ACCUMULATE",
+    "score": 57,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "GOLF": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "FPNI": {
+    "status": "ACCUMULATE",
+    "score": 57,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "GLVA": {
+    "status": "AVOID",
+    "score": 28,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "GMTD": {
+    "status": "ACCUMULATE",
+    "score": 68,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "GRPH": {
+    "status": "STRONG BUY",
+    "score": 82,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "FUJI": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "GPSO": {
+    "status": "STRONG BUY",
+    "score": 88,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "GOLD": {
+    "status": "HOLD",
+    "score": 42,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "FORU": {
+    "status": "ACCUMULATE",
+    "score": 65,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "GDYR": {
+    "status": "HOLD",
+    "score": 43,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "GEMS": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "GDST": {
+    "status": "HOLD",
+    "score": 46,
+    "updated_at": "2026-05-06T13:10:08"
+  },
+  "GTRA": {
+    "status": "AVOID",
+    "score": 6,
+    "updated_at": "2026-05-06T13:10:11"
+  },
+  "GHON": {
+    "status": "ACCUMULATE",
+    "score": 65,
+    "updated_at": "2026-05-06T13:10:09"
+  },
+  "GTSI": {
+    "status": "AVOID",
+    "score": 37,
+    "updated_at": "2026-05-06T13:10:11"
+  },
+  "GRPM": {
+    "status": "AVOID",
+    "score": 38,
+    "updated_at": "2026-05-06T13:10:11"
+  },
+  "GSMF": {
+    "status": "STRONG BUY",
+    "score": 87,
+    "updated_at": "2026-05-06T13:10:10"
+  },
+  "GULA": {
+    "status": "STRONG BUY",
+    "score": 72,
+    "updated_at": "2026-05-06T13:10:19"
+  },
+  "GUNA": {
+    "status": "HOLD",
+    "score": 41,
+    "updated_at": "2026-05-06T13:10:15"
+  },
+  "HATM": {
+    "status": "STRONG BUY",
+    "score": 71,
+    "updated_at": "2026-05-06T13:10:17"
+  },
+  "GWSA": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:10:11"
+  },
+  "HALO": {
+    "status": "STRONG BUY",
+    "score": 74,
+    "updated_at": "2026-05-06T13:10:13"
+  },
+  "HAJJ": {
+    "status": "AVOID",
+    "score": 36,
+    "updated_at": "2026-05-06T13:10:12"
+  },
+  "HADE": {
+    "status": "AVOID",
+    "score": 6,
+    "updated_at": "2026-05-06T13:10:12"
+  },
+  "GZCO": {
+    "status": "ACCUMULATE",
+    "score": 67,
+    "updated_at": "2026-05-06T13:10:11"
+  },
+  "HAIS": {
+    "status": "AVOID",
+    "score": 10,
+    "updated_at": "2026-05-06T13:10:12"
+  },
+  "HBAT": {
+    "status": "STRONG BUY",
+    "score": 72,
+    "updated_at": "2026-05-06T13:10:14"
+  },
+  "HDFA": {
+    "status": "ACCUMULATE",
+    "score": 55,
+    "updated_at": "2026-05-06T13:10:19"
+  },
+  "HDIT": {
+    "status": "AVOID",
+    "score": 34,
+    "updated_at": "2026-05-06T13:10:19"
+  },
+  "HOPE": {
+    "status": "AVOID",
+    "score": 35,
+    "updated_at": "2026-05-06T13:10:19"
+  },
+  "IMJS": {
+    "status": "STRONG BUY",
+    "score": 78,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "HEXA": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:10:19"
+  },
+  "HGII": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:10:17"
+  },
+  "HERO": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:10:16"
+  },
+  "INCI": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:10:20"
+  },
+  "INPP": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "IKBI": {
+    "status": "AVOID",
+    "score": 36,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "HOKI": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:10:19"
+  },
+  "IBOS": {
+    "status": "ACCUMULATE",
+    "score": 67,
+    "updated_at": "2026-05-06T13:10:18"
+  },
+  "IDEA": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:10:20"
+  },
+  "IRRA": {
+    "status": "HOLD",
+    "score": 52,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "IKPM": {
+    "status": "AVOID",
+    "score": 23,
+    "updated_at": "2026-05-06T13:10:20"
+  },
+  "HYGN": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:10:20"
+  },
+  "HOMI": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:10:18"
+  },
+  "HILL": {
+    "status": "AVOID",
+    "score": 20,
+    "updated_at": "2026-05-06T13:10:20"
+  },
+  "INCF": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:10:20"
+  },
+  "IMAS": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "IDPR": {
+    "status": "AVOID",
+    "score": 13,
+    "updated_at": "2026-05-06T13:10:20"
+  },
+  "IPTV": {
+    "status": "STRONG BUY",
+    "score": 90,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "IFII": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:10:19"
+  },
+  "IKAI": {
+    "status": "AVOID",
+    "score": 20,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "IPOL": {
+    "status": "ACCUMULATE",
+    "score": 56,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "IATA": {
+    "status": "AVOID",
+    "score": 26,
+    "updated_at": "2026-05-06T13:10:20"
+  },
+  "IPCM": {
+    "status": "HOLD",
+    "score": 42,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "INTD": {
+    "status": "AVOID",
+    "score": 26,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "IFSH": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "HRTA": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "HRME": {
+    "status": "STRONG BUY",
+    "score": 85,
+    "updated_at": "2026-05-06T13:10:19"
+  },
+  "INAI": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "INDX": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "IBFN": {
+    "status": "AVOID",
+    "score": 13,
+    "updated_at": "2026-05-06T13:10:17"
+  },
+  "IPCC": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "IOTF": {
+    "status": "STRONG BUY",
+    "score": 79,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "IKAN": {
+    "status": "STRONG BUY",
+    "score": 79,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "IGAR": {
+    "status": "AVOID",
+    "score": 19,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "INOV": {
+    "status": "STRONG BUY",
+    "score": 91,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "IMPC": {
+    "status": "HOLD",
+    "score": 48,
+    "updated_at": "2026-05-06T13:10:19"
+  },
+  "HUMI": {
+    "status": "ACCUMULATE",
+    "score": 67,
+    "updated_at": "2026-05-06T13:10:20"
+  },
+  "INPS": {
+    "status": "STRONG BUY",
+    "score": 85,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "INDO": {
+    "status": "AVOID",
+    "score": 36,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "JATI": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:10:22"
+  },
+  "ITIC": {
+    "status": "HOLD",
+    "score": 41,
+    "updated_at": "2026-05-06T13:10:22"
+  },
+  "HELI": {
+    "status": "ACCUMULATE",
+    "score": 55,
+    "updated_at": "2026-05-06T13:10:16"
+  },
+  "ICON": {
+    "status": "STRONG BUY",
+    "score": 89,
+    "updated_at": "2026-05-06T13:10:19"
+  },
+  "INPC": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "INDR": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "IRSX": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:10:22"
+  },
+  "INDS": {
+    "status": "AVOID",
+    "score": 27,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "ISEA": {
+    "status": "STRONG BUY",
+    "score": 81,
+    "updated_at": "2026-05-06T13:10:22"
+  },
+  "INTA": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "ISAP": {
+    "status": "AVOID",
+    "score": 27,
+    "updated_at": "2026-05-06T13:10:22"
+  },
+  "IPAC": {
+    "status": "HOLD",
+    "score": 52,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "JAWA": {
+    "status": "AVOID",
+    "score": 35,
+    "updated_at": "2026-05-06T13:10:22"
+  },
+  "ISSP": {
+    "status": "AVOID",
+    "score": 9,
+    "updated_at": "2026-05-06T13:10:21"
+  },
+  "JARR": {
+    "status": "ACCUMULATE",
+    "score": 59,
+    "updated_at": "2026-05-06T13:10:22"
+  },
+  "JAST": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:10:22"
+  },
+  "ITMA": {
+    "status": "ACCUMULATE",
+    "score": 61,
+    "updated_at": "2026-05-06T13:10:22"
+  },
+  "JECC": {
+    "status": "AVOID",
+    "score": 19,
+    "updated_at": "2026-05-06T13:10:23"
+  },
+  "JGLE": {
+    "status": "HOLD",
+    "score": 54,
+    "updated_at": "2026-05-06T13:10:23"
+  },
+  "JAYA": {
+    "status": "ACCUMULATE",
+    "score": 69,
+    "updated_at": "2026-05-06T13:10:22"
+  },
+  "JIHD": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:10:22"
+  },
+  "JRPT": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:10:23"
+  },
+  "JKON": {
+    "status": "STRONG BUY",
+    "score": 80,
+    "updated_at": "2026-05-06T13:10:23"
+  },
+  "KBLM": {
+    "status": "STRONG BUY",
+    "score": 92,
+    "updated_at": "2026-05-06T13:10:31"
+  },
+  "KBAG": {
+    "status": "ACCUMULATE",
+    "score": 77,
+    "updated_at": "2026-05-06T13:10:24"
+  },
+  "KAQI": {
+    "status": "ACCUMULATE",
+    "score": 65,
+    "updated_at": "2026-05-06T13:10:25"
+  },
+  "KAEF": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:10:25"
+  },
+  "JMAS": {
+    "status": "ACCUMULATE",
+    "score": 68,
+    "updated_at": "2026-05-06T13:10:23"
+  },
+  "JSPT": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:10:24"
+  },
+  "KINO": {
+    "status": "AVOID",
+    "score": 32,
+    "updated_at": "2026-05-06T13:10:31"
+  },
+  "KING": {
+    "status": "HOLD",
+    "score": 45,
+    "updated_at": "2026-05-06T13:10:32"
+  },
+  "KBLI": {
+    "status": "AVOID",
+    "score": 39,
+    "updated_at": "2026-05-06T13:10:30"
+  },
+  "KEEN": {
+    "status": "ACCUMULATE",
+    "score": 69,
+    "updated_at": "2026-05-06T13:10:33"
+  },
+  "JTPE": {
+    "status": "AVOID",
+    "score": 20,
+    "updated_at": "2026-05-06T13:10:24"
+  },
+  "KKGI": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:10:31"
+  },
+  "KJEN": {
+    "status": "HOLD",
+    "score": 41,
+    "updated_at": "2026-05-06T13:10:31"
+  },
+  "KICI": {
+    "status": "ACCUMULATE",
+    "score": 59,
+    "updated_at": "2026-05-06T13:10:31"
+  },
+  "KOBX": {
+    "status": "HOLD",
+    "score": 47,
+    "updated_at": "2026-05-06T13:10:31"
+  },
+  "KARW": {
+    "status": "ACCUMULATE",
+    "score": 56,
+    "updated_at": "2026-05-06T13:10:25"
+  },
+  "KETR": {
+    "status": "HOLD",
+    "score": 47,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "LABS": {
+    "status": "HOLD",
+    "score": 50,
+    "updated_at": "2026-05-06T13:10:32"
+  },
+  "KMTR": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "KDSI": {
+    "status": "HOLD",
+    "score": 40,
+    "updated_at": "2026-05-06T13:10:27"
+  },
+  "KIOS": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "KLIN": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:10:32"
+  },
+  "LABA": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "LCKM": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "KRAS": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "LEAD": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "KOCI": {
+    "status": "STRONG BUY",
+    "score": 85,
+    "updated_at": "2026-05-06T13:10:31"
+  },
+  "KREN": {
+    "status": "HOLD",
+    "score": 41,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "LIFE": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "LION": {
+    "status": "HOLD",
+    "score": 50,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "KDTN": {
+    "status": "HOLD",
+    "score": 43,
+    "updated_at": "2026-05-06T13:10:28"
+  },
+  "LPPS": {
+    "status": "AVOID",
+    "score": 9,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "KSIX": {
+    "status": "AVOID",
+    "score": 35,
+    "updated_at": "2026-05-06T13:10:33"
+  },
+  "KLAS": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:10:31"
+  },
+  "KEJU": {
+    "status": "ACCUMULATE",
+    "score": 62,
+    "updated_at": "2026-05-06T13:10:32"
+  },
+  "KOKA": {
+    "status": "AVOID",
+    "score": 6,
+    "updated_at": "2026-05-06T13:10:51"
+  },
+  "KONI": {
+    "status": "STRONG BUY",
+    "score": 80,
+    "updated_at": "2026-05-06T13:10:33"
+  },
+  "LPPF": {
+    "status": "HOLD",
+    "score": 52,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "LOPI": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "KOIN": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "KOTA": {
+    "status": "HOLD",
+    "score": 51,
+    "updated_at": "2026-05-06T13:10:33"
+  },
+  "LAPD": {
+    "status": "AVOID",
+    "score": 38,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "KMDS": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:10:31"
+  },
+  "KBLV": {
+    "status": "AVOID",
+    "score": 20,
+    "updated_at": "2026-05-06T13:10:32"
+  },
+  "LAJU": {
+    "status": "AVOID",
+    "score": 36,
+    "updated_at": "2026-05-06T13:10:36"
+  },
+  "LUCK": {
+    "status": "ACCUMULATE",
+    "score": 58,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "LPKR": {
+    "status": "ACCUMULATE",
+    "score": 57,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "LPCK": {
+    "status": "AVOID",
+    "score": 15,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "KOPI": {
+    "status": "AVOID",
+    "score": 13,
+    "updated_at": "2026-05-06T13:10:33"
+  },
+  "KUAS": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "KKES": {
+    "status": "STRONG BUY",
+    "score": 80,
+    "updated_at": "2026-05-06T13:10:31"
+  },
+  "LIVE": {
+    "status": "ACCUMULATE",
+    "score": 61,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "LPIN": {
+    "status": "STRONG BUY",
+    "score": 87,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "LMAX": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "KRYA": {
+    "status": "ACCUMULATE",
+    "score": 62,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "LINK": {
+    "status": "AVOID",
+    "score": 20,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "LAND": {
+    "status": "STRONG BUY",
+    "score": 78,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "LUCY": {
+    "status": "STRONG BUY",
+    "score": 79,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "LMPI": {
+    "status": "ACCUMULATE",
+    "score": 68,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "LPGI": {
+    "status": "STRONG BUY",
+    "score": 93,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "LRNA": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "LPLI": {
+    "status": "AVOID",
+    "score": 27,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "LTLS": {
+    "status": "ACCUMULATE",
+    "score": 58,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "MAHA": {
+    "status": "ACCUMULATE",
+    "score": 57,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "MANG": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:10:36"
+  },
+  "MAIN": {
+    "status": "AVOID",
+    "score": 38,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "MASB": {
+    "status": "AVOID",
+    "score": 10,
+    "updated_at": "2026-05-06T13:10:36"
+  },
+  "MAPB": {
+    "status": "AVOID",
+    "score": 14,
+    "updated_at": "2026-05-06T13:10:36"
+  },
+  "LFLO": {
+    "status": "AVOID",
+    "score": 24,
+    "updated_at": "2026-05-06T13:10:34"
+  },
+  "MAXI": {
+    "status": "AVOID",
+    "score": 19,
+    "updated_at": "2026-05-06T13:10:35"
+  },
+  "MAYA": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:10:36"
+  },
+  "MARI": {
+    "status": "AVOID",
+    "score": 23,
+    "updated_at": "2026-05-06T13:10:36"
+  },
+  "MBAP": {
+    "status": "AVOID",
+    "score": 27,
+    "updated_at": "2026-05-06T13:10:36"
+  },
+  "MBSS": {
+    "status": "AVOID",
+    "score": 34,
+    "updated_at": "2026-05-06T13:10:41"
+  },
+  "MDKI": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:10:38"
+  },
+  "MBTO": {
+    "status": "STRONG BUY",
+    "score": 79,
+    "updated_at": "2026-05-06T13:10:38"
+  },
+  "MDIY": {
+    "status": "HOLD",
+    "score": 47,
+    "updated_at": "2026-05-06T13:10:41"
+  },
+  "MDIA": {
+    "status": "STRONG BUY",
+    "score": 78,
+    "updated_at": "2026-05-06T13:10:40"
+  },
+  "MCOL": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:10:38"
+  },
+  "MCAS": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:10:37"
+  },
+  "MCOR": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:10:40"
+  },
+  "MDLN": {
+    "status": "AVOID",
+    "score": 31,
+    "updated_at": "2026-05-06T13:10:40"
+  },
+  "MEDS": {
+    "status": "STRONG BUY",
+    "score": 74,
+    "updated_at": "2026-05-06T13:10:42"
+  },
+  "MDLA": {
+    "status": "STRONG BUY",
+    "score": 74,
+    "updated_at": "2026-05-06T13:10:38"
+  },
+  "MERK": {
+    "status": "HOLD",
+    "score": 40,
+    "updated_at": "2026-05-06T13:10:44"
+  },
+  "MEJA": {
+    "status": "ACCUMULATE",
+    "score": 74,
+    "updated_at": "2026-05-06T13:10:43"
+  },
+  "MDRN": {
+    "status": "AVOID",
+    "score": 36,
+    "updated_at": "2026-05-06T13:10:41"
+  },
+  "MEGA": {
+    "status": "AVOID",
+    "score": 24,
+    "updated_at": "2026-05-06T13:10:44"
+  },
+  "MGLV": {
+    "status": "AVOID",
+    "score": 32,
+    "updated_at": "2026-05-06T13:10:46"
+  },
+  "MGNA": {
+    "status": "AVOID",
+    "score": 28,
+    "updated_at": "2026-05-06T13:10:45"
+  },
+  "MERI": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:10:45"
+  },
+  "MGRO": {
+    "status": "AVOID",
+    "score": 20,
+    "updated_at": "2026-05-06T13:10:46"
+  },
+  "MITI": {
+    "status": "HOLD",
+    "score": 45,
+    "updated_at": "2026-05-06T13:10:47"
+  },
+  "MINE": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MLBI": {
+    "status": "ACCUMULATE",
+    "score": 73,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MMLP": {
+    "status": "AVOID",
+    "score": 20,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MPOW": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MORA": {
+    "status": "ACCUMULATE",
+    "score": 63,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MPPA": {
+    "status": "AVOID",
+    "score": 24,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "MHKI": {
+    "status": "AVOID",
+    "score": 38,
+    "updated_at": "2026-05-06T13:10:45"
+  },
+  "MKTR": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MLIA": {
+    "status": "AVOID",
+    "score": 20,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MTLA": {
+    "status": "AVOID",
+    "score": 32,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "MTMH": {
+    "status": "AVOID",
+    "score": 3,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "MPIX": {
+    "status": "AVOID",
+    "score": 35,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "MSIE": {
+    "status": "STRONG BUY",
+    "score": 82,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "MRAT": {
+    "status": "AVOID",
+    "score": 26,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MLPT": {
+    "status": "ACCUMULATE",
+    "score": 64,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MSTI": {
+    "status": "ACCUMULATE",
+    "score": 58,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MIRA": {
+    "status": "AVOID",
+    "score": 10,
+    "updated_at": "2026-05-06T13:10:47"
+  },
+  "MMIX": {
+    "status": "ACCUMULATE",
+    "score": 58,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MREI": {
+    "status": "AVOID",
+    "score": 26,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MSJA": {
+    "status": "ACCUMULATE",
+    "score": 68,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "MSKY": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "MTFN": {
+    "status": "ACCUMULATE",
+    "score": 64,
+    "updated_at": "2026-05-06T13:10:47"
+  },
+  "MSIN": {
+    "status": "HOLD",
+    "score": 51,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "NAIK": {
+    "status": "HOLD",
+    "score": 46,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "NANO": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "MICE": {
+    "status": "AVOID",
+    "score": 24,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "NASI": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "NAYZ": {
+    "status": "AVOID",
+    "score": 39,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "MINA": {
+    "status": "STRONG BUY",
+    "score": 77,
+    "updated_at": "2026-05-06T13:10:46"
+  },
+  "MPMX": {
+    "status": "STRONG BUY",
+    "score": 87,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "MLPL": {
+    "status": "STRONG BUY",
+    "score": 71,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MUTU": {
+    "status": "AVOID",
+    "score": 28,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "MOLI": {
+    "status": "STRONG BUY",
+    "score": 91,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MKPI": {
+    "status": "AVOID",
+    "score": 3,
+    "updated_at": "2026-05-06T13:10:47"
+  },
+  "MPXL": {
+    "status": "ACCUMULATE",
+    "score": 65,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "NICK": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "NICL": {
+    "status": "AVOID",
+    "score": 9,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "MYTX": {
+    "status": "ACCUMULATE",
+    "score": 60,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "MKAP": {
+    "status": "AVOID",
+    "score": 26,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "MYOH": {
+    "status": "HOLD",
+    "score": 53,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "NICE": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "NATO": {
+    "status": "ACCUMULATE",
+    "score": 60,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "MTWI": {
+    "status": "AVOID",
+    "score": 26,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "MTDL": {
+    "status": "HOLD",
+    "score": 41,
+    "updated_at": "2026-05-06T13:10:48"
+  },
+  "NASA": {
+    "status": "AVOID",
+    "score": 34,
+    "updated_at": "2026-05-06T13:10:49"
+  },
+  "NELY": {
+    "status": "AVOID",
+    "score": 32,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "NEST": {
+    "status": "STRONG BUY",
+    "score": 79,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "NETV": {
+    "status": "STRONG BUY",
+    "score": 75,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "NINE": {
+    "status": "ACCUMULATE",
+    "score": 56,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "NIRO": {
+    "status": "AVOID",
+    "score": 13,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "NOBU": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:10:51"
+  },
+  "NPGF": {
+    "status": "ACCUMULATE",
+    "score": 61,
+    "updated_at": "2026-05-06T13:10:51"
+  },
+  "NSSS": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:10:53"
+  },
+  "NIKL": {
+    "status": "STRONG BUY",
+    "score": 83,
+    "updated_at": "2026-05-06T13:10:51"
+  },
+  "NTBK": {
+    "status": "STRONG BUY",
+    "score": 71,
+    "updated_at": "2026-05-06T13:10:52"
+  },
+  "NZIA": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:10:52"
+  },
+  "NFCX": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:10:50"
+  },
+  "NRCA": {
+    "status": "HOLD",
+    "score": 48,
+    "updated_at": "2026-05-06T13:10:51"
+  },
+  "OLIV": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:10:52"
+  },
+  "OILS": {
+    "status": "AVOID",
+    "score": 9,
+    "updated_at": "2026-05-06T13:10:52"
+  },
+  "OASA": {
+    "status": "STRONG BUY",
+    "score": 71,
+    "updated_at": "2026-05-06T13:10:52"
+  },
+  "OMRE": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:10:54"
+  },
+  "OMED": {
+    "status": "AVOID",
+    "score": 35,
+    "updated_at": "2026-05-06T13:10:55"
+  },
+  "OBAT": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:10:52"
+  },
+  "OBMD": {
+    "status": "AVOID",
+    "score": 34,
+    "updated_at": "2026-05-06T13:10:52"
+  },
+  "OKAS": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:10:52"
+  },
+  "MPRO": {
+    "status": "AVOID",
+    "score": 19,
+    "updated_at": "2026-05-06T03:10:56"
+  },
+  "PADA": {
+    "status": "AVOID",
+    "score": 32,
+    "updated_at": "2026-05-06T13:10:55"
+  },
+  "PADI": {
+    "status": "STRONG BUY",
+    "score": 83,
+    "updated_at": "2026-05-06T13:10:58"
+  },
+  "OPMS": {
+    "status": "AVOID",
+    "score": 30,
+    "updated_at": "2026-05-06T13:10:57"
+  },
+  "PACK": {
+    "status": "ACCUMULATE",
+    "score": 58,
+    "updated_at": "2026-05-06T13:10:55"
+  },
+  "PAMG": {
+    "status": "AVOID",
+    "score": 37,
+    "updated_at": "2026-05-06T13:10:56"
+  },
+  "PBID": {
+    "status": "STRONG BUY",
+    "score": 75,
+    "updated_at": "2026-05-06T13:10:56"
+  },
+  "PANR": {
+    "status": "ACCUMULATE",
+    "score": 66,
+    "updated_at": "2026-05-06T13:10:55"
+  },
+  "PALM": {
+    "status": "STRONG BUY",
+    "score": 90,
+    "updated_at": "2026-05-06T13:10:59"
+  },
+  "PART": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:10:58"
+  },
+  "PDES": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:10:57"
+  },
+  "PANS": {
+    "status": "HOLD",
+    "score": 52,
+    "updated_at": "2026-05-06T13:10:56"
+  },
+  "PBSA": {
+    "status": "AVOID",
+    "score": 13,
+    "updated_at": "2026-05-06T13:10:59"
+  },
+  "PCAR": {
+    "status": "AVOID",
+    "score": 39,
+    "updated_at": "2026-05-06T13:10:56"
+  },
+  "PDPP": {
+    "status": "HOLD",
+    "score": 40,
+    "updated_at": "2026-05-06T13:10:58"
+  },
+  "PGJO": {
+    "status": "AVOID",
+    "score": 14,
+    "updated_at": "2026-05-06T13:11:00"
+  },
+  "PBRX": {
+    "status": "AVOID",
+    "score": 20,
+    "updated_at": "2026-05-06T13:10:58"
+  },
+  "PICO": {
+    "status": "STRONG BUY",
+    "score": 74,
+    "updated_at": "2026-05-06T13:11:00"
+  },
+  "PMJS": {
+    "status": "AVOID",
+    "score": 15,
+    "updated_at": "2026-05-06T13:10:59"
+  },
+  "PGUN": {
+    "status": "HOLD",
+    "score": 54,
+    "updated_at": "2026-05-06T13:10:59"
+  },
+  "PEVE": {
+    "status": "AVOID",
+    "score": 38,
+    "updated_at": "2026-05-06T13:10:57"
+  },
+  "PEGE": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:10:56"
+  },
+  "PNBN": {
+    "status": "AVOID",
+    "score": 20,
+    "updated_at": "2026-05-06T13:11:00"
+  },
+  "POLI": {
+    "status": "AVOID",
+    "score": 7,
+    "updated_at": "2026-05-06T13:11:00"
+  },
+  "PNIN": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "PGLI": {
+    "status": "HOLD",
+    "score": 51,
+    "updated_at": "2026-05-06T13:10:59"
+  },
+  "PKPK": {
+    "status": "ACCUMULATE",
+    "score": 56,
+    "updated_at": "2026-05-06T13:11:00"
+  },
+  "PPRI": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:11:00"
+  },
+  "PJHB": {
+    "status": "ACCUMULATE",
+    "score": 63,
+    "updated_at": "2026-05-06T13:11:00"
+  },
+  "POLA": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "PIPA": {
+    "status": "ACCUMULATE",
+    "score": 69,
+    "updated_at": "2026-05-06T13:10:59"
+  },
+  "PMUI": {
+    "status": "ACCUMULATE",
+    "score": 69,
+    "updated_at": "2026-05-06T13:11:00"
+  },
+  "PEHA": {
+    "status": "HOLD",
+    "score": 43,
+    "updated_at": "2026-05-06T13:10:58"
+  },
+  "PTPW": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:11:02"
+  },
+  "PNSE": {
+    "status": "AVOID",
+    "score": 3,
+    "updated_at": "2026-05-06T13:10:59"
+  },
+  "PPRO": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:11:00"
+  },
+  "PTMP": {
+    "status": "HOLD",
+    "score": 47,
+    "updated_at": "2026-05-06T13:11:02"
+  },
+  "PNGO": {
+    "status": "HOLD",
+    "score": 45,
+    "updated_at": "2026-05-06T13:10:59"
+  },
+  "PRDA": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "PSKT": {
+    "status": "HOLD",
+    "score": 49,
+    "updated_at": "2026-05-06T13:11:02"
+  },
+  "PRAY": {
+    "status": "AVOID",
+    "score": 31,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "PPGL": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "POLU": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:11:00"
+  },
+  "PTSN": {
+    "status": "HOLD",
+    "score": 47,
+    "updated_at": "2026-05-06T13:11:02"
+  },
+  "POWR": {
+    "status": "ACCUMULATE",
+    "score": 58,
+    "updated_at": "2026-05-06T13:11:00"
+  },
+  "PJAA": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:11:00"
+  },
+  "PUDP": {
+    "status": "HOLD",
+    "score": 54,
+    "updated_at": "2026-05-06T13:11:02"
+  },
+  "PSAB": {
+    "status": "ACCUMULATE",
+    "score": 67,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "PSSI": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:11:02"
+  },
+  "PLAN": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:10:59"
+  },
+  "PNBS": {
+    "status": "ACCUMULATE",
+    "score": 61,
+    "updated_at": "2026-05-06T13:11:00"
+  },
+  "PSGO": {
+    "status": "ACCUMULATE",
+    "score": 55,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "PORT": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "PSAT": {
+    "status": "HOLD",
+    "score": 46,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "PURI": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:11:02"
+  },
+  "PPRE": {
+    "status": "HOLD",
+    "score": 42,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "PTPS": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "PSDN": {
+    "status": "ACCUMULATE",
+    "score": 57,
+    "updated_at": "2026-05-06T13:11:01"
+  },
+  "PRIM": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:11:02"
+  },
+  "PURA": {
+    "status": "HOLD",
+    "score": 54,
+    "updated_at": "2026-05-06T13:11:03"
+  },
+  "PTIS": {
+    "status": "HOLD",
+    "score": 47,
+    "updated_at": "2026-05-06T13:11:02"
+  },
+  "PTSP": {
+    "status": "AVOID",
+    "score": 36,
+    "updated_at": "2026-05-06T13:11:02"
+  },
+  "PYFA": {
+    "status": "STRONG BUY",
+    "score": 75,
+    "updated_at": "2026-05-06T13:11:03"
+  },
+  "RANC": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:11:04"
+  },
+  "RATU": {
+    "status": "HOLD",
+    "score": 41,
+    "updated_at": "2026-05-06T13:11:04"
+  },
+  "RELF": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:11:06"
+  },
+  "PZZA": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:11:03"
+  },
+  "RAAM": {
+    "status": "AVOID",
+    "score": 20,
+    "updated_at": "2026-05-06T13:11:04"
+  },
+  "RCCC": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:11:04"
+  },
+  "RALS": {
+    "status": "AVOID",
+    "score": 38,
+    "updated_at": "2026-05-06T13:11:03"
+  },
+  "RDTX": {
+    "status": "AVOID",
+    "score": 8,
+    "updated_at": "2026-05-06T13:11:04"
+  },
+  "RELI": {
+    "status": "ACCUMULATE",
+    "score": 69,
+    "updated_at": "2026-05-06T13:11:06"
+  },
+  "RBMS": {
+    "status": "STRONG BUY",
+    "score": 81,
+    "updated_at": "2026-05-06T13:11:04"
+  },
+  "RIGS": {
+    "status": "AVOID",
+    "score": 26,
+    "updated_at": "2026-05-06T13:11:06"
+  },
+  "REAL": {
+    "status": "ACCUMULATE",
+    "score": 62,
+    "updated_at": "2026-05-06T13:11:04"
+  },
+  "RICY": {
+    "status": "STRONG BUY",
+    "score": 84,
+    "updated_at": "2026-05-06T13:11:09"
+  },
+  "RGAS": {
+    "status": "ACCUMULATE",
+    "score": 57,
+    "updated_at": "2026-05-06T13:11:06"
+  },
+  "RMKO": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:11:09"
+  },
+  "RISE": {
+    "status": "HOLD",
+    "score": 42,
+    "updated_at": "2026-05-06T13:11:06"
+  },
+  "RLCO": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:11:07"
+  },
+  "RMKE": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:11:08"
+  },
+  "RUIS": {
+    "status": "AVOID",
+    "score": 6,
+    "updated_at": "2026-05-06T13:11:10"
+  },
+  "RSGK": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:11:09"
+  },
+  "RONY": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:11:10"
+  },
+  "ROTI": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:11:09"
+  },
+  "SAMF": {
+    "status": "AVOID",
+    "score": 6,
+    "updated_at": "2026-05-06T13:11:11"
+  },
+  "RODA": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:11:10"
+  },
+  "ROCK": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:11:09"
+  },
+  "RSCH": {
+    "status": "STRONG BUY",
+    "score": 75,
+    "updated_at": "2026-05-06T13:11:11"
+  },
+  "SAME": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:11:10"
+  },
+  "SAGE": {
+    "status": "HOLD",
+    "score": 53,
+    "updated_at": "2026-05-06T13:11:09"
+  },
+  "SCNP": {
+    "status": "AVOID",
+    "score": 32,
+    "updated_at": "2026-05-06T13:11:10"
+  },
+  "SAFE": {
+    "status": "AVOID",
+    "score": 39,
+    "updated_at": "2026-05-06T13:11:10"
+  },
+  "SEMA": {
+    "status": "ACCUMULATE",
+    "score": 58,
+    "updated_at": "2026-05-06T13:11:11"
+  },
+  "SHID": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:11:11"
+  },
+  "SAPX": {
+    "status": "AVOID",
+    "score": 34,
+    "updated_at": "2026-05-06T13:11:11"
+  },
+  "SDMU": {
+    "status": "HOLD",
+    "score": 51,
+    "updated_at": "2026-05-06T13:11:11"
+  },
+  "SBMA": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:11:11"
+  },
+  "SCCO": {
+    "status": "HOLD",
+    "score": 49,
+    "updated_at": "2026-05-06T13:11:10"
+  },
+  "SKLT": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:11:13"
+  },
+  "SATU": {
+    "status": "AVOID",
+    "score": 38,
+    "updated_at": "2026-05-06T13:11:12"
+  },
+  "SKRN": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:11:14"
+  },
+  "SDRA": {
+    "status": "ACCUMULATE",
+    "score": 56,
+    "updated_at": "2026-05-06T13:11:11"
+  },
+  "SMKM": {
+    "status": "HOLD",
+    "score": 43,
+    "updated_at": "2026-05-06T13:11:13"
+  },
+  "SDPC": {
+    "status": "AVOID",
+    "score": 36,
+    "updated_at": "2026-05-06T13:11:11"
+  },
+  "SKBM": {
+    "status": "ACCUMULATE",
+    "score": 55,
+    "updated_at": "2026-05-06T13:11:13"
+  },
+  "SGER": {
+    "status": "ACCUMULATE",
+    "score": 60,
+    "updated_at": "2026-05-06T13:11:12"
+  },
+  "SGRO": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:11:11"
+  },
+  "SHIP": {
+    "status": "HOLD",
+    "score": 53,
+    "updated_at": "2026-05-06T13:11:11"
+  },
+  "SIMP": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:11:12"
+  },
+  "RUNS": {
+    "status": "AVOID",
+    "score": 31,
+    "updated_at": "2026-05-06T13:11:09"
+  },
+  "SMSM": {
+    "status": "ACCUMULATE",
+    "score": 67,
+    "updated_at": "2026-05-06T13:11:14"
+  },
+  "SIPD": {
+    "status": "AVOID",
+    "score": 15,
+    "updated_at": "2026-05-06T13:11:12"
+  },
+  "SMLE": {
+    "status": "AVOID",
+    "score": 6,
+    "updated_at": "2026-05-06T13:11:13"
+  },
+  "SMKL": {
+    "status": "AVOID",
+    "score": 34,
+    "updated_at": "2026-05-06T13:11:13"
+  },
+  "SMAR": {
+    "status": "AVOID",
+    "score": 28,
+    "updated_at": "2026-05-06T13:11:12"
+  },
+  "SICO": {
+    "status": "ACCUMULATE",
+    "score": 61,
+    "updated_at": "2026-05-06T13:11:12"
+  },
+  "SINI": {
+    "status": "HOLD",
+    "score": 40,
+    "updated_at": "2026-05-06T13:11:11"
+  },
+  "SMGA": {
+    "status": "HOLD",
+    "score": 52,
+    "updated_at": "2026-05-06T13:11:14"
+  },
+  "SOUL": {
+    "status": "AVOID",
+    "score": 31,
+    "updated_at": "2026-05-06T13:11:15"
+  },
+  "SMBR": {
+    "status": "AVOID",
+    "score": 26,
+    "updated_at": "2026-05-06T13:11:13"
+  },
+  "SOLA": {
+    "status": "STRONG BUY",
+    "score": 85,
+    "updated_at": "2026-05-06T13:11:14"
+  },
+  "SLIS": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:11:14"
+  },
+  "SOSS": {
+    "status": "HOLD",
+    "score": 40,
+    "updated_at": "2026-05-06T13:11:14"
+  },
+  "SILO": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:11:12"
+  },
+  "SFAN": {
+    "status": "HOLD",
+    "score": 46,
+    "updated_at": "2026-05-06T13:11:11"
+  },
+  "SPMA": {
+    "status": "AVOID",
+    "score": 19,
+    "updated_at": "2026-05-06T13:11:15"
+  },
+  "SMDR": {
+    "status": "AVOID",
+    "score": 36,
+    "updated_at": "2026-05-06T13:11:12"
+  },
+  "SMDM": {
+    "status": "ACCUMULATE",
+    "score": 64,
+    "updated_at": "2026-05-06T13:11:12"
+  },
+  "SQMI": {
+    "status": "AVOID",
+    "score": 14,
+    "updated_at": "2026-05-06T13:11:16"
+  },
+  "SPRE": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:11:15"
+  },
+  "SNLK": {
+    "status": "AVOID",
+    "score": 6,
+    "updated_at": "2026-05-06T13:11:14"
+  },
+  "SOCI": {
+    "status": "ACCUMULATE",
+    "score": 63,
+    "updated_at": "2026-05-06T13:11:14"
+  },
+  "SMMA": {
+    "status": "STRONG BUY",
+    "score": 73,
+    "updated_at": "2026-05-06T13:11:13"
+  },
+  "SRAJ": {
+    "status": "AVOID",
+    "score": 19,
+    "updated_at": "2026-05-06T13:11:17"
+  },
+  "SOFA": {
+    "status": "AVOID",
+    "score": 31,
+    "updated_at": "2026-05-06T13:11:14"
+  },
+  "SMMT": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:11:14"
+  },
+  "SOHO": {
+    "status": "HOLD",
+    "score": 54,
+    "updated_at": "2026-05-06T13:11:14"
+  },
+  "SRSN": {
+    "status": "ACCUMULATE",
+    "score": 64,
+    "updated_at": "2026-05-06T13:11:16"
+  },
+  "SOTS": {
+    "status": "AVOID",
+    "score": 17,
+    "updated_at": "2026-05-06T13:11:15"
+  },
+  "SPTO": {
+    "status": "AVOID",
+    "score": 28,
+    "updated_at": "2026-05-06T13:11:15"
+  },
+  "STRK": {
+    "status": "AVOID",
+    "score": 9,
+    "updated_at": "2026-05-06T13:11:19"
+  },
+  "TALF": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:11:20"
+  },
+  "SSTM": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:11:17"
+  },
+  "SUNI": {
+    "status": "ACCUMULATE",
+    "score": 59,
+    "updated_at": "2026-05-06T13:11:18"
+  },
+  "SULI": {
+    "status": "AVOID",
+    "score": 3,
+    "updated_at": "2026-05-06T13:11:20"
+  },
+  "STTP": {
+    "status": "AVOID",
+    "score": 23,
+    "updated_at": "2026-05-06T13:11:20"
+  },
+  "STAR": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:11:18"
+  },
+  "SONA": {
+    "status": "STRONG BUY",
+    "score": 77,
+    "updated_at": "2026-05-06T13:11:14"
+  },
+  "TAMA": {
+    "status": "HOLD",
+    "score": 54,
+    "updated_at": "2026-05-06T13:11:20"
+  },
+  "STAA": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:11:20"
+  },
+  "SURE": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:11:18"
+  },
+  "SUPA": {
+    "status": "STRONG BUY",
+    "score": 83,
+    "updated_at": "2026-05-06T13:11:20"
+  },
+  "SWID": {
+    "status": "ACCUMULATE",
+    "score": 69,
+    "updated_at": "2026-05-06T13:11:20"
+  },
+  "TAPG": {
+    "status": "ACCUMULATE",
+    "score": 64,
+    "updated_at": "2026-05-06T13:11:21"
+  },
+  "TBLA": {
+    "status": "AVOID",
+    "score": 10,
+    "updated_at": "2026-05-06T13:11:23"
+  },
+  "TAMU": {
+    "status": "AVOID",
+    "score": 31,
+    "updated_at": "2026-05-06T13:11:22"
+  },
+  "TBIG": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:11:23"
+  },
+  "TAXI": {
+    "status": "AVOID",
+    "score": 35,
+    "updated_at": "2026-05-06T13:11:21"
+  },
+  "TFAS": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:11:23"
+  },
+  "TCPI": {
+    "status": "STRONG BUY",
+    "score": 76,
+    "updated_at": "2026-05-06T13:11:22"
+  },
+  "TARA": {
+    "status": "AVOID",
+    "score": 27,
+    "updated_at": "2026-05-06T13:11:20"
+  },
+  "TBMS": {
+    "status": "STRONG BUY",
+    "score": 81,
+    "updated_at": "2026-05-06T13:11:23"
+  },
+  "TGKA": {
+    "status": "HOLD",
+    "score": 49,
+    "updated_at": "2026-05-06T13:11:23"
+  },
+  "TIRT": {
+    "status": "AVOID",
+    "score": 13,
+    "updated_at": "2026-05-06T13:11:22"
+  },
+  "TOOL": {
+    "status": "ACCUMULATE",
+    "score": 58,
+    "updated_at": "2026-05-06T13:11:25"
+  },
+  "TMPO": {
+    "status": "ACCUMULATE",
+    "score": 59,
+    "updated_at": "2026-05-06T13:11:23"
+  },
+  "TIRA": {
+    "status": "HOLD",
+    "score": 51,
+    "updated_at": "2026-05-06T13:11:23"
+  },
+  "TAYS": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:11:23"
+  },
+  "TOSK": {
+    "status": "HOLD",
+    "score": 45,
+    "updated_at": "2026-05-06T13:11:24"
+  },
+  "TEBE": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:11:23"
+  },
+  "TMAS": {
+    "status": "AVOID",
+    "score": 13,
+    "updated_at": "2026-05-06T13:11:24"
+  },
+  "TCID": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:11:23"
+  },
+  "TLDN": {
+    "status": "AVOID",
+    "score": 26,
+    "updated_at": "2026-05-06T13:11:24"
+  },
+  "TRIS": {
+    "status": "ACCUMULATE",
+    "score": 55,
+    "updated_at": "2026-05-06T13:11:25"
+  },
+  "TNCA": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:11:23"
+  },
+  "TRGU": {
+    "status": "AVOID",
+    "score": 8,
+    "updated_at": "2026-05-06T13:11:25"
+  },
+  "TRUK": {
+    "status": "ACCUMULATE",
+    "score": 67,
+    "updated_at": "2026-05-06T13:11:26"
+  },
+  "TIFA": {
+    "status": "ACCUMULATE",
+    "score": 62,
+    "updated_at": "2026-05-06T13:11:22"
+  },
+  "ULTJ": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:11:27"
+  },
+  "TRST": {
+    "status": "ACCUMULATE",
+    "score": 62,
+    "updated_at": "2026-05-06T13:11:25"
+  },
+  "TOTL": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:11:25"
+  },
+  "TOTO": {
+    "status": "AVOID",
+    "score": 26,
+    "updated_at": "2026-05-06T13:11:24"
+  },
+  "TSPC": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:11:26"
+  },
+  "TRUS": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:11:26"
+  },
+  "TRJA": {
+    "status": "HOLD",
+    "score": 44,
+    "updated_at": "2026-05-06T13:11:26"
+  },
+  "TYRE": {
+    "status": "HOLD",
+    "score": 54,
+    "updated_at": "2026-05-06T13:11:26"
+  },
+  "UDNG": {
+    "status": "ACCUMULATE",
+    "score": 57,
+    "updated_at": "2026-05-06T13:11:26"
+  },
+  "UCID": {
+    "status": "AVOID",
+    "score": 9,
+    "updated_at": "2026-05-06T13:11:25"
+  },
+  "TFCO": {
+    "status": "AVOID",
+    "score": 27,
+    "updated_at": "2026-05-06T13:11:22"
+  },
+  "TPMA": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:11:24"
+  },
+  "TRUE": {
+    "status": "AVOID",
+    "score": 37,
+    "updated_at": "2026-05-06T13:11:25"
+  },
+  "UFOE": {
+    "status": "HOLD",
+    "score": 52,
+    "updated_at": "2026-05-06T13:11:26"
+  },
+  "TRON": {
+    "status": "HOLD",
+    "score": 48,
+    "updated_at": "2026-05-06T13:11:26"
+  },
+  "TRIN": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:11:25"
+  },
+  "TUGU": {
+    "status": "STRONG BUY",
+    "score": 71,
+    "updated_at": "2026-05-06T13:11:26"
+  },
+  "UNSP": {
+    "status": "AVOID",
+    "score": 12,
+    "updated_at": "2026-05-06T13:11:26"
+  },
+  "TRIM": {
+    "status": "AVOID",
+    "score": 30,
+    "updated_at": "2026-05-06T13:11:25"
+  },
+  "VAST": {
+    "status": "STRONG BUY",
+    "score": 92,
+    "updated_at": "2026-05-06T13:11:28"
+  },
+  "UANG": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:11:26"
+  },
+  "UNIC": {
+    "status": "ACCUMULATE",
+    "score": 69,
+    "updated_at": "2026-05-06T13:11:26"
+  },
+  "VISI": {
+    "status": "HOLD",
+    "score": 49,
+    "updated_at": "2026-05-06T13:11:29"
+  },
+  "VICI": {
+    "status": "ACCUMULATE",
+    "score": 64,
+    "updated_at": "2026-05-06T13:11:28"
+  },
+  "VERN": {
+    "status": "ACCUMULATE",
+    "score": 57,
+    "updated_at": "2026-05-06T13:11:27"
+  },
+  "UVCR": {
+    "status": "STRONG BUY",
+    "score": 88,
+    "updated_at": "2026-05-06T13:11:27"
+  },
+  "VIVA": {
+    "status": "ACCUMULATE",
+    "score": 66,
+    "updated_at": "2026-05-06T13:11:29"
+  },
+  "URBN": {
+    "status": "HOLD",
+    "score": 52,
+    "updated_at": "2026-05-06T13:11:27"
+  },
+  "UNTD": {
+    "status": "AVOID",
+    "score": 23,
+    "updated_at": "2026-05-06T13:11:27"
+  },
+  "VRNA": {
+    "status": "AVOID",
+    "score": 18,
+    "updated_at": "2026-05-06T13:11:29"
+  },
+  "VICO": {
+    "status": "HOLD",
+    "score": 42,
+    "updated_at": "2026-05-06T13:11:29"
+  },
+  "VOKS": {
+    "status": "HOLD",
+    "score": 40,
+    "updated_at": "2026-05-06T13:11:29"
+  },
+  "VKTR": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:11:29"
+  },
+  "WAPO": {
+    "status": "ACCUMULATE",
+    "score": 59,
+    "updated_at": "2026-05-06T13:11:29"
+  },
+  "VTNY": {
+    "status": "AVOID",
+    "score": 16,
+    "updated_at": "2026-05-06T13:11:29"
+  },
+  "VINS": {
+    "status": "AVOID",
+    "score": 30,
+    "updated_at": "2026-05-06T13:11:29"
+  },
+  "WEGE": {
+    "status": "ACCUMULATE",
+    "score": 60,
+    "updated_at": "2026-05-06T13:11:29"
+  },
+  "WEHA": {
+    "status": "HOLD",
+    "score": 48,
+    "updated_at": "2026-05-06T13:11:30"
+  },
+  "WGSH": {
+    "status": "HOLD",
+    "score": 48,
+    "updated_at": "2026-05-06T13:11:29"
+  },
+  "WIDI": {
+    "status": "AVOID",
+    "score": 34,
+    "updated_at": "2026-05-06T13:11:30"
+  },
+  "WINE": {
+    "status": "AVOID",
+    "score": 30,
+    "updated_at": "2026-05-06T13:11:30"
+  },
+  "WIIM": {
+    "status": "ACCUMULATE",
+    "score": 68,
+    "updated_at": "2026-05-06T13:11:30"
+  },
+  "WMPP": {
+    "status": "HOLD",
+    "score": 46,
+    "updated_at": "2026-05-06T13:11:30"
+  },
+  "WINS": {
+    "status": "STRONG BUY",
+    "score": 71,
+    "updated_at": "2026-05-06T13:11:30"
+  },
+  "WINR": {
+    "status": "AVOID",
+    "score": 9,
+    "updated_at": "2026-05-06T13:11:30"
+  },
+  "WOOD": {
+    "status": "AVOID",
+    "score": 29,
+    "updated_at": "2026-05-06T13:11:31"
+  },
+  "XCID": {
+    "status": "AVOID",
+    "score": 33,
+    "updated_at": "2026-05-06T13:11:31"
+  },
+  "WIRG": {
+    "status": "AVOID",
+    "score": 21,
+    "updated_at": "2026-05-06T13:11:30"
+  },
+  "WMUU": {
+    "status": "HOLD",
+    "score": 42,
+    "updated_at": "2026-05-06T13:11:30"
+  },
+  "WOMF": {
+    "status": "AVOID",
+    "score": 3,
+    "updated_at": "2026-05-06T13:11:30"
+  },
+  "YULE": {
+    "status": "AVOID",
+    "score": 11,
+    "updated_at": "2026-05-06T13:11:31"
+  },
+  "YUPI": {
+    "status": "STRONG BUY",
+    "score": 70,
+    "updated_at": "2026-05-06T13:11:30"
+  },
+  "WSBP": {
+    "status": "AVOID",
+    "score": 9,
+    "updated_at": "2026-05-06T13:11:31"
+  },
+  "YELO": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:11:31"
+  },
+  "XCIS": {
+    "status": "ACCUMULATE",
+    "score": 60,
+    "updated_at": "2026-05-06T13:11:31"
+  },
+  "ZONE": {
+    "status": "AVOID",
+    "score": 28,
+    "updated_at": "2026-05-06T13:11:31"
+  },
+  "ZATA": {
+    "status": "AVOID",
+    "score": 25,
+    "updated_at": "2026-05-06T13:11:31"
+  },
+  "WTON": {
+    "status": "STRONG BUY",
+    "score": 78,
+    "updated_at": "2026-05-06T13:11:30"
+  },
+  "WOWS": {
+    "status": "HOLD",
+    "score": 41,
+    "updated_at": "2026-05-06T13:11:31"
+  },
+  "ZYRX": {
+    "status": "AVOID",
+    "score": 31,
+    "updated_at": "2026-05-06T13:11:31"
+  },
+  "YOII": {
+    "status": "AVOID",
+    "score": 22,
+    "updated_at": "2026-05-06T13:11:31"
+  },
+  "YPAS": {
+    "status": "AVOID",
+    "score": 31,
+    "updated_at": "2026-05-06T13:11:31"
+  }
+}

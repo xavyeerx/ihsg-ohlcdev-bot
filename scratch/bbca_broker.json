@@ -1,0 +1,3058 @@
+{
+  "success": true,
+  "data": {
+    "from": "2026-04-22",
+    "to": "2026-04-28",
+    "data_last_updated": "2026-04-28T16:28:19Z",
+    "price_chart_data": [
+      {
+        "date": "2026-04-22",
+        "time": "09:00",
+        "value": {
+          "raw": "6500",
+          "formatted": "6,500"
+        },
+        "datetime_label": "22 Apr"
+      },
+      {
+        "date": "2026-04-22",
+        "time": "10:00",
+        "value": {
+          "raw": "6475",
+          "formatted": "6,475"
+        },
+        "datetime_label": "22 Apr"
+      },
+      {
+        "date": "2026-04-22",
+        "time": "11:00",
+        "value": {
+          "raw": "6500",
+          "formatted": "6,500"
+        },
+        "datetime_label": "22 Apr"
+      },
+      {
+        "date": "2026-04-22",
+        "time": "14:00",
+        "value": {
+          "raw": "6475",
+          "formatted": "6,475"
+        },
+        "datetime_label": "22 Apr"
+      },
+      {
+        "date": "2026-04-22",
+        "time": "15:00",
+        "value": {
+          "raw": "6500",
+          "formatted": "6,500"
+        },
+        "datetime_label": "22 Apr"
+      },
+      {
+        "date": "2026-04-22",
+        "time": "16:00",
+        "value": {
+          "raw": "6450",
+          "formatted": "6,450"
+        },
+        "datetime_label": "22 Apr"
+      },
+      {
+        "date": "2026-04-23",
+        "time": "09:00",
+        "value": {
+          "raw": "6475",
+          "formatted": "6,475"
+        },
+        "datetime_label": "23 Apr"
+      },
+      {
+        "date": "2026-04-23",
+        "time": "10:00",
+        "value": {
+          "raw": "6500",
+          "formatted": "6,500"
+        },
+        "datetime_label": "23 Apr"
+      },
+      {
+        "date": "2026-04-23",
+        "time": "11:00",
+        "value": {
+          "raw": "6450",
+          "formatted": "6,450"
+        },
+        "datetime_label": "23 Apr"
+      },
+      {
+        "date": "2026-04-23",
+        "time": "14:00",
+        "value": {
+          "raw": "6475",
+          "formatted": "6,475"
+        },
+        "datetime_label": "23 Apr"
+      },
+      {
+        "date": "2026-04-23",
+        "time": "15:00",
+        "value": {
+          "raw": "6450",
+          "formatted": "6,450"
+        },
+        "datetime_label": "23 Apr"
+      },
+      {
+        "date": "2026-04-23",
+        "time": "16:00",
+        "value": {
+          "raw": "6425",
+          "formatted": "6,425"
+        },
+        "datetime_label": "23 Apr"
+      },
+      {
+        "date": "2026-04-24",
+        "time": "09:00",
+        "value": {
+          "raw": "6400",
+          "formatted": "6,400"
+        },
+        "datetime_label": "24 Apr"
+      },
+      {
+        "date": "2026-04-24",
+        "time": "10:00",
+        "value": {
+          "raw": "6225",
+          "formatted": "6,225"
+        },
+        "datetime_label": "24 Apr"
+      },
+      {
+        "date": "2026-04-24",
+        "time": "11:00",
+        "value": {
+          "raw": "6125",
+          "formatted": "6,125"
+        },
+        "datetime_label": "24 Apr"
+      },
+      {
+        "date": "2026-04-24",
+        "time": "14:00",
+        "value": {
+          "raw": "6100",
+          "formatted": "6,100"
+        },
+        "datetime_label": "24 Apr"
+      },
+      {
+        "date": "2026-04-24",
+        "time": "15:00",
+        "value": {
+          "raw": "6100",
+          "formatted": "6,100"
+        },
+        "datetime_label": "24 Apr"
+      },
+      {
+        "date": "2026-04-24",
+        "time": "16:00",
+        "value": {
+          "raw": "6050",
+          "formatted": "6,050"
+        },
+        "datetime_label": "24 Apr"
+      },
+      {
+        "date": "2026-04-27",
+        "time": "09:00",
+        "value": {
+          "raw": "6000",
+          "formatted": "6,000"
+        },
+        "datetime_label": "27 Apr"
+      },
+      {
+        "date": "2026-04-27",
+        "time": "10:00",
+        "value": {
+          "raw": "5950",
+          "formatted": "5,950"
+        },
+        "datetime_label": "27 Apr"
+      },
+      {
+        "date": "2026-04-27",
+        "time": "11:00",
+        "value": {
+          "raw": "6000",
+          "formatted": "6,000"
+        },
+        "datetime_label": "27 Apr"
+      },
+      {
+        "date": "2026-04-27",
+        "time": "14:00",
+        "value": {
+          "raw": "6025",
+          "formatted": "6,025"
+        },
+        "datetime_label": "27 Apr"
+      },
+      {
+        "date": "2026-04-27",
+        "time": "15:00",
+        "value": {
+          "raw": "6000",
+          "formatted": "6,000"
+        },
+        "datetime_label": "27 Apr"
+      },
+      {
+        "date": "2026-04-27",
+        "time": "16:00",
+        "value": {
+          "raw": "5975",
+          "formatted": "5,975"
+        },
+        "datetime_label": "27 Apr"
+      },
+      {
+        "date": "2026-04-28",
+        "time": "09:00",
+        "value": {
+          "raw": "6050",
+          "formatted": "6,050"
+        },
+        "datetime_label": "28 Apr"
+      },
+      {
+        "date": "2026-04-28",
+        "time": "10:00",
+        "value": {
+          "raw": "5975",
+          "formatted": "5,975"
+        },
+        "datetime_label": "28 Apr"
+      },
+      {
+        "date": "2026-04-28",
+        "time": "11:00",
+        "value": {
+          "raw": "5950",
+          "formatted": "5,950"
+        },
+        "datetime_label": "28 Apr"
+      },
+      {
+        "date": "2026-04-28",
+        "time": "14:00",
+        "value": {
+          "raw": "6000",
+          "formatted": "6,000"
+        },
+        "datetime_label": "28 Apr"
+      },
+      {
+        "date": "2026-04-28",
+        "time": "15:00",
+        "value": {
+          "raw": "6000",
+          "formatted": "6,000"
+        },
+        "datetime_label": "28 Apr"
+      },
+      {
+        "date": "2026-04-28",
+        "time": "16:00",
+        "value": {
+          "raw": "6000",
+          "formatted": "6,000"
+        },
+        "datetime_label": "28 Apr"
+      }
+    ],
+    "broker_chart_data": [
+      {
+        "type": "TYPE_CHART_VALUE",
+        "brokers": [
+          "XL",
+          "SQ",
+          "YP",
+          "AK",
+          "BK"
+        ],
+        "charts": [
+          {
+            "broker_code": "XL",
+            "chart": [
+              {
+                "date": "2026-04-22",
+                "time": "09:00",
+                "value": {
+                  "raw": "2029397500",
+                  "formatted": "2B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "10:00",
+                "value": {
+                  "raw": "-1517462500",
+                  "formatted": "(1.5B)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "11:00",
+                "value": {
+                  "raw": "1381680000",
+                  "formatted": "1.4B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "14:00",
+                "value": {
+                  "raw": "-173625000",
+                  "formatted": "(173.6M)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "15:00",
+                "value": {
+                  "raw": "3449590000",
+                  "formatted": "3.4B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "16:00",
+                "value": {
+                  "raw": "4959535000",
+                  "formatted": "5B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "09:00",
+                "value": {
+                  "raw": "6068600000",
+                  "formatted": "6.1B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "10:00",
+                "value": {
+                  "raw": "5651122500",
+                  "formatted": "5.7B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "11:00",
+                "value": {
+                  "raw": "973875000",
+                  "formatted": "973.9M"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "14:00",
+                "value": {
+                  "raw": "2976312500",
+                  "formatted": "3B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "15:00",
+                "value": {
+                  "raw": "5489930000",
+                  "formatted": "5.5B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "16:00",
+                "value": {
+                  "raw": "8724917500",
+                  "formatted": "8.7B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "09:00",
+                "value": {
+                  "raw": "59607615000",
+                  "formatted": "59.6B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "10:00",
+                "value": {
+                  "raw": "110291215000",
+                  "formatted": "110.3B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "11:00",
+                "value": {
+                  "raw": "158035352500",
+                  "formatted": "158B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "14:00",
+                "value": {
+                  "raw": "204122815000",
+                  "formatted": "204.1B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "15:00",
+                "value": {
+                  "raw": "258285670000",
+                  "formatted": "258.3B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "16:00",
+                "value": {
+                  "raw": "279659715000",
+                  "formatted": "279.7B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "09:00",
+                "value": {
+                  "raw": "333024767500",
+                  "formatted": "333B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "10:00",
+                "value": {
+                  "raw": "340327690000",
+                  "formatted": "340.3B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "11:00",
+                "value": {
+                  "raw": "349614982500",
+                  "formatted": "349.6B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "14:00",
+                "value": {
+                  "raw": "379920610000",
+                  "formatted": "379.9B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "15:00",
+                "value": {
+                  "raw": "385396412500",
+                  "formatted": "385.4B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "16:00",
+                "value": {
+                  "raw": "386667892500",
+                  "formatted": "386.7B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "09:00",
+                "value": {
+                  "raw": "407036260000",
+                  "formatted": "407B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "10:00",
+                "value": {
+                  "raw": "412993387500",
+                  "formatted": "413B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "11:00",
+                "value": {
+                  "raw": "423747225000",
+                  "formatted": "423.7B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "14:00",
+                "value": {
+                  "raw": "427389985000",
+                  "formatted": "427.4B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "15:00",
+                "value": {
+                  "raw": "430596730000",
+                  "formatted": "430.6B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "16:00",
+                "value": {
+                  "raw": "431747530000",
+                  "formatted": "431.7B"
+                },
+                "datetime_label": "28 Apr"
+              }
+            ]
+          },
+          {
+            "broker_code": "YP",
+            "chart": [
+              {
+                "date": "2026-04-22",
+                "time": "09:00",
+                "value": {
+                  "raw": "4101125000",
+                  "formatted": "4.1B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "10:00",
+                "value": {
+                  "raw": "1122005000",
+                  "formatted": "1.1B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "11:00",
+                "value": {
+                  "raw": "-10108380000",
+                  "formatted": "(10.1B)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "14:00",
+                "value": {
+                  "raw": "-3214302500",
+                  "formatted": "(3.2B)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "15:00",
+                "value": {
+                  "raw": "5136927500",
+                  "formatted": "5.1B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "16:00",
+                "value": {
+                  "raw": "6921642500",
+                  "formatted": "6.9B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "09:00",
+                "value": {
+                  "raw": "6522612500",
+                  "formatted": "6.5B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "10:00",
+                "value": {
+                  "raw": "4169070000",
+                  "formatted": "4.2B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "11:00",
+                "value": {
+                  "raw": "2907625000",
+                  "formatted": "2.9B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "14:00",
+                "value": {
+                  "raw": "6635515000",
+                  "formatted": "6.6B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "15:00",
+                "value": {
+                  "raw": "9289715000",
+                  "formatted": "9.3B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "16:00",
+                "value": {
+                  "raw": "13286065000",
+                  "formatted": "13.3B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "09:00",
+                "value": {
+                  "raw": "71487150000",
+                  "formatted": "71.5B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "10:00",
+                "value": {
+                  "raw": "122983322500",
+                  "formatted": "123B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "11:00",
+                "value": {
+                  "raw": "170672520000",
+                  "formatted": "170.7B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "14:00",
+                "value": {
+                  "raw": "206719530000",
+                  "formatted": "206.7B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "15:00",
+                "value": {
+                  "raw": "248959717500",
+                  "formatted": "249B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "16:00",
+                "value": {
+                  "raw": "277346317500",
+                  "formatted": "277.3B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "09:00",
+                "value": {
+                  "raw": "305454727500",
+                  "formatted": "305.5B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "10:00",
+                "value": {
+                  "raw": "301964370000",
+                  "formatted": "302B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "11:00",
+                "value": {
+                  "raw": "308666770000",
+                  "formatted": "308.7B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "14:00",
+                "value": {
+                  "raw": "328306695000",
+                  "formatted": "328.3B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "15:00",
+                "value": {
+                  "raw": "333076035000",
+                  "formatted": "333.1B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "16:00",
+                "value": {
+                  "raw": "333098142500",
+                  "formatted": "333.1B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "09:00",
+                "value": {
+                  "raw": "347482232500",
+                  "formatted": "347.5B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "10:00",
+                "value": {
+                  "raw": "349889152500",
+                  "formatted": "349.9B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "11:00",
+                "value": {
+                  "raw": "338067975000",
+                  "formatted": "338.1B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "14:00",
+                "value": {
+                  "raw": "342201587500",
+                  "formatted": "342.2B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "15:00",
+                "value": {
+                  "raw": "343181145000",
+                  "formatted": "343.2B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "16:00",
+                "value": {
+                  "raw": "343398945000",
+                  "formatted": "343.4B"
+                },
+                "datetime_label": "28 Apr"
+              }
+            ]
+          },
+          {
+            "broker_code": "AK",
+            "chart": [
+              {
+                "date": "2026-04-22",
+                "time": "09:00",
+                "value": {
+                  "raw": "-6335332500",
+                  "formatted": "(6.3B)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "10:00",
+                "value": {
+                  "raw": "2701892500",
+                  "formatted": "2.7B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "11:00",
+                "value": {
+                  "raw": "3270100000",
+                  "formatted": "3.3B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "14:00",
+                "value": {
+                  "raw": "11471512500",
+                  "formatted": "11.5B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "15:00",
+                "value": {
+                  "raw": "20796372500",
+                  "formatted": "20.8B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "16:00",
+                "value": {
+                  "raw": "13548507500",
+                  "formatted": "13.5B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "09:00",
+                "value": {
+                  "raw": "37469595000",
+                  "formatted": "37.5B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "10:00",
+                "value": {
+                  "raw": "51976677500",
+                  "formatted": "52B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "11:00",
+                "value": {
+                  "raw": "68648365000",
+                  "formatted": "68.6B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "14:00",
+                "value": {
+                  "raw": "64835967500",
+                  "formatted": "64.8B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "15:00",
+                "value": {
+                  "raw": "76922740000",
+                  "formatted": "76.9B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "16:00",
+                "value": {
+                  "raw": "75684642500",
+                  "formatted": "75.7B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "09:00",
+                "value": {
+                  "raw": "-161497542500",
+                  "formatted": "(161.5B)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "10:00",
+                "value": {
+                  "raw": "-303859952500",
+                  "formatted": "(303.9B)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "11:00",
+                "value": {
+                  "raw": "-396361860000",
+                  "formatted": "(396.4B)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "14:00",
+                "value": {
+                  "raw": "-508902435000",
+                  "formatted": "(508.9B)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "15:00",
+                "value": {
+                  "raw": "-670970117500",
+                  "formatted": "(671B)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "16:00",
+                "value": {
+                  "raw": "-725118222500",
+                  "formatted": "(725.1B)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "09:00",
+                "value": {
+                  "raw": "-963247122500",
+                  "formatted": "(963.2B)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "10:00",
+                "value": {
+                  "raw": "-984599445000",
+                  "formatted": "(984.6B)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "11:00",
+                "value": {
+                  "raw": "-1001956547500",
+                  "formatted": "(1002B)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "14:00",
+                "value": {
+                  "raw": "-1106204665000",
+                  "formatted": "(1106.2B)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "15:00",
+                "value": {
+                  "raw": "-1128292175000",
+                  "formatted": "(1128.3B)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "16:00",
+                "value": {
+                  "raw": "-1130384022500",
+                  "formatted": "(1130.4B)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "09:00",
+                "value": {
+                  "raw": "-1137140697500",
+                  "formatted": "(1137.1B)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "10:00",
+                "value": {
+                  "raw": "-1129214622500",
+                  "formatted": "(1129.2B)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "11:00",
+                "value": {
+                  "raw": "-1152616150000",
+                  "formatted": "(1152.6B)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "14:00",
+                "value": {
+                  "raw": "-1168190870000",
+                  "formatted": "(1168.2B)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "15:00",
+                "value": {
+                  "raw": "-1190046632500",
+                  "formatted": "(1190B)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "16:00",
+                "value": {
+                  "raw": "-1209275432500",
+                  "formatted": "(1209.3B)"
+                },
+                "datetime_label": "28 Apr"
+              }
+            ]
+          },
+          {
+            "broker_code": "SQ",
+            "chart": [
+              {
+                "date": "2026-04-22",
+                "time": "09:00",
+                "value": {
+                  "raw": "1979402500",
+                  "formatted": "2B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "10:00",
+                "value": {
+                  "raw": "-884035000",
+                  "formatted": "(884M)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "11:00",
+                "value": {
+                  "raw": "-2462427500",
+                  "formatted": "(2.5B)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "14:00",
+                "value": {
+                  "raw": "1442267500",
+                  "formatted": "1.4B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "15:00",
+                "value": {
+                  "raw": "2774137500",
+                  "formatted": "2.8B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "16:00",
+                "value": {
+                  "raw": "4416952500",
+                  "formatted": "4.4B"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "09:00",
+                "value": {
+                  "raw": "2670575000",
+                  "formatted": "2.7B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "10:00",
+                "value": {
+                  "raw": "5437987500",
+                  "formatted": "5.4B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "11:00",
+                "value": {
+                  "raw": "7146777500",
+                  "formatted": "7.1B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "14:00",
+                "value": {
+                  "raw": "11987062500",
+                  "formatted": "12B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "15:00",
+                "value": {
+                  "raw": "17315707500",
+                  "formatted": "17.3B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "16:00",
+                "value": {
+                  "raw": "22933727500",
+                  "formatted": "22.9B"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "09:00",
+                "value": {
+                  "raw": "121266580000",
+                  "formatted": "121.3B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "10:00",
+                "value": {
+                  "raw": "182551945000",
+                  "formatted": "182.6B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "11:00",
+                "value": {
+                  "raw": "240731487500",
+                  "formatted": "240.7B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "14:00",
+                "value": {
+                  "raw": "286369282500",
+                  "formatted": "286.4B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "15:00",
+                "value": {
+                  "raw": "351799025000",
+                  "formatted": "351.8B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "16:00",
+                "value": {
+                  "raw": "371057990000",
+                  "formatted": "371.1B"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "09:00",
+                "value": {
+                  "raw": "412783877500",
+                  "formatted": "412.8B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "10:00",
+                "value": {
+                  "raw": "423826330000",
+                  "formatted": "423.8B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "11:00",
+                "value": {
+                  "raw": "426490957500",
+                  "formatted": "426.5B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "14:00",
+                "value": {
+                  "raw": "444453910000",
+                  "formatted": "444.5B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "15:00",
+                "value": {
+                  "raw": "454166460000",
+                  "formatted": "454.2B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "16:00",
+                "value": {
+                  "raw": "456021697500",
+                  "formatted": "456B"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "09:00",
+                "value": {
+                  "raw": "477471547500",
+                  "formatted": "477.5B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "10:00",
+                "value": {
+                  "raw": "490105440000",
+                  "formatted": "490.1B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "11:00",
+                "value": {
+                  "raw": "497406372500",
+                  "formatted": "497.4B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "14:00",
+                "value": {
+                  "raw": "505780580000",
+                  "formatted": "505.8B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "15:00",
+                "value": {
+                  "raw": "505164055000",
+                  "formatted": "505.2B"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "16:00",
+                "value": {
+                  "raw": "502537255000",
+                  "formatted": "502.5B"
+                },
+                "datetime_label": "28 Apr"
+              }
+            ]
+          },
+          {
+            "broker_code": "BK",
+            "chart": [
+              {
+                "date": "2026-04-22",
+                "time": "09:00",
+                "value": {
+                  "raw": "-42921487500",
+                  "formatted": "(42.9B)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "10:00",
+                "value": {
+                  "raw": "-57999740000",
+                  "formatted": "(58B)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "11:00",
+                "value": {
+                  "raw": "-86105152500",
+                  "formatted": "(86.1B)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "14:00",
+                "value": {
+                  "raw": "-124064875000",
+                  "formatted": "(124.1B)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "15:00",
+                "value": {
+                  "raw": "-160899622500",
+                  "formatted": "(160.9B)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "16:00",
+                "value": {
+                  "raw": "-184346017500",
+                  "formatted": "(184.3B)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "09:00",
+                "value": {
+                  "raw": "-217967712500",
+                  "formatted": "(218B)"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "10:00",
+                "value": {
+                  "raw": "-241001135000",
+                  "formatted": "(241B)"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "11:00",
+                "value": {
+                  "raw": "-268412560000",
+                  "formatted": "(268.4B)"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "14:00",
+                "value": {
+                  "raw": "-301774635000",
+                  "formatted": "(301.8B)"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "15:00",
+                "value": {
+                  "raw": "-344326040000",
+                  "formatted": "(344.3B)"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "16:00",
+                "value": {
+                  "raw": "-369270460000",
+                  "formatted": "(369.3B)"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "09:00",
+                "value": {
+                  "raw": "-469986760000",
+                  "formatted": "(470B)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "10:00",
+                "value": {
+                  "raw": "-545788750000",
+                  "formatted": "(545.8B)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "11:00",
+                "value": {
+                  "raw": "-589439265000",
+                  "formatted": "(589.4B)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "14:00",
+                "value": {
+                  "raw": "-626189025000",
+                  "formatted": "(626.2B)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "15:00",
+                "value": {
+                  "raw": "-740255032500",
+                  "formatted": "(740.3B)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "16:00",
+                "value": {
+                  "raw": "-801293482500",
+                  "formatted": "(801.3B)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "09:00",
+                "value": {
+                  "raw": "-800290520000",
+                  "formatted": "(800.3B)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "10:00",
+                "value": {
+                  "raw": "-796070495000",
+                  "formatted": "(796.1B)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "11:00",
+                "value": {
+                  "raw": "-793867710000",
+                  "formatted": "(793.9B)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "14:00",
+                "value": {
+                  "raw": "-800512652500",
+                  "formatted": "(800.5B)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "15:00",
+                "value": {
+                  "raw": "-814293292500",
+                  "formatted": "(814.3B)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "16:00",
+                "value": {
+                  "raw": "-820528205000",
+                  "formatted": "(820.5B)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "09:00",
+                "value": {
+                  "raw": "-825934270000",
+                  "formatted": "(825.9B)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "10:00",
+                "value": {
+                  "raw": "-832081865000",
+                  "formatted": "(832.1B)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "11:00",
+                "value": {
+                  "raw": "-867415860000",
+                  "formatted": "(867.4B)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "14:00",
+                "value": {
+                  "raw": "-866177715000",
+                  "formatted": "(866.2B)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "15:00",
+                "value": {
+                  "raw": "-861450892500",
+                  "formatted": "(861.5B)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "16:00",
+                "value": {
+                  "raw": "-864698092500",
+                  "formatted": "(864.7B)"
+                },
+                "datetime_label": "28 Apr"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "type": "TYPE_CHART_VOLUME",
+        "brokers": [
+          "XL",
+          "SQ",
+          "YP",
+          "AK",
+          "BK"
+        ],
+        "charts": [
+          {
+            "broker_code": "AK",
+            "chart": [
+              {
+                "date": "2026-04-22",
+                "time": "09:00",
+                "value": {
+                  "raw": "-9779",
+                  "formatted": "(9.8K)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "10:00",
+                "value": {
+                  "raw": "4123",
+                  "formatted": "4.1K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "11:00",
+                "value": {
+                  "raw": "4989",
+                  "formatted": "5K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "14:00",
+                "value": {
+                  "raw": "17598",
+                  "formatted": "17.6K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "15:00",
+                "value": {
+                  "raw": "31997",
+                  "formatted": "32K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "16:00",
+                "value": {
+                  "raw": "20760",
+                  "formatted": "20.8K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "09:00",
+                "value": {
+                  "raw": "57299",
+                  "formatted": "57.3K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "10:00",
+                "value": {
+                  "raw": "79661",
+                  "formatted": "79.7K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "11:00",
+                "value": {
+                  "raw": "105388",
+                  "formatted": "105.4K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "14:00",
+                "value": {
+                  "raw": "99426",
+                  "formatted": "99.4K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "15:00",
+                "value": {
+                  "raw": "118160",
+                  "formatted": "118.2K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "16:00",
+                "value": {
+                  "raw": "116233",
+                  "formatted": "116.2K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "09:00",
+                "value": {
+                  "raw": "-260849",
+                  "formatted": "(260.8K)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "10:00",
+                "value": {
+                  "raw": "-492083",
+                  "formatted": "(492.1K)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "11:00",
+                "value": {
+                  "raw": "-643700",
+                  "formatted": "(643.7K)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "14:00",
+                "value": {
+                  "raw": "-828473",
+                  "formatted": "(828.5K)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "15:00",
+                "value": {
+                  "raw": "-1095367",
+                  "formatted": "(1.1M)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "16:00",
+                "value": {
+                  "raw": "-1184868",
+                  "formatted": "(1.2M)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "09:00",
+                "value": {
+                  "raw": "-1581605",
+                  "formatted": "(1.6M)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "10:00",
+                "value": {
+                  "raw": "-1617242",
+                  "formatted": "(1.6M)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "11:00",
+                "value": {
+                  "raw": "-1646092",
+                  "formatted": "(1.6M)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "14:00",
+                "value": {
+                  "raw": "-1820266",
+                  "formatted": "(1.8M)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "15:00",
+                "value": {
+                  "raw": "-1857079",
+                  "formatted": "(1.9M)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "16:00",
+                "value": {
+                  "raw": "-1860580",
+                  "formatted": "(1.9M)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "09:00",
+                "value": {
+                  "raw": "-1872488",
+                  "formatted": "(1.9M)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "10:00",
+                "value": {
+                  "raw": "-1859229",
+                  "formatted": "(1.9M)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "11:00",
+                "value": {
+                  "raw": "-1898337",
+                  "formatted": "(1.9M)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "14:00",
+                "value": {
+                  "raw": "-1924271",
+                  "formatted": "(1.9M)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "15:00",
+                "value": {
+                  "raw": "-1960716",
+                  "formatted": "(2M)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "16:00",
+                "value": {
+                  "raw": "-1992764",
+                  "formatted": "(2M)"
+                },
+                "datetime_label": "28 Apr"
+              }
+            ]
+          },
+          {
+            "broker_code": "YP",
+            "chart": [
+              {
+                "date": "2026-04-22",
+                "time": "09:00",
+                "value": {
+                  "raw": "6340",
+                  "formatted": "6.3K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "10:00",
+                "value": {
+                  "raw": "1759",
+                  "formatted": "1.8K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "11:00",
+                "value": {
+                  "raw": "-15528",
+                  "formatted": "(15.5K)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "14:00",
+                "value": {
+                  "raw": "-4918",
+                  "formatted": "(4.9K)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "15:00",
+                "value": {
+                  "raw": "8000",
+                  "formatted": "8K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "16:00",
+                "value": {
+                  "raw": "10767",
+                  "formatted": "10.8K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "09:00",
+                "value": {
+                  "raw": "10239",
+                  "formatted": "10.2K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "10:00",
+                "value": {
+                  "raw": "6608",
+                  "formatted": "6.6K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "11:00",
+                "value": {
+                  "raw": "4663",
+                  "formatted": "4.7K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "14:00",
+                "value": {
+                  "raw": "10454",
+                  "formatted": "10.5K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "15:00",
+                "value": {
+                  "raw": "14589",
+                  "formatted": "14.6K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "16:00",
+                "value": {
+                  "raw": "20809",
+                  "formatted": "20.8K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "09:00",
+                "value": {
+                  "raw": "113332",
+                  "formatted": "113.3K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "10:00",
+                "value": {
+                  "raw": "196765",
+                  "formatted": "196.8K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "11:00",
+                "value": {
+                  "raw": "274882",
+                  "formatted": "274.9K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "14:00",
+                "value": {
+                  "raw": "334062",
+                  "formatted": "334.1K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "15:00",
+                "value": {
+                  "raw": "403607",
+                  "formatted": "403.6K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "16:00",
+                "value": {
+                  "raw": "450527",
+                  "formatted": "450.5K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "09:00",
+                "value": {
+                  "raw": "497314",
+                  "formatted": "497.3K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "10:00",
+                "value": {
+                  "raw": "491518",
+                  "formatted": "491.5K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "11:00",
+                "value": {
+                  "raw": "502663",
+                  "formatted": "502.7K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "14:00",
+                "value": {
+                  "raw": "535442",
+                  "formatted": "535.4K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "15:00",
+                "value": {
+                  "raw": "543423",
+                  "formatted": "543.4K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "16:00",
+                "value": {
+                  "raw": "543460",
+                  "formatted": "543.5K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "09:00",
+                "value": {
+                  "raw": "567429",
+                  "formatted": "567.4K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "10:00",
+                "value": {
+                  "raw": "571458",
+                  "formatted": "571.5K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "11:00",
+                "value": {
+                  "raw": "551768",
+                  "formatted": "551.8K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "14:00",
+                "value": {
+                  "raw": "558656",
+                  "formatted": "558.7K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "15:00",
+                "value": {
+                  "raw": "560303",
+                  "formatted": "560.3K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "16:00",
+                "value": {
+                  "raw": "560666",
+                  "formatted": "560.7K"
+                },
+                "datetime_label": "28 Apr"
+              }
+            ]
+          },
+          {
+            "broker_code": "BK",
+            "chart": [
+              {
+                "date": "2026-04-22",
+                "time": "09:00",
+                "value": {
+                  "raw": "-66201",
+                  "formatted": "(66.2K)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "10:00",
+                "value": {
+                  "raw": "-89425",
+                  "formatted": "(89.4K)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "11:00",
+                "value": {
+                  "raw": "-132771",
+                  "formatted": "(132.8K)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "14:00",
+                "value": {
+                  "raw": "-191182",
+                  "formatted": "(191.2K)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "15:00",
+                "value": {
+                  "raw": "-248105",
+                  "formatted": "(248.1K)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "16:00",
+                "value": {
+                  "raw": "-284456",
+                  "formatted": "(284.5K)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "09:00",
+                "value": {
+                  "raw": "-336466",
+                  "formatted": "(336.5K)"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "10:00",
+                "value": {
+                  "raw": "-372009",
+                  "formatted": "(372K)"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "11:00",
+                "value": {
+                  "raw": "-414347",
+                  "formatted": "(414.3K)"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "14:00",
+                "value": {
+                  "raw": "-466045",
+                  "formatted": "(466K)"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "15:00",
+                "value": {
+                  "raw": "-532129",
+                  "formatted": "(532.1K)"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "16:00",
+                "value": {
+                  "raw": "-570953",
+                  "formatted": "(571K)"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "09:00",
+                "value": {
+                  "raw": "-730627",
+                  "formatted": "(730.6K)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "10:00",
+                "value": {
+                  "raw": "-853748",
+                  "formatted": "(853.7K)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "11:00",
+                "value": {
+                  "raw": "-925410",
+                  "formatted": "(925.4K)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "14:00",
+                "value": {
+                  "raw": "-985674",
+                  "formatted": "(985.7K)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "15:00",
+                "value": {
+                  "raw": "-1173826",
+                  "formatted": "(1.2M)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "16:00",
+                "value": {
+                  "raw": "-1274716",
+                  "formatted": "(1.3M)"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "09:00",
+                "value": {
+                  "raw": "-1273054",
+                  "formatted": "(1.3M)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "10:00",
+                "value": {
+                  "raw": "-1266012",
+                  "formatted": "(1.3M)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "11:00",
+                "value": {
+                  "raw": "-1262350",
+                  "formatted": "(1.3M)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "14:00",
+                "value": {
+                  "raw": "-1273430",
+                  "formatted": "(1.3M)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "15:00",
+                "value": {
+                  "raw": "-1296494",
+                  "formatted": "(1.3M)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "16:00",
+                "value": {
+                  "raw": "-1306929",
+                  "formatted": "(1.3M)"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "09:00",
+                "value": {
+                  "raw": "-1316199",
+                  "formatted": "(1.3M)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "10:00",
+                "value": {
+                  "raw": "-1326488",
+                  "formatted": "(1.3M)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "11:00",
+                "value": {
+                  "raw": "-1385228",
+                  "formatted": "(1.4M)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "14:00",
+                "value": {
+                  "raw": "-1383165",
+                  "formatted": "(1.4M)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "15:00",
+                "value": {
+                  "raw": "-1375291",
+                  "formatted": "(1.4M)"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "16:00",
+                "value": {
+                  "raw": "-1380703",
+                  "formatted": "(1.4M)"
+                },
+                "datetime_label": "28 Apr"
+              }
+            ]
+          },
+          {
+            "broker_code": "SQ",
+            "chart": [
+              {
+                "date": "2026-04-22",
+                "time": "09:00",
+                "value": {
+                  "raw": "3058",
+                  "formatted": "3.1K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "10:00",
+                "value": {
+                  "raw": "-1347",
+                  "formatted": "(1.3K)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "11:00",
+                "value": {
+                  "raw": "-3782",
+                  "formatted": "(3.8K)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "14:00",
+                "value": {
+                  "raw": "2235",
+                  "formatted": "2.2K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "15:00",
+                "value": {
+                  "raw": "4293",
+                  "formatted": "4.3K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "16:00",
+                "value": {
+                  "raw": "6840",
+                  "formatted": "6.8K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "09:00",
+                "value": {
+                  "raw": "4203",
+                  "formatted": "4.2K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "10:00",
+                "value": {
+                  "raw": "8481",
+                  "formatted": "8.5K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "11:00",
+                "value": {
+                  "raw": "11126",
+                  "formatted": "11.1K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "14:00",
+                "value": {
+                  "raw": "18634",
+                  "formatted": "18.6K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "15:00",
+                "value": {
+                  "raw": "26918",
+                  "formatted": "26.9K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "16:00",
+                "value": {
+                  "raw": "35662",
+                  "formatted": "35.7K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "09:00",
+                "value": {
+                  "raw": "191872",
+                  "formatted": "191.9K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "10:00",
+                "value": {
+                  "raw": "291145",
+                  "formatted": "291.1K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "11:00",
+                "value": {
+                  "raw": "386598",
+                  "formatted": "386.6K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "14:00",
+                "value": {
+                  "raw": "461511",
+                  "formatted": "461.5K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "15:00",
+                "value": {
+                  "raw": "569301",
+                  "formatted": "569.3K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "16:00",
+                "value": {
+                  "raw": "601134",
+                  "formatted": "601.1K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "09:00",
+                "value": {
+                  "raw": "670658",
+                  "formatted": "670.7K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "10:00",
+                "value": {
+                  "raw": "689071",
+                  "formatted": "689.1K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "11:00",
+                "value": {
+                  "raw": "693505",
+                  "formatted": "693.5K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "14:00",
+                "value": {
+                  "raw": "723486",
+                  "formatted": "723.5K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "15:00",
+                "value": {
+                  "raw": "739736",
+                  "formatted": "739.7K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "16:00",
+                "value": {
+                  "raw": "742841",
+                  "formatted": "742.8K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "09:00",
+                "value": {
+                  "raw": "778753",
+                  "formatted": "778.8K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "10:00",
+                "value": {
+                  "raw": "799897",
+                  "formatted": "799.9K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "11:00",
+                "value": {
+                  "raw": "812088",
+                  "formatted": "812.1K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "14:00",
+                "value": {
+                  "raw": "826044",
+                  "formatted": "826K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "15:00",
+                "value": {
+                  "raw": "825001",
+                  "formatted": "825K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "16:00",
+                "value": {
+                  "raw": "820623",
+                  "formatted": "820.6K"
+                },
+                "datetime_label": "28 Apr"
+              }
+            ]
+          },
+          {
+            "broker_code": "XL",
+            "chart": [
+              {
+                "date": "2026-04-22",
+                "time": "09:00",
+                "value": {
+                  "raw": "3140",
+                  "formatted": "3.1K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "10:00",
+                "value": {
+                  "raw": "-2319",
+                  "formatted": "(2.3K)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "11:00",
+                "value": {
+                  "raw": "2140",
+                  "formatted": "2.1K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "14:00",
+                "value": {
+                  "raw": "-257",
+                  "formatted": "(257)"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "15:00",
+                "value": {
+                  "raw": "5337",
+                  "formatted": "5.3K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-22",
+                "time": "16:00",
+                "value": {
+                  "raw": "7678",
+                  "formatted": "7.7K"
+                },
+                "datetime_label": "22 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "09:00",
+                "value": {
+                  "raw": "9480",
+                  "formatted": "9.5K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "10:00",
+                "value": {
+                  "raw": "8841",
+                  "formatted": "8.8K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "11:00",
+                "value": {
+                  "raw": "1620",
+                  "formatted": "1.6K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "14:00",
+                "value": {
+                  "raw": "4725",
+                  "formatted": "4.7K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "15:00",
+                "value": {
+                  "raw": "8641",
+                  "formatted": "8.6K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-23",
+                "time": "16:00",
+                "value": {
+                  "raw": "13676",
+                  "formatted": "13.7K"
+                },
+                "datetime_label": "23 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "09:00",
+                "value": {
+                  "raw": "94415",
+                  "formatted": "94.4K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "10:00",
+                "value": {
+                  "raw": "176462",
+                  "formatted": "176.5K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "11:00",
+                "value": {
+                  "raw": "254598",
+                  "formatted": "254.6K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "14:00",
+                "value": {
+                  "raw": "330277",
+                  "formatted": "330.3K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "15:00",
+                "value": {
+                  "raw": "419483",
+                  "formatted": "419.5K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-24",
+                "time": "16:00",
+                "value": {
+                  "raw": "454812",
+                  "formatted": "454.8K"
+                },
+                "datetime_label": "24 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "09:00",
+                "value": {
+                  "raw": "543599",
+                  "formatted": "543.6K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "10:00",
+                "value": {
+                  "raw": "555786",
+                  "formatted": "555.8K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "11:00",
+                "value": {
+                  "raw": "571221",
+                  "formatted": "571.2K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "14:00",
+                "value": {
+                  "raw": "621799",
+                  "formatted": "621.8K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "15:00",
+                "value": {
+                  "raw": "630950",
+                  "formatted": "631K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-27",
+                "time": "16:00",
+                "value": {
+                  "raw": "633078",
+                  "formatted": "633.1K"
+                },
+                "datetime_label": "27 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "09:00",
+                "value": {
+                  "raw": "667036",
+                  "formatted": "667K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "10:00",
+                "value": {
+                  "raw": "676999",
+                  "formatted": "677K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "11:00",
+                "value": {
+                  "raw": "694953",
+                  "formatted": "695K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "14:00",
+                "value": {
+                  "raw": "701023",
+                  "formatted": "701K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "15:00",
+                "value": {
+                  "raw": "706374",
+                  "formatted": "706.4K"
+                },
+                "datetime_label": "28 Apr"
+              },
+              {
+                "date": "2026-04-28",
+                "time": "16:00",
+                "value": {
+                  "raw": "708292",
+                  "formatted": "708.3K"
+                },
+                "datetime_label": "28 Apr"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "date_session_info": "28 Apr 2026"
+  },
+  "message": "Successfully loaded running trade chart"
+}
