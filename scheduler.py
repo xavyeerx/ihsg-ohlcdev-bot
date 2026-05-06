@@ -10,6 +10,7 @@
 # Aktifkan jadwal otomatis: set AUTO_SCHEDULE = True
 # ============================================================
 
+from pickle import TRUE
 import logging, time
 from datetime import datetime
 import pytz
@@ -43,6 +44,9 @@ from database.state_manager import (
 logger = logging.getLogger(__name__)
 WIB    = pytz.timezone(TIMEZONE)
 
+# Untuk deploy hemat API/server, disarankan pakai cron yang memanggil
+# run_morning.py / run_noon.py / run_evening.py terpisah.
+# Karena itu default di-set False agar main.py tidak membuat loop scheduler.
 AUTO_SCHEDULE = False  # True = aktifkan jadwal otomatis
 
 
