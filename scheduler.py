@@ -26,6 +26,7 @@ from config.settings    import (
     SCAN_MAX_WORKERS,
     NOON_INCLUDE_ENGINE_FRESH_ALERTS,
     NOON_TEST_MODE_IGNORE_HISTORY,
+    COMMAND_ONLY_MODE,
 )
 from config.stocks_list import resolve_scan_universe
 from core.scanner       import (
@@ -34,7 +35,7 @@ from core.scanner       import (
 from core.engines       import run_all_engines
 from notifications.telegram_bot import (
     send_morning_brief, send_evening_report, send_noon_intraday_alert,
-    send_engine_alerts, send_error, send_startup_message,
+    send_engine_alerts, send_error, send_startup_message, poll_command_updates,
 )
 from database.state_manager import (
     load_state, save_state, update_state,
@@ -116,7 +117,7 @@ def _scan_all(session: str = "evening"):
 
 def run_morning_scan():
     now = _now_wib().strftime("%H:%M WIB")
-    logger.info(f"[{now}] SESI PAGI — Morning brief + signal check")
+    logger.info(f"[{now}] SESI PAGI — Morning macro brief only")
 
     try:
         # Fetch macro context
@@ -131,49 +132,16 @@ def run_morning_scan():
             "commodities": fetch_commodities_impact(),
         }
 
-        # ── Engine 2-7 (non-teknikal) ──
-        try:
-            engine_results = run_all_engines()
-            logger.info("  Engines selesai")
-        except Exception as e:
-            logger.warning(f"  Engines error (non-fatal): {e}")
-            engine_results = None
-
-        # ── Scan teknikal ──
-        results, state = _scan_all(session="morning")
-        if not results:
-            send_error("Sesi pagi: semua saham gagal di-scan")
-            return
-
-        signals = filter_signals(results)
-
-        # ── Kirim alert ──
-        send_morning_brief(signals, macro=macro, engine_results=engine_results)
-
-        if engine_results:
-            try:
-                send_engine_alerts(engine_results)
-            except Exception as e:
-                logger.warning(f"  Engine alerts error (non-fatal): {e}")
-
-        if engine_results and engine_results.get("events"):
-            try:
-                from notifications.calendar_alerts import send_new_calendar_alerts
-                ncal = send_new_calendar_alerts(engine_results["events"])
-                if ncal:
-                    logger.info(f"  Kalender korporasi baru: {ncal} entri dikirim")
-            except Exception as e:
-                logger.warning(f"  Calendar digest error (non-fatal): {e}")
-
-        total_tech = sum(len(v) for v in signals.values())
-        logger.info(
-            f"  Sinyal teknikal: {total_tech} "
-            f"(SB={len(signals['strong_buy'])} "
-            f"ACC={len(signals['accumulation'])} "
-            f"DIV={len(signals['bull_div'])} "
-            f"EE={len(signals['early_entry'])} "
-            f"FA={len(signals['frequency_analyzer'])})"
-        )
+        # Pagi khusus outlook global/makro (tanpa scan ticker).
+        empty_signals = {
+            "strong_buy": [],
+            "accumulation": [],
+            "bull_div": [],
+            "early_entry": [],
+            "frequency_analyzer": [],
+        }
+        send_morning_brief(empty_signals, macro=macro, engine_results=None)
+        logger.info("  Morning macro brief terkirim (tanpa scan teknikal)")
 
     except Exception as e:
         logger.error(f"Morning scan error: {e}", exc_info=True)
@@ -189,27 +157,6 @@ def run_noon_scan():
     logger.info(f"[{now}] SESI 2 — Intraday valid signal check")
 
     try:
-        # ── Engine fresh-from-the-oven (opsional) ──
-        if NOON_INCLUDE_ENGINE_FRESH_ALERTS:
-            engine_results = None
-            try:
-                engine_results = run_all_engines()
-            except Exception as e:
-                logger.warning(f"  Engines error (non-fatal): {e}")
-                engine_results = None
-
-            if engine_results:
-                try:
-                    if NOON_TEST_MODE_IGNORE_HISTORY:
-                        # Testing mode: tampilkan apa adanya tanpa dedup/history.
-                        send_engine_alerts(engine_results)
-                    else:
-                        from notifications.engine_fresh import filter_fresh_engine_results
-                        fresh_eng = filter_fresh_engine_results(engine_results)
-                        send_engine_alerts(fresh_eng)
-                except Exception as e:
-                    logger.warning(f"  Fresh engine alerts error (non-fatal): {e}")
-
         results, state = _scan_all(session="noon")
         if not results:
             send_error("Sesi 12:00: semua saham gagal di-scan")
@@ -217,6 +164,14 @@ def run_noon_scan():
 
         raw_signals = filter_signals(results)
         noon_signals = filter_intraday_session2_signals(raw_signals)
+        # Sesi 12 khusus teknikal: hanya Strong Buy / Accumulation / Early Entry.
+        noon_signals = {
+            "strong_buy": noon_signals.get("strong_buy", []),
+            "accumulation": noon_signals.get("accumulation", []),
+            "bull_div": [],
+            "early_entry": noon_signals.get("early_entry", []),
+            "frequency_analyzer": [],
+        }
         send_noon_intraday_alert(noon_signals)
 
         total_raw = sum(len(v) for v in raw_signals.values())
@@ -265,17 +220,6 @@ def run_evening_scan():
             except Exception as e:
                 logger.warning("  Engine alerts error (non-fatal): %s" % e)
 
-        # ── Kalender dividen, rights, split, RUPS (entri baru vs cache) ──
-        if engine_results and engine_results.get("events"):
-            try:
-                from notifications.calendar_alerts import send_new_calendar_alerts
-
-                ncal = send_new_calendar_alerts(engine_results["events"])
-                if ncal:
-                    logger.info("  Kalender korporasi baru: %d entri dikirim" % ncal)
-            except Exception as e:
-                logger.warning("  Calendar digest error (non-fatal): %s" % e)
-
         total_tech = sum(len(v) for v in signals.values())
         logger.info(
             "  Sinyal teknikal: %d (SB=%d ACC=%d DIV=%d EE=%d FA=%d)" % (
@@ -298,20 +242,28 @@ def run_evening_scan():
 # ── Entry point ───────────────────────────────────────────────
 
 def start_scheduler():
-    logger.info("Scheduler: %s", "OTOMATIS" if AUTO_SCHEDULE else "MANUAL")
-    try:
-        u = resolve_scan_universe()
-        logger.info("Universe : %d saham (all-stocks API atau fallback)" % len(u))
-    except Exception:
-        logger.info("Universe : (resolve saat scan)")
+    logger.info(
+        "Scheduler: %s",
+        "COMMAND_ONLY" if COMMAND_ONLY_MODE else ("OTOMATIS" if AUTO_SCHEDULE else "MANUAL"),
+    )
+    if not COMMAND_ONLY_MODE:
+        try:
+            u = resolve_scan_universe()
+            logger.info("Universe : %d saham (all-stocks API atau fallback)" % len(u))
+        except Exception:
+            logger.info("Universe : (resolve saat scan)")
 
     send_startup_message()
 
-    if not AUTO_SCHEDULE:
-        logger.info("AUTO_SCHEDULE=False -- standby. Jalankan manual via run_*.py")
+    if COMMAND_ONLY_MODE or not AUTO_SCHEDULE:
+        if COMMAND_ONLY_MODE:
+            logger.info("COMMAND_ONLY_MODE=True -- standby Telegram command, scan otomatis nonaktif.")
+        else:
+            logger.info("AUTO_SCHEDULE=False -- standby. Jalankan manual via run_*.py")
         while True:
+            poll_command_updates()
             import time
-            time.sleep(60)
+            time.sleep(2)
 
     import schedule as sch
     import time
@@ -330,8 +282,9 @@ def start_scheduler():
     )
 
     while True:
+        poll_command_updates()
         sch.run_pending()
-        time.sleep(30)
+        time.sleep(2)
 
 
 if __name__ == "__main__":

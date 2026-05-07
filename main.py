@@ -41,6 +41,7 @@ from config.settings import (
     MORNING_SCAN_HOUR, MORNING_SCAN_MINUTE,
     NOON_SCAN_HOUR, NOON_SCAN_MINUTE,
     EVENING_SCAN_HOUR, EVENING_SCAN_MINUTE,
+    COMMAND_ONLY_MODE,
 )
 from config.stocks_list import resolve_scan_universe
 from notifications.telegram_bot import send_startup_message, send_error
@@ -51,11 +52,14 @@ def main():
     logger.info("=" * 55)
     logger.info("  IHSG IDX Intelligence Bot v2 -- STARTING")
     logger.info("=" * 55)
-    try:
-        u = resolve_scan_universe()
-        logger.info("  Universe : %d saham (API all-stocks atau fallback)", len(u))
-    except Exception as e:
-        logger.warning("  Universe : resolve gagal (%s), akan dicoba lagi saat scan", e)
+    if COMMAND_ONLY_MODE:
+        logger.info("  Mode     : COMMAND ONLY (hemat API, standby Telegram command)")
+    else:
+        try:
+            u = resolve_scan_universe()
+            logger.info("  Universe : %d saham (API all-stocks atau fallback)", len(u))
+        except Exception as e:
+            logger.warning("  Universe : resolve gagal (%s), akan dicoba lagi saat scan", e)
     logger.info(f"  OHLCV    : {OHLCV_INTERVAL} | TZ: {TIMEZONE}")
     logger.info(f"  Sesi pagi: {MORNING_SCAN_HOUR:02d}:{MORNING_SCAN_MINUTE:02d} WIB")
     logger.info(f"  Sesi 2   : {NOON_SCAN_HOUR:02d}:{NOON_SCAN_MINUTE:02d} WIB")

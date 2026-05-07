@@ -2,10 +2,12 @@
 # TELEGRAM BOT — ihsg-ohlcdev-bot v2
 # Format alert per signal type (sama dengan ihsg-supertrend-scanner)
 # ============================================================
+import json
 import logging, requests
 from datetime import datetime, timedelta
 from typing import Any, Dict, List, Optional
 import pytz
+import re
 
 import sys, os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
@@ -16,12 +18,23 @@ from config.settings import (
     INTRADAY_NOON_REQUIRE_DAILY_BIAS,
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA20,
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA50,
+    COMMAND_ONLY_MODE,
 )
 
 logger = logging.getLogger(__name__)
 WIB    = pytz.timezone(TIMEZONE)
 
 MAX_MSG = 3800  # Telegram limit ~4096, beri buffer
+# Freq analyzer spike tetap dipertahankan logic-nya, namun sementara
+# dimatikan dari output alert agar bisa diaktifkan lagi kapan saja.
+ENABLE_FREQ_ANALYZER_ALERT = False
+_RETAIL_CARRY_FILE = os.path.join(os.path.dirname(__file__), "..", "database", "retail_carry.json")
+_RETAIL_CARRY_HOURS = 48
+_COMMODITY_CARRY_FILE = os.path.join(os.path.dirname(__file__), "..", "database", "commodity_impact_carry.json")
+_COMMODITY_CARRY_HOURS = 48
+_TELEGRAM_OFFSET_FILE = os.path.join(os.path.dirname(__file__), "..", "database", "telegram_offset.json")
+_TELEGRAM_POLLING_READY = False
+_SYMBOL_CACHE: Optional[set] = None
 
 
 # ── Helpers ──────────────────────────────────────────────────
@@ -45,6 +58,25 @@ def _send(text: str) -> bool:
         return True
     except Exception as e:
         logger.error(f"Telegram error: {e}")
+        return False
+
+
+def _send_to_chat(chat_id: Any, text: str) -> bool:
+    if not TELEGRAM_BOT_TOKEN:
+        print(text)
+        return True
+    try:
+        r = requests.post(
+            f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/sendMessage",
+            json={"chat_id": chat_id, "text": text, "parse_mode": "HTML", "disable_web_page_preview": True},
+            timeout=15,
+        )
+        if r.status_code != 200:
+            logger.error(f"Telegram chat error: {r.text}")
+            return False
+        return True
+    except Exception as e:
+        logger.error(f"Telegram chat error: {e}")
         return False
 
 def _send_chunks(lines: list):
@@ -762,7 +794,7 @@ def send_all_signals(signals: Dict[str, list]):
         send_bull_div(signals["bull_div"]); sent += 1
     if signals.get("early_entry"):
         send_early_entry(signals["early_entry"]); sent += 1
-    if signals.get("frequency_analyzer"):
+    if ENABLE_FREQ_ANALYZER_ALERT and signals.get("frequency_analyzer"):
         send_frequency_analyzer(signals["frequency_analyzer"]); sent += 1
     return sent
 
@@ -770,10 +802,10 @@ def send_all_signals(signals: Dict[str, list]):
 # ── Morning brief ─────────────────────────────────────────────
 
 def _format_screening_extras(engine_results: Optional[dict]) -> str:
-    """Ringkas insider (Engine 4) + agenda RUPS/RI/SS/dividen (Engine 6) untuk header brief."""
+    """Ringkas insider untuk header brief (tanpa event calendar)."""
     if not engine_results:
         return ""
-    lines = ["", "<b>Insider + agenda</b>"]
+    lines = ["", "<b>Insider</b>"]
     insider = engine_results.get("insider")
     if insider and getattr(insider, "available", False) and insider.all_insider:
         rows = insider.all_insider
@@ -781,18 +813,6 @@ def _format_screening_extras(engine_results: Optional[dict]) -> str:
         lines.append(f"  Insider (laporan): {len(rows)} — {preview}")
     else:
         lines.append("  Insider: (tidak ada data / belum tersedia)")
-
-    ev = engine_results.get("events")
-    if ev and getattr(ev, "available", False):
-        lines.append(
-            "  Kalender: "
-            f"dividen {len(ev.dividends or [])} | "
-            f"RUPS {len(ev.rups or [])} | "
-            f"RI {len(ev.rights_issue or [])} | "
-            f"SS {len(ev.stock_split or [])}"
-        )
-    else:
-        lines.append("  Kalender: (tidak ada data / belum tersedia)")
 
     return "\n".join(lines)
 
@@ -933,13 +953,13 @@ def _format_macro(macro: Optional[dict], signals: Optional[Dict[str, list]] = No
                         watchlist.append("Batu bara menguat → sentimen dukung emiten batu bara.")
                     if "cpo" in n and up:
                         watchlist.append("CPO menguat → sentimen positif untuk emiten CPO.")
-                if isinstance(rel, list) and rel:
-                    theme = "Commodity Watch"
-                    if impact == "positive":
-                        theme = "Commodity Beneficiary"
-                    elif impact == "negative":
-                        theme = "Commodity Pressure"
-                    impact_map.setdefault(theme, set()).update(str(x).upper() for x in rel if x)
+                    if isinstance(rel, list) and rel:
+                        theme = "Commodity Watch"
+                        if impact == "positive":
+                            theme = "Commodity Beneficiary"
+                        elif impact == "negative":
+                            theme = "Commodity Pressure"
+                        impact_map.setdefault(theme, set()).update(str(x).upper() for x in rel if x)
 
     if urgent:
         lines.append("  🚨 Urgent:")
@@ -950,24 +970,65 @@ def _format_macro(macro: Optional[dict], signals: Optional[Dict[str, list]] = No
         for w in watchlist[:3]:
             lines.append(f"    - {w}")
 
-    # Mapping emiten terdampak: prioritaskan yang juga muncul di signal hari ini.
+    # Mapping emiten terdampak:
+    # - primary: snapshot terbaru
+    # - secondary: carry-over (TTL) agar konteks tidak hilang mendadak.
+    secondary_map: Dict[str, List[str]] = {}
+    now_ts = datetime.now(WIB)
+    ttl_seconds = _COMMODITY_CARRY_HOURS * 3600
+    carry = _load_commodity_carry_cache()
+    for theme, payload in (carry or {}).items():
+        if not isinstance(payload, dict):
+            continue
+        updated_at = str(payload.get("updated_at", "")).strip()
+        try:
+            last_dt = datetime.fromisoformat(updated_at)
+        except Exception:
+            continue
+        if (now_ts - last_dt).total_seconds() > ttl_seconds:
+            continue
+        prev_symbols = payload.get("symbols", [])
+        if not isinstance(prev_symbols, list):
+            continue
+        curr_set = impact_map.get(theme, set())
+        sec = [str(s).upper() for s in prev_symbols if str(s).strip() and str(s).upper() not in curr_set]
+        if sec:
+            secondary_map[theme] = sec
+
     if impact_map:
+        cache_out: Dict[str, Dict[str, Any]] = {}
+        for theme, symbols in impact_map.items():
+            cache_out[theme] = {
+                "updated_at": now_ts.isoformat(),
+                "symbols": sorted(symbols),
+            }
+        _save_commodity_carry_cache(cache_out)
+
+    if impact_map or secondary_map:
         lines.append("  🎯 Emiten Terdampak:")
-        for theme, symbols in list(impact_map.items())[:4]:
-            ordered = sorted(symbols)
-            if signal_symbols:
-                hit = [s for s in ordered if s in signal_symbols]
-                rest = [s for s in ordered if s not in signal_symbols]
-                picks = (hit[:4] + rest[:2])[:6]
-            else:
-                picks = ordered[:6]
-            if picks:
-                # Tambahkan penanda jika termasuk hasil screening teknikal.
+        shown_themes = list(dict.fromkeys(list(impact_map.keys()) + list(secondary_map.keys())))[:4]
+        for theme in shown_themes:
+            symbols = impact_map.get(theme, set())
+            ordered = sorted(symbols) if isinstance(symbols, set) else []
+            if ordered:
                 if signal_symbols:
-                    disp = [f"{s}*" if s in signal_symbols else s for s in picks]
-                    lines.append(f"    - {theme}: {', '.join(disp)}")
+                    hit = [s for s in ordered if s in signal_symbols]
+                    rest = [s for s in ordered if s not in signal_symbols]
+                    picks = (hit[:4] + rest[:2])[:6]
                 else:
-                    lines.append(f"    - {theme}: {', '.join(picks)}")
+                    picks = ordered[:6]
+                if picks:
+                    # Tambahkan penanda jika termasuk hasil screening teknikal.
+                    if signal_symbols:
+                        disp = [f"{s}*" if s in signal_symbols else s for s in picks]
+                        lines.append(f"    - {theme}: {', '.join(disp)}")
+                    else:
+                        lines.append(f"    - {theme}: {', '.join(picks)}")
+
+            secondary = secondary_map.get(theme, [])[:3]
+            if secondary:
+                lines.append(f"      secondary: {', '.join(secondary)}")
+
         pressure_symbols = sorted(impact_map.get("FX Pressure", set()) | impact_map.get("Commodity Pressure", set()))
         if pressure_symbols:
             lines.append(f"    - ⚠️ Hindari dulu: {', '.join(pressure_symbols[:6])}")
@@ -983,7 +1044,12 @@ def send_morning_brief(
     engine_results: Optional[dict] = None,
 ):
     """Sesi pagi 08:00 — makro + ringkasan screening (teknikal + insider + agenda)."""
-    total = sum(len(v) for v in signals.values())
+    total = (
+        len(signals.get("strong_buy", []))
+        + len(signals.get("accumulation", []))
+        + len(signals.get("bull_div", []))
+        + len(signals.get("early_entry", []))
+    )
     macro_str = _format_macro(macro, signals=signals)
     extras = _format_screening_extras(engine_results)
 
@@ -991,7 +1057,6 @@ def send_morning_brief(
     n_acc = len(signals.get("accumulation", []))
     n_div = len(signals.get("bull_div", []))
     n_ee  = len(signals.get("early_entry", []))
-    n_fa  = len(signals.get("frequency_analyzer", []))
 
     header = [
         "━━━━━━━━━━━━━━━━━━━━━━━━━━",
@@ -1008,7 +1073,6 @@ def send_morning_brief(
         f"  - Accumulation: {n_acc}",
         f"  - Bull Div    : {n_div}",
         f"  - Early Entry : {n_ee}",
-        f"  - Freq Spike  : {n_fa}",
         f"  Total         : {total}",
     ]
     if extras:
@@ -1026,7 +1090,12 @@ def send_evening_report(
     engine_results: Optional[dict] = None,
 ):
     """Sesi malam — full scan teknikal + ringkasan insider & agenda."""
-    total = sum(len(v) for v in signals.values())
+    total = (
+        len(signals.get("strong_buy", []))
+        + len(signals.get("accumulation", []))
+        + len(signals.get("bull_div", []))
+        + len(signals.get("early_entry", []))
+    )
     extras = _format_screening_extras(engine_results)
 
     header = [
@@ -1040,7 +1109,6 @@ def send_evening_report(
         f"  - Accumulation: {len(signals.get('accumulation', []))}",
         f"  - Bull Div    : {len(signals.get('bull_div', []))}",
         f"  - Early Entry : {len(signals.get('early_entry', []))}",
-        f"  - Freq Spike  : {len(signals.get('frequency_analyzer', []))}",
         f"  Total         : {total}",
     ]
     if extras:
@@ -1056,7 +1124,11 @@ def send_evening_report(
 
 def send_noon_intraday_alert(signals: Dict[str, list]):
     """Sesi 12:00 — shortlist intraday sesi 2 yang masih fresh/valid."""
-    total = sum(len(v) for v in signals.values())
+    total = (
+        len(signals.get("strong_buy", []))
+        + len(signals.get("accumulation", []))
+        + len(signals.get("early_entry", []))
+    )
     bias_bits = []
     if INTRADAY_NOON_REQUIRE_DAILY_BIAS:
         if INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA20:
@@ -1080,9 +1152,7 @@ def send_noon_intraday_alert(signals: Dict[str, list]):
         "<b>Sinyal teknikal terpilih</b>",
         f"  - Strong Buy  : {len(signals.get('strong_buy', []))}",
         f"  - Accumulation: {len(signals.get('accumulation', []))}",
-        f"  - Bull Div    : {len(signals.get('bull_div', []))}",
         f"  - Early Entry : {len(signals.get('early_entry', []))}",
-        f"  - Freq Spike  : {len(signals.get('frequency_analyzer', []))}",
         f"  Total         : {total}",
         "━━━━━━━━━━━━━━━━━━━━━━━━━━",
     ]
@@ -1135,6 +1205,91 @@ def _retail_rr_points(rr: float) -> int:
     return 3
 
 
+def _retail_pick_price(payload: Dict[str, Any], keys: List[str]) -> float:
+    """Ambil harga numerik pertama yang valid dari payload R:R."""
+    for k in keys:
+        v = payload.get(k)
+        if v is None:
+            continue
+        try:
+            n = float(v)
+            if n > 0:
+                return n
+        except Exception:
+            continue
+    return 0.0
+
+
+def _retail_pick_price_range(payload: Dict[str, Any], low_keys: List[str], high_keys: List[str]) -> tuple:
+    """Ambil rentang harga dari payload R:R (entry zone / buy zone)."""
+    low = _retail_pick_price(payload, low_keys)
+    high = _retail_pick_price(payload, high_keys)
+    if low > 0 and high > 0:
+        return (min(low, high), max(low, high))
+    if low > 0:
+        return (low, low)
+    if high > 0:
+        return (high, high)
+    return (0.0, 0.0)
+
+
+def _retail_pct(from_price: float, to_price: float) -> float:
+    """Persentase perubahan dari from_price ke to_price."""
+    if from_price <= 0 or to_price <= 0:
+        return 0.0
+    return ((to_price - from_price) / from_price) * 100.0
+
+
+def _load_retail_carry_cache() -> Dict[str, Dict[str, Any]]:
+    path = os.path.abspath(_RETAIL_CARRY_FILE)
+    if not os.path.isfile(path):
+        return {}
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, dict):
+            out = data.get("items", data)
+            return out if isinstance(out, dict) else {}
+    except Exception as e:
+        logger.warning(f"retail carry read: {e}")
+    return {}
+
+
+def _save_retail_carry_cache(items: Dict[str, Dict[str, Any]]) -> None:
+    path = os.path.abspath(_RETAIL_CARRY_FILE)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    try:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump({"items": items}, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        logger.warning(f"retail carry write: {e}")
+
+
+def _load_commodity_carry_cache() -> Dict[str, Dict[str, Any]]:
+    path = os.path.abspath(_COMMODITY_CARRY_FILE)
+    if not os.path.isfile(path):
+        return {}
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        if isinstance(data, dict):
+            out = data.get("items", data)
+            return out if isinstance(out, dict) else {}
+    except Exception as e:
+        logger.warning(f"commodity carry read: {e}")
+    return {}
+
+
+def _save_commodity_carry_cache(items: Dict[str, Dict[str, Any]]) -> None:
+    path = os.path.abspath(_COMMODITY_CARRY_FILE)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    try:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump({"items": items}, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        logger.warning(f"commodity carry write: {e}")
+
+
 def _build_retail_opportunity_lines(engine_results: dict) -> List[str]:
     """Bangun section Retail Opportunity Score dari engine data + risk/reward API."""
     sweep = engine_results.get("sweep")
@@ -1143,6 +1298,7 @@ def _build_retail_opportunity_lines(engine_results: dict) -> List[str]:
         return []
 
     by_symbol: Dict[str, Dict[str, Any]] = {}
+    today_syms = set()
 
     for b in (sweep.breakout_stocks or []):
         if not isinstance(b, dict):
@@ -1150,6 +1306,7 @@ def _build_retail_opportunity_lines(engine_results: dict) -> List[str]:
         s = str(b.get("symbol") or b.get("ticker") or b.get("code") or "").strip().upper()
         if not s:
             continue
+        today_syms.add(s)
         by_symbol.setdefault(s, {})["breakout"] = b
 
     for m in (sweep.multibagger or []):
@@ -1158,6 +1315,7 @@ def _build_retail_opportunity_lines(engine_results: dict) -> List[str]:
         s = str(m.get("symbol") or m.get("ticker") or m.get("code") or "").strip().upper()
         if not s:
             continue
+        today_syms.add(s)
         by_symbol.setdefault(s, {})["multibagger"] = m
 
     for t in (sweep.trending or []):
@@ -1166,7 +1324,35 @@ def _build_retail_opportunity_lines(engine_results: dict) -> List[str]:
         s = str(t.get("symbol") or t.get("ticker") or t.get("code") or "").strip().upper()
         if not s:
             continue
+        today_syms.add(s)
         by_symbol.setdefault(s, {})["trending"] = t
+
+    # Carry-over cache: kandidat retail tidak wajib "fresh" tiap run.
+    now_ts = datetime.now(WIB)
+    cache = _load_retail_carry_cache()
+    ttl_seconds = _RETAIL_CARRY_HOURS * 3600
+
+    # Merge cache dulu agar simbol lama masih bisa ikut ranking.
+    for sym, saved in (cache or {}).items():
+        if not isinstance(saved, dict):
+            continue
+        last_seen_ts = str(saved.get("last_seen", "")).strip()
+        try:
+            last_dt = datetime.fromisoformat(last_seen_ts)
+        except Exception:
+            continue
+        if (now_ts - last_dt).total_seconds() > ttl_seconds:
+            continue
+        if sym not in by_symbol:
+            packed = {}
+            if isinstance(saved.get("breakout"), dict):
+                packed["breakout"] = saved["breakout"]
+            if isinstance(saved.get("multibagger"), dict):
+                packed["multibagger"] = saved["multibagger"]
+            if isinstance(saved.get("trending"), dict):
+                packed["trending"] = saved["trending"]
+            if packed:
+                by_symbol[sym] = packed
 
     if not by_symbol:
         return []
@@ -1189,6 +1375,8 @@ def _build_retail_opportunity_lines(engine_results: dict) -> List[str]:
         b = pack.get("breakout", {})
         m = pack.get("multibagger", {})
         mb_score = float(m.get("multibagger_score", 0) or 0)
+        breakout_target = float((b or {}).get("target", 0) or 0) if isinstance(b, dict) else 0.0
+        breakout_sl = float((b or {}).get("stop_loss", 0) or 0) if isinstance(b, dict) else 0.0
         p_break = _retail_breakout_points(b)
         p_multi = _retail_multibagger_points(mb_score) if m else 0
         p_trend = 6 if pack.get("trending") else 0
@@ -1198,17 +1386,32 @@ def _build_retail_opportunity_lines(engine_results: dict) -> List[str]:
         rows.append({
             "symbol": sym,
             "prelim": prelim,
+            "is_carry": sym not in today_syms,
             "p_break": p_break,
             "p_multi": p_multi,
             "p_trend": p_trend,
             "p_risk": p_risk,
             "p_flow": p_flow,
             "multibagger_score": mb_score,
+            "breakout_target": breakout_target,
+            "breakout_sl": breakout_sl,
             "breakout_sev": str(b.get("severity", "")).upper() if isinstance(b, dict) else "",
         })
 
+    # Update cache pakai snapshot terbaru agar carry-over tetap relevan.
+    next_cache: Dict[str, Dict[str, Any]] = {}
+    for sym, pack in by_symbol.items():
+        row = {
+            "last_seen": now_ts.isoformat(),
+            "breakout": pack.get("breakout") if isinstance(pack.get("breakout"), dict) else {},
+            "multibagger": pack.get("multibagger") if isinstance(pack.get("multibagger"), dict) else {},
+            "trending": pack.get("trending") if isinstance(pack.get("trending"), dict) else {},
+        }
+        next_cache[sym] = row
+    _save_retail_carry_cache(next_cache)
+
     rows.sort(key=lambda x: x.get("prelim", 0), reverse=True)
-    top_rows = rows[:6]
+    top_rows = rows[:10]
 
     # RR fetch untuk kandidat teratas agar lebih hemat quota.
     from core.engines import fetch_risk_reward
@@ -1216,10 +1419,36 @@ def _build_retail_opportunity_lines(engine_results: dict) -> List[str]:
         rr = fetch_risk_reward(r["symbol"]) or {}
         rr_ratio = float(rr.get("risk_reward_ratio", 0) or 0)
         rec = str(rr.get("recommendation") or "").upper()
+        # Field target/SL antar versi API dapat berbeda, jadi fallback ke beberapa key.
+        tp_price = float(r.get("breakout_target", 0) or 0)
+        sl_price = float(r.get("breakout_sl", 0) or 0)
+        entry_price = _retail_pick_price(rr, [
+            "entry_price", "entryPrice", "buy_price", "buyPrice", "entry", "price",
+            "current_price", "currentPrice", "last_price", "lastPrice", "close", "close_price",
+        ])
+        entry_low, entry_high = _retail_pick_price_range(
+            rr,
+            ["entry_low", "entryLow", "buy_zone_low", "buyZoneLow", "buy_range_low", "buyRangeLow"],
+            ["entry_high", "entryHigh", "buy_zone_high", "buyZoneHigh", "buy_range_high", "buyRangeHigh"],
+        )
+        # Jika API hanya kasih entry tunggal, jadikan range sempit sebagai best-price zone.
+        if entry_low <= 0 and entry_high <= 0 and entry_price > 0:
+            entry_low = entry_price * 0.99
+            entry_high = entry_price * 1.01
+        ref_entry = entry_price or ((entry_low + entry_high) / 2.0 if entry_low > 0 and entry_high > 0 else 0.0)
+        upside_pct = _retail_pct(ref_entry, tp_price)
+        downside_pct = _retail_pct(ref_entry, sl_price)
         p_rr = _retail_rr_points(rr_ratio)
         total = r["p_break"] + r["p_multi"] + r["p_trend"] + r["p_risk"] + r["p_flow"] + p_rr
         r["rr_ratio"] = rr_ratio
         r["rr_rec"] = rec
+        r["entry_price"] = entry_price
+        r["entry_low"] = entry_low
+        r["entry_high"] = entry_high
+        r["tp_price"] = tp_price
+        r["sl_price"] = sl_price
+        r["upside_pct"] = upside_pct
+        r["downside_pct"] = downside_pct
         r["p_rr"] = p_rr
         r["score"] = max(0, min(100, int(total)))
 
@@ -1231,7 +1460,19 @@ def _build_retail_opportunity_lines(engine_results: dict) -> List[str]:
         score = r.get("score", 0)
         icon = "🟢" if score >= 75 else ("🟡" if score >= 60 else "🔴")
         rr_txt = f"{r.get('rr_ratio', 0):.2f}" if r.get("rr_ratio", 0) > 0 else "n/a"
+        if r.get("entry_low", 0) > 0 and r.get("entry_high", 0) > 0:
+            entry_txt = f"{r.get('entry_low', 0):,.0f}-{r.get('entry_high', 0):,.0f}"
+        elif r.get("entry_price", 0) > 0:
+            entry_txt = f"{r.get('entry_price', 0):,.0f}"
+        else:
+            entry_txt = "-"
+        tp_txt = f"{r.get('tp_price', 0):,.0f}" if r.get("tp_price", 0) > 0 else "-"
+        sl_txt = f"{r.get('sl_price', 0):,.0f}" if r.get("sl_price", 0) > 0 else "-"
+        up_txt = f"{r.get('upside_pct', 0):+.1f}%" if r.get("upside_pct", 0) != 0 else "n/a"
+        down_txt = f"{r.get('downside_pct', 0):+.1f}%" if r.get("downside_pct", 0) != 0 else "n/a"
         lines.append(f"{icon} {sym} | Retail Score {score}/100")
+        if r.get("is_carry"):
+            lines.append("   ℹ️ Carry-over kandidat (tidak muncul di snapshot terbaru).")
         lines.append(
             f"   └ Breakout: {r.get('breakout_sev','-') or '-'} (+{r.get('p_break',0)}) | "
             f"Multibagger: {int(r.get('multibagger_score',0))} (+{r.get('p_multi',0)})"
@@ -1240,6 +1481,8 @@ def _build_retail_opportunity_lines(engine_results: dict) -> List[str]:
             f"   └ R:R: {rr_txt} (+{r.get('p_rr',0)}) | Trend: +{r.get('p_trend',0)} | "
             f"Flow/Risk: {r.get('p_flow',0):+d}/{r.get('p_risk',0):+d}"
         )
+        lines.append(f"   └ Entry Best: {entry_txt} | Target: {tp_txt} | SL: {sl_txt}")
+        lines.append(f"   └ Upside/Downside: {up_txt} / {down_txt}")
         if sym in pump_set:
             lines.append("   ⚠️ Pump/Dump risk terdeteksi, jangan entry agresif.")
         elif sym in smart_inflow_set:
@@ -1351,8 +1594,8 @@ def send_engine_alerts(engine_results: dict):
             lines.append("  - Saham Pilihan: " + syms)
         lines.append("")
 
-    # Engine 6 — Event Calendar
-    event = engine_results.get("events")
+    # Engine 6 — Event Calendar (dinonaktifkan sesuai kebutuhan alert saat ini)
+    event = None
     if event and (event.dividends or event.ipo or event.rights_issue or event.stock_split or event.rups):
         today = datetime.now(WIB).date()
 
@@ -1470,7 +1713,447 @@ def send_startup_message():
         "  - 12:00 WIB — Intraday Sesi 2 Alert\n"
         "  - 18:30 WIB — Evening Scan\n\n"
         "Screening:\n"
-        "  - Strong Buy | Accumulation | Bull Div | Early Entry | Freq Spike\n"
+        "  - Strong Buy | Accumulation | Bull Div | Early Entry\n"
         "  - Insider (Engine) | Agenda: dividen, RUPS, RI, SS\n" +
         sep
     )
+
+
+def _extract_list(raw: Any, preferred_keys: Optional[List[str]] = None) -> List:
+    if raw is None:
+        return []
+    if isinstance(raw, list):
+        return raw
+    if not isinstance(raw, dict):
+        return []
+    d0 = raw.get("data", raw)
+    if isinstance(d0, list):
+        return d0
+    if not isinstance(d0, dict):
+        return []
+    if preferred_keys:
+        for k in preferred_keys:
+            v = d0.get(k)
+            if isinstance(v, list):
+                return v
+    d1 = d0.get("data")
+    if isinstance(d1, list):
+        return d1
+    if isinstance(d1, dict) and preferred_keys:
+        for k in preferred_keys:
+            v = d1.get(k)
+            if isinstance(v, list):
+                return v
+    return []
+
+
+def _load_telegram_offset() -> int:
+    path = os.path.abspath(_TELEGRAM_OFFSET_FILE)
+    if not os.path.isfile(path):
+        return 0
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return int(data.get("offset", 0)) if isinstance(data, dict) else 0
+    except Exception:
+        return 0
+
+
+def _save_telegram_offset(offset: int) -> None:
+    path = os.path.abspath(_TELEGRAM_OFFSET_FILE)
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    try:
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump({"offset": int(offset)}, f, ensure_ascii=False, indent=2)
+    except Exception as e:
+        logger.warning(f"telegram offset write: {e}")
+
+
+def _pick_symbol_from_text(text: str) -> str:
+    toks = [t.strip().upper() for t in re.split(r"\s+", (text or "").strip()) if t.strip()]
+    if len(toks) < 2:
+        return ""
+    sym = toks[1]
+    return sym if re.fullmatch(r"[A-Z]{3,6}", sym or "") else ""
+
+
+def _normalize_command_text(text: str) -> str:
+    t = str(text or "").strip()
+    if not t:
+        return ""
+    # Biar tetap kebaca meski user kirim "analisis KOTA" tanpa slash.
+    if not t.startswith("/"):
+        t = "/" + t
+    return t.lower()
+
+
+def _is_known_symbol(symbol: str) -> bool:
+    global _SYMBOL_CACHE
+    s = str(symbol or "").strip().upper()
+    if not s:
+        return False
+    if COMMAND_ONLY_MODE:
+        return bool(re.fullmatch(r"[A-Z]{3,6}", s))
+    try:
+        if _SYMBOL_CACHE is None:
+            from config.stocks_list import resolve_scan_universe
+            _SYMBOL_CACHE = set(str(x).upper() for x in (resolve_scan_universe() or []) if x)
+        if _SYMBOL_CACHE:
+            return s in _SYMBOL_CACHE
+    except Exception:
+        return True
+    return True
+
+
+def _analysis_verdict(rr_ratio: float, smart_flow: str, pump_status: str, breakout_sev: str, non_retail_net: float) -> str:
+    score = 0
+    if breakout_sev == "HIGH":
+        score += 2
+    if rr_ratio >= 2.0:
+        score += 2
+    elif rr_ratio >= 1.2:
+        score += 1
+    if "INFLOW" in smart_flow:
+        score += 1
+    if non_retail_net > 0:
+        score += 1
+    if "HIGH_RISK" in pump_status or "EXTREME_RISK" in pump_status:
+        score -= 2
+    elif "MODERATE_RISK" in pump_status:
+        score -= 1
+    if score >= 4:
+        return "AGRESIF (tetap pakai disiplin SL)"
+    if score >= 2:
+        return "WAIT CONFIRM (tunggu trigger valid)"
+    return "AVOID / OBSERVE"
+
+
+def _rr_target_sl_fallback(rr: Dict[str, Any]) -> tuple:
+    """Fallback target/SL dari endpoint risk-reward saat breakout alert tidak tersedia."""
+    sl = _retail_pick_price(rr, ["stop_loss_recommended", "stop_loss", "stopLoss", "sl", "s1", "s2"])
+    tp = 0.0
+    tps = rr.get("target_prices", [])
+    if isinstance(tps, list):
+        levels = []
+        for row in tps:
+            if not isinstance(row, dict):
+                continue
+            lv = _retail_pick_price(row, ["level", "target", "target_price", "price"])
+            if lv > 0:
+                levels.append(lv)
+        if levels:
+            tp = min(levels)
+    if tp <= 0:
+        tp = _retail_pick_price(rr, ["target_price", "targetPrice", "take_profit", "tp1", "r1", "r2"])
+    return tp, sl
+
+
+def _ensure_polling_ready() -> None:
+    global _TELEGRAM_POLLING_READY
+    if _TELEGRAM_POLLING_READY or not TELEGRAM_BOT_TOKEN:
+        return
+    try:
+        requests.get(
+            f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/deleteWebhook",
+            params={"drop_pending_updates": False},
+            timeout=10,
+        )
+        _TELEGRAM_POLLING_READY = True
+    except Exception:
+        pass
+
+
+def _fetch_breakout_row(symbol: str) -> Dict[str, Any]:
+    from core.data_fetcher import _get
+    raw = _get("/api/analysis/retail/breakout/alerts")
+    rows = _extract_list(raw, preferred_keys=["alerts", "breakout_alerts"])
+    for r in rows:
+        if not isinstance(r, dict):
+            continue
+        s = str(r.get("symbol") or r.get("ticker") or r.get("code") or "").strip().upper()
+        if s == symbol:
+            return r
+    return {}
+
+
+def _fetch_multibagger_row(symbol: str) -> Dict[str, Any]:
+    from core.data_fetcher import _get
+    raw = _get("/api/analysis/retail/multibagger/scan")
+    rows = _extract_list(raw, preferred_keys=["candidates", "multibagger"])
+    for r in rows:
+        if not isinstance(r, dict):
+            continue
+        s = str(r.get("symbol") or r.get("ticker") or r.get("code") or "").strip().upper()
+        if s == symbol:
+            return r
+    return {}
+
+
+def _is_trending_symbol(symbol: str) -> bool:
+    from core.data_fetcher import _get
+    raw = _get("/api/main/trending")
+    rows = _extract_list(raw, preferred_keys=["data", "trending", "stocks"])
+    for r in rows:
+        if not isinstance(r, dict):
+            continue
+        s = str(r.get("symbol") or r.get("ticker") or r.get("code") or "").strip().upper()
+        if s == symbol:
+            return True
+    return False
+
+
+def _fetch_bandar_symbol(symbol: str) -> Dict[str, Dict[str, Any]]:
+    from core.data_fetcher import _get
+    out: Dict[str, Dict[str, Any]] = {}
+    for k, path in (
+        ("accumulation", f"/api/analysis/bandar/accumulation/{symbol}"),
+        ("distribution", f"/api/analysis/bandar/distribution/{symbol}"),
+        ("smart_money", f"/api/analysis/bandar/smart-money/{symbol}"),
+        ("pump_dump", f"/api/analysis/bandar/pump-dump/{symbol}"),
+    ):
+        raw = _get(path)
+        d = raw.get("data") if isinstance(raw, dict) else {}
+        out[k] = d if isinstance(d, dict) else {}
+    return out
+
+
+def _cmd_analisis(symbol: str) -> str:
+    from core.data_fetcher import fetch_bandarmology_bundle
+    from core.engines import fetch_risk_reward
+
+    brk = _fetch_breakout_row(symbol)
+    mb = _fetch_multibagger_row(symbol)
+    is_trending = _is_trending_symbol(symbol)
+    bandar = _fetch_bandar_symbol(symbol)
+    rr = fetch_risk_reward(symbol) or {}
+    bundle = fetch_bandarmology_bundle(symbol) or {}
+    bs = bundle.get("broksum") or {}
+
+    name = str(brk.get("name") or rr.get("company_name") or "-")
+    px = float(brk.get("price", rr.get("current_price", rr.get("price", 0))) or 0)
+    chg = float(brk.get("change_percentage", rr.get("change_percentage", 0)) or 0)
+    sev = str(brk.get("severity") or "-").upper()
+    mbs = float(mb.get("multibagger_score", 0) or 0)
+    rr_ratio = float(rr.get("risk_reward_ratio", 0) or 0)
+    entry = float(rr.get("entry_price", rr.get("buy_price", px)) or 0)
+    target = float(brk.get("target", 0) or 0)
+    sl = float(brk.get("stop_loss", 0) or 0)
+    if target <= 0 or sl <= 0:
+        rr_tp, rr_sl = _rr_target_sl_fallback(rr)
+        if target <= 0:
+            target = rr_tp
+        if sl <= 0:
+            sl = rr_sl
+    up = ((target - entry) / entry * 100.0) if entry > 0 and target > 0 else 0.0
+    down = ((sl - entry) / entry * 100.0) if entry > 0 and sl > 0 else 0.0
+
+    acc = bandar.get("accumulation", {})
+    dist = bandar.get("distribution", {})
+    sm = bandar.get("smart_money", {})
+    pd = bandar.get("pump_dump", {})
+    sm_flow = str(sm.get("flow_direction") or "NEUTRAL").upper()
+    pd_status = str(pd.get("status") or "LOW_RISK").upper()
+    trigger = str(brk.get("entry_trigger") or brk.get("action") or "-")
+
+    nr_pct = float(bs.get("non_retail_buy_pct", 0) or 0)
+    loc_pct = float(bs.get("lokal_buy_pct", 0) or 0)
+    nr_net = float(bs.get("non_retail_net", 0) or 0)
+    dom = str(bs.get("dominant") or "NEUTRAL")
+    n_buy = int(bs.get("n_buy", 0) or 0)
+    n_sell = int(bs.get("n_sell", 0) or 0)
+    top_buyers = bs.get("top_buyers", []) if isinstance(bs.get("top_buyers", []), list) else []
+    top_sellers = bs.get("top_sellers", []) if isinstance(bs.get("top_sellers", []), list) else []
+    buyer_txt = " | ".join(f"{str(x.get('code') or '?').upper()} {_format_idr(float(x.get('net', 0) or 0))}" for x in top_buyers[:2]) if top_buyers else "-"
+    seller_txt = " | ".join(f"{str(x.get('code') or '?').upper()} {_format_idr(float(x.get('net', 0) or 0))}" for x in top_sellers[:2]) if top_sellers else "-"
+    verdict = _analysis_verdict(rr_ratio, sm_flow, pd_status, sev, nr_net)
+
+    lines = [
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━",
+        f"<b>🔎 ANALISIS {symbol}</b>",
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━",
+        f"⏰ {_now_wib()}",
+        f"Nama: {name}",
+        f"Harga: {px:,.0f} ({chg:+.2f}%)" if px > 0 else "Harga: -",
+        "",
+        "<b>Retail Signals</b>",
+        f"  - Breakout: {sev}",
+        f"  - Multibagger Score: {mbs:.0f}",
+        f"  - Trending: {'YA' if is_trending else 'TIDAK'}",
+        f"  - Trigger: {trigger}",
+        "",
+        "<b>RR Plan</b>",
+        f"  - Entry: {entry:,.0f}" if entry > 0 else "  - Entry: -",
+        f"  - Target: {target:,.0f}" if target > 0 else "  - Target: -",
+        f"  - SL: {sl:,.0f}" if sl > 0 else "  - SL: -",
+        f"  - R:R: {rr_ratio:.2f}" if rr_ratio > 0 else "  - R:R: n/a",
+        f"  - Upside/Downside: {up:+.1f}% / {down:+.1f}%" if up != 0 or down != 0 else "  - Upside/Downside: n/a",
+        "",
+        "<b>Flow</b>",
+        f"  - Accumulation: {str(acc.get('status') or 'NEUTRAL').upper()}",
+        f"  - Distribution: {str(dist.get('status') or 'NEUTRAL').upper()}",
+        f"  - Smart Money: {sm_flow}",
+        f"  - Pump/Dump: {pd_status}",
+        "",
+        "<b>Broksum + Non-Retail</b>",
+        f"  - Broksum: {dom} | buyer {n_buy} vs seller {n_sell}",
+        f"  - Top Buyer: {buyer_txt}",
+        f"  - Top Seller: {seller_txt}",
+        f"  - Non-retail flow: {nr_pct:.1f}% | lokal {loc_pct:.1f}% | net {_format_idr(nr_net)}",
+        "",
+        f"<b>Verdict:</b> {verdict}",
+    ]
+    return "\n".join(lines)
+
+
+def _cmd_rr(symbol: str) -> str:
+    from core.engines import fetch_risk_reward
+    brk = _fetch_breakout_row(symbol)
+    rr = fetch_risk_reward(symbol) or {}
+    entry = float(rr.get("entry_price", rr.get("buy_price", rr.get("current_price", 0))) or 0)
+    target = float(brk.get("target", 0) or 0)
+    sl = float(brk.get("stop_loss", 0) or 0)
+    if target <= 0 or sl <= 0:
+        rr_tp, rr_sl = _rr_target_sl_fallback(rr)
+        if target <= 0:
+            target = rr_tp
+        if sl <= 0:
+            sl = rr_sl
+    ratio = float(rr.get("risk_reward_ratio", 0) or 0)
+    return "\n".join([
+        f"<b>🎯 RR {symbol}</b>",
+        f"Entry: {entry:,.0f}" if entry > 0 else "Entry: -",
+        f"Target: {target:,.0f}" if target > 0 else "Target: -",
+        f"SL: {sl:,.0f}" if sl > 0 else "SL: -",
+        f"R:R: {ratio:.2f}" if ratio > 0 else "R:R: n/a",
+    ])
+
+
+def _cmd_flow(symbol: str) -> str:
+    from core.data_fetcher import fetch_bandarmology_bundle
+    bandar = _fetch_bandar_symbol(symbol)
+    bundle = fetch_bandarmology_bundle(symbol) or {}
+    bs = bundle.get("broksum") or {}
+    return "\n".join([
+        f"<b>💧 FLOW {symbol}</b>",
+        f"Accumulation: {str((bandar.get('accumulation', {}) or {}).get('status') or 'NEUTRAL').upper()}",
+        f"Distribution: {str((bandar.get('distribution', {}) or {}).get('status') or 'NEUTRAL').upper()}",
+        f"Smart Money: {str((bandar.get('smart_money', {}) or {}).get('flow_direction') or 'NEUTRAL').upper()}",
+        f"Pump/Dump: {str((bandar.get('pump_dump', {}) or {}).get('status') or 'LOW_RISK').upper()}",
+        f"Broksum: {str(bs.get('dominant') or 'NEUTRAL')} | buyer {int(bs.get('n_buy', 0) or 0)} vs seller {int(bs.get('n_sell', 0) or 0)}",
+        f"Non-retail: {float(bs.get('non_retail_buy_pct', 0) or 0):.1f}% | net {_format_idr(float(bs.get('non_retail_net', 0) or 0))}",
+    ])
+
+
+def _cmd_cek(symbol: str) -> str:
+    brk = _fetch_breakout_row(symbol)
+    is_trending = _is_trending_symbol(symbol)
+    sev = str(brk.get("severity") or "NONE").upper()
+    px = float(brk.get("price", 0) or 0)
+    chg = float(brk.get("change_percentage", 0) or 0)
+    return f"{symbol} | Breakout {sev} | Trending {'YA' if is_trending else 'TIDAK'} | {px:,.0f} ({chg:+.2f}%)" if px > 0 else f"{symbol} | Breakout {sev} | Trending {'YA' if is_trending else 'TIDAK'}"
+
+
+def _help_text() -> str:
+    return "\n".join([
+        "<b>Perintah tersedia:</b>",
+        "/analisis <KODE> - ringkasan lengkap (RR + flow + cek + broksum + non-retail)",
+        "/rr <KODE> - entry/target/sl + R:R",
+        "/flow <KODE> - bandar/smart money/pump + broksum",
+        "/cek <KODE> - status cepat",
+    ])
+
+
+def poll_command_updates():
+    if not TELEGRAM_BOT_TOKEN:
+        return
+    _ensure_polling_ready()
+    offset = _load_telegram_offset()
+    try:
+        r = requests.get(
+            f"https://api.telegram.org/bot{TELEGRAM_BOT_TOKEN}/getUpdates",
+            params={"timeout": 1, "offset": offset},
+            timeout=5,
+        )
+        if r.status_code != 200:
+            return
+        data = r.json()
+        if not isinstance(data, dict) or not data.get("ok"):
+            return
+        updates = data.get("result", []) or []
+        if updates:
+            logger.info(f"Telegram updates diterima: {len(updates)}")
+        for upd in updates:
+            if not isinstance(upd, dict):
+                continue
+            uid = int(upd.get("update_id", 0) or 0)
+            if uid >= offset:
+                offset = uid + 1
+            msg = upd.get("message") or {}
+            text = str(msg.get("text") or "").strip()
+            chat_id = ((msg.get("chat") or {}).get("id"))
+            if not text or not chat_id:
+                continue
+            norm = _normalize_command_text(text)
+            if norm.startswith("/analisis"):
+                sym = _pick_symbol_from_text(text)
+                try:
+                    if not sym:
+                        reply = "Format: /analisis <KODE>"
+                    elif not _is_known_symbol(sym):
+                        reply = f"Kode {sym} tidak dikenali. Contoh: /analisis BBCA"
+                    else:
+                        _send_to_chat(chat_id, f"⏳ Sedang analisis <b>{sym}</b> ...")
+                        reply = _cmd_analisis(sym)
+                    _send_to_chat(chat_id, reply)
+                except Exception as e:
+                    logger.warning(f"/analisis error {sym}: {e}")
+                    _send_to_chat(chat_id, f"⚠️ Gagal proses /analisis {sym or ''}. Coba lagi.")
+            elif norm.startswith("/rr"):
+                sym = _pick_symbol_from_text(text)
+                try:
+                    if not sym:
+                        reply = "Format: /rr <KODE>"
+                    elif not _is_known_symbol(sym):
+                        reply = f"Kode {sym} tidak dikenali. Contoh: /rr BBCA"
+                    else:
+                        _send_to_chat(chat_id, f"⏳ Sedang hitung RR <b>{sym}</b> ...")
+                        reply = _cmd_rr(sym)
+                    _send_to_chat(chat_id, reply)
+                except Exception as e:
+                    logger.warning(f"/rr error {sym}: {e}")
+                    _send_to_chat(chat_id, f"⚠️ Gagal proses /rr {sym or ''}. Coba lagi.")
+            elif norm.startswith("/flow"):
+                sym = _pick_symbol_from_text(text)
+                try:
+                    if not sym:
+                        reply = "Format: /flow <KODE>"
+                    elif not _is_known_symbol(sym):
+                        reply = f"Kode {sym} tidak dikenali. Contoh: /flow BBCA"
+                    else:
+                        _send_to_chat(chat_id, f"⏳ Sedang cek flow <b>{sym}</b> ...")
+                        reply = _cmd_flow(sym)
+                    _send_to_chat(chat_id, reply)
+                except Exception as e:
+                    logger.warning(f"/flow error {sym}: {e}")
+                    _send_to_chat(chat_id, f"⚠️ Gagal proses /flow {sym or ''}. Coba lagi.")
+            elif norm.startswith("/cek"):
+                sym = _pick_symbol_from_text(text)
+                try:
+                    if not sym:
+                        reply = "Format: /cek <KODE>"
+                    elif not _is_known_symbol(sym):
+                        reply = f"Kode {sym} tidak dikenali. Contoh: /cek BBCA"
+                    else:
+                        reply = _cmd_cek(sym)
+                    _send_to_chat(chat_id, reply)
+                except Exception as e:
+                    logger.warning(f"/cek error {sym}: {e}")
+                    _send_to_chat(chat_id, f"⚠️ Gagal proses /cek {sym or ''}. Coba lagi.")
+            elif norm.startswith("/help") or norm.startswith("/start"):
+                _send_to_chat(chat_id, _help_text())
+            elif norm.startswith("/"):
+                _send_to_chat(chat_id, "Command tidak dikenali. Ketik /help untuk daftar command.")
+    except Exception as e:
+        logger.warning(f"command polling error: {e}")
+    finally:
+        _save_telegram_offset(offset)

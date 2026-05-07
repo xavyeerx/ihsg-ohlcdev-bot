@@ -1,14 +1,20 @@
 # ============================================================
 # KONFIGURASI UTAMA - IHSG IDX Intelligence Bot
 # ============================================================
+import os
 
 # --- [WAJIB DIISI] Telegram ---
-TELEGRAM_BOT_TOKEN = "8771268923:AAGkIHtDhwi-3DqFBmHCc_wNiZ4K4UvmVYM"
-TELEGRAM_CHAT_ID   = "-1003910083132"
+TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN", "8771268923:AAGkIHtDhwi-3DqFBmHCc_wNiZ4K4UvmVYM")
+TELEGRAM_CHAT_ID   = os.getenv("TELEGRAM_CHAT_ID", "-1003910083132")
 
 # --- RapidAPI ---
-RAPIDAPI_KEY  = "1e135405dcmsh286e1cc50e2dd2bp13cc0fjsn2a349277ca95"
-RAPIDAPI_HOST = "indonesia-stock-exchange-idx.p.rapidapi.com"
+RAPIDAPI_KEY  = os.getenv("RAPIDAPI_KEY", "1e135405dcmsh286e1cc50e2dd2bp13cc0fjsn2a349277ca95")
+RAPIDAPI_HOST = os.getenv("RAPIDAPI_HOST", "indonesia-stock-exchange-idx.p.rapidapi.com")
+
+# --- Runtime mode ---
+# True: main.py hanya standby command Telegram, tidak resolve universe/scan otomatis.
+# Cocok untuk VM hemat API; RapidAPI baru dipanggil ketika user menjalankan command.
+COMMAND_ONLY_MODE = os.getenv("COMMAND_ONLY_MODE", "true").lower() in ("1", "true", "yes", "on")
 
 # --- Scanning ---
 SCAN_INTERVAL_MINUTES = 60

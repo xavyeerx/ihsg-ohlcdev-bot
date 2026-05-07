@@ -60,8 +60,10 @@ if [ -f "$BOT_DIR/.env" ]; then
 else
     cat > $BOT_DIR/.env << ENVEOF
 RAPIDAPI_KEY=GANTI_DENGAN_API_KEY_RAPIDAPI
+RAPIDAPI_HOST=indonesia-stock-exchange-idx.p.rapidapi.com
 TELEGRAM_BOT_TOKEN=GANTI_DENGAN_BOT_TOKEN
 TELEGRAM_CHAT_ID=GANTI_DENGAN_CHAT_ID
+COMMAND_ONLY_MODE=true
 ENVEOF
     chmod 600 $BOT_DIR/.env
     chown $BOT_USER:$BOT_USER $BOT_DIR/.env
@@ -113,9 +115,10 @@ echo "LANGKAH SELANJUTNYA:"
 echo "  1. Isi .env dengan API key dan Telegram token:"
 echo "       nano $BOT_DIR/.env"
 echo ""
-echo "  2. Aktifkan jadwal otomatis di scheduler.py:"
-echo "       nano $BOT_DIR/scheduler.py"
-echo "       -> set AUTO_SCHEDULE = True"
+echo "  2. Untuk mode hemat API command-only, biarkan:"
+echo "       COMMAND_ONLY_MODE=true"
+echo "     Jika ingin aktifkan scan jadwal otomatis, ubah COMMAND_ONLY_MODE=false"
+echo "     lalu set AUTO_SCHEDULE=True di scheduler.py."
 echo ""
 echo "  3. Jalankan bot:"
 echo "       systemctl start $SERVICE_NAME"
