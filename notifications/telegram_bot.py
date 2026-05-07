@@ -2056,10 +2056,10 @@ def _cmd_cek(symbol: str) -> str:
 def _help_text() -> str:
     return "\n".join([
         "<b>Perintah tersedia:</b>",
-        "/analisis <KODE> - ringkasan lengkap (RR + flow + cek + broksum + non-retail)",
-        "/rr <KODE> - entry/target/sl + R:R",
-        "/flow <KODE> - bandar/smart money/pump + broksum",
-        "/cek <KODE> - status cepat",
+        "/analisis [KODE] - ringkasan lengkap (RR + flow + cek + broksum + non-retail)",
+        "/rr [KODE] - entry/target/sl + R:R",
+        "/flow [KODE] - bandar/smart money/pump + broksum",
+        "/cek [KODE] - status cepat",
     ])
 
 
@@ -2098,7 +2098,7 @@ def poll_command_updates():
                 sym = _pick_symbol_from_text(text)
                 try:
                     if not sym:
-                        reply = "Format: /analisis <KODE>"
+                        reply = "Format: /analisis [KODE]"
                     elif not _is_known_symbol(sym):
                         reply = f"Kode {sym} tidak dikenali. Contoh: /analisis BBCA"
                     else:
@@ -2112,7 +2112,7 @@ def poll_command_updates():
                 sym = _pick_symbol_from_text(text)
                 try:
                     if not sym:
-                        reply = "Format: /rr <KODE>"
+                        reply = "Format: /rr [KODE]"
                     elif not _is_known_symbol(sym):
                         reply = f"Kode {sym} tidak dikenali. Contoh: /rr BBCA"
                     else:
@@ -2126,7 +2126,7 @@ def poll_command_updates():
                 sym = _pick_symbol_from_text(text)
                 try:
                     if not sym:
-                        reply = "Format: /flow <KODE>"
+                        reply = "Format: /flow [KODE]"
                     elif not _is_known_symbol(sym):
                         reply = f"Kode {sym} tidak dikenali. Contoh: /flow BBCA"
                     else:
@@ -2140,7 +2140,7 @@ def poll_command_updates():
                 sym = _pick_symbol_from_text(text)
                 try:
                     if not sym:
-                        reply = "Format: /cek <KODE>"
+                        reply = "Format: /cek [KODE]"
                     elif not _is_known_symbol(sym):
                         reply = f"Kode {sym} tidak dikenali. Contoh: /cek BBCA"
                     else:
