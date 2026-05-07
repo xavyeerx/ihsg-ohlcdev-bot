@@ -1958,6 +1958,8 @@ def _cmd_analisis(symbol: str) -> str:
     nr_pct = float(bs.get("non_retail_buy_pct", 0) or 0)
     loc_pct = float(bs.get("lokal_buy_pct", 0) or 0)
     nr_net = float(bs.get("non_retail_net", 0) or 0)
+    grand_total = float(bs.get("bandar_grand_total", 0) or 0)
+    nr_net_pct = ((nr_net / grand_total) * 100.0) if grand_total > 0 else 0.0
     dom = str(bs.get("dominant") or "NEUTRAL")
     n_buy = int(bs.get("n_buy", 0) or 0)
     n_sell = int(bs.get("n_sell", 0) or 0)
@@ -1998,7 +2000,7 @@ def _cmd_analisis(symbol: str) -> str:
         f"  - Broksum: {dom} | buyer {n_buy} vs seller {n_sell}",
         f"  - Top Buyer: {buyer_txt}",
         f"  - Top Seller: {seller_txt}",
-        f"  - Non-retail flow: {nr_pct:.1f}% | lokal {loc_pct:.1f}% | net {_format_idr(nr_net)}",
+        f"  - Non-retail flow: {nr_pct:.1f}% | lokal {loc_pct:.1f}% | net {_format_idr(nr_net)} ({nr_net_pct:+.1f}%)",
         "",
         f"<b>Verdict:</b> {verdict}",
     ]
