@@ -1193,19 +1193,21 @@ def send_non_retail_flow_alert(nrf_list: list, session: str = ""):
     ]
 
     for r in nrf_list:
-        bd       = r.bandro
-        score    = r.score_result.total_score if r.score_result else 0
-        status   = r.score_result.status if r.score_result else "-"
-        chg      = r.change_pct
-        chg_txt  = f"+{chg:.1f}%" if chg >= 0 else f"{chg:.1f}%"
-        price    = r.current_price
-        obv      = r.obv_status or "-"
-        vol      = r.volume_ratio
+        bd          = r.bandro
+        nr_pct      = float(getattr(bd, "broksum_non_retail_buy_pct", 0) or 0)
+        loc_pct     = float(getattr(bd, "broksum_lokal_buy_pct", 0) or 0)
+        nr_net      = float(getattr(bd, "broksum_non_retail_net", 0) or 0)
+        grand_total = float(getattr(bd, "broksum_bandar_grand_total", 0) or 0)
+        nr_net_pct  = (nr_net / grand_total * 100.0) if grand_total > 0 else 0.0
+        score       = r.score_result.total_score if r.score_result else 0
+        status      = r.score_result.status if r.score_result else "-"
+        net_txt     = f"{_format_idr(nr_net)} ({nr_net_pct:+.1f}%)" if grand_total > 0 else _format_idr(nr_net)
 
         lines.append("")
-        lines.append(f"📊 <b>{r.symbol}</b> | {price:,.0f} ({chg_txt})")
-        lines.append(f"   └ Score: {score} ({status}) | OBV: {obv} | Vol: {vol:.1f}x")
-        lines.extend(_flow_lines_clean(r))
+        lines.append(
+            f"<b>{r.symbol}</b> | Non-retail: {nr_pct:.1f}% | Lokal: {loc_pct:.1f}% | "
+            f"Net: {net_txt} | score: {score} ({status})"
+        )
         lines.extend(_tp_lines_clean(r))
 
     lines.append("")
