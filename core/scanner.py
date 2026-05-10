@@ -21,6 +21,7 @@ from config.settings   import (
     INTRADAY_NOON_REQUIRE_DAILY_BIAS,
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA50,
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA20,
+    NON_RETAIL_FLOW_MIN_PCT,
 )
 from core.data_fetcher import (
     fetch_ohlcv, fetch_bandarmology_bundle,
@@ -507,6 +508,7 @@ def filter_signals(results: list) -> Dict[str, list]:
         "bull_div":     [],
         "early_entry":  [],
         "frequency_analyzer": [],
+        "non_retail_flow": [],
     }
 
     for r in results:
@@ -525,6 +527,13 @@ def filter_signals(results: list) -> Dict[str, list]:
             signals["early_entry"].append(r)
         if r.is_frequency_analyzer:
             signals["frequency_analyzer"].append(r)
+
+        # Non-retail flow accumulation: % buy non-retail >= threshold DAN net beli positif
+        bd = r.bandro
+        if (bd and getattr(bd, "has_broksum", False)
+                and float(getattr(bd, "broksum_non_retail_buy_pct", 0) or 0) >= NON_RETAIL_FLOW_MIN_PCT
+                and float(getattr(bd, "broksum_non_retail_net", 0) or 0) > 0):
+            signals["non_retail_flow"].append(r)
 
     for key in signals:
         signals[key].sort(

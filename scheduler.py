@@ -37,6 +37,7 @@ from core.engines       import run_all_engines
 from notifications.telegram_bot import (
     send_morning_brief, send_evening_report, send_noon_intraday_alert,
     send_engine_alerts, send_error, send_startup_message, poll_command_updates,
+    send_non_retail_flow_alert,
 )
 from database.state_manager import (
     load_state, save_state, update_state,
@@ -191,6 +192,15 @@ def run_noon_scan():
         }
         send_noon_intraday_alert(noon_signals)
 
+        # Non-retail flow accumulation alert
+        nrf_list = raw_signals.get("non_retail_flow", [])
+        if nrf_list:
+            logger.info("  Non-retail flow candidates: %d", len(nrf_list))
+            try:
+                send_non_retail_flow_alert(nrf_list, session="noon")
+            except Exception as e:
+                logger.warning("  Non-retail flow alert error: %s", e)
+
         total_raw = sum(len(v) for v in raw_signals.values())
         total_kept = sum(len(v) for v in noon_signals.values())
         logger.info(
@@ -232,6 +242,15 @@ def run_evening_scan():
 
         # ── Kirim alert teknikal ──
         send_evening_report(signals, engine_results=engine_results)
+
+        # ── Non-retail flow accumulation alert ──
+        nrf_list = signals.get("non_retail_flow", [])
+        if nrf_list:
+            logger.info("  Non-retail flow candidates: %d", len(nrf_list))
+            try:
+                send_non_retail_flow_alert(nrf_list, session="evening")
+            except Exception as e:
+                logger.warning("  Non-retail flow alert error: %s", e)
 
         # ── Sweep / bandar / insider pasar / sektor / whale (dari API market-level) ──
         if engine_results:

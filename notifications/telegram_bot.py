@@ -19,6 +19,7 @@ from config.settings import (
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA20,
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA50,
     COMMAND_ONLY_MODE,
+    NON_RETAIL_FLOW_MIN_PCT,
 )
 
 logger = logging.getLogger(__name__)
@@ -1162,6 +1163,51 @@ def send_noon_intraday_alert(signals: Dict[str, list]):
         send_all_signals(signals)
     else:
         _send("Tidak ada kandidat sesi 2 yang masih valid/fresh pada jam 12.")
+
+
+# ── Non-Retail Flow Accumulation Alert ───────────────────────
+
+def send_non_retail_flow_alert(nrf_list: list, session: str = ""):
+    """
+    Kirim daftar saham dengan non-retail flow >= NON_RETAIL_FLOW_MIN_PCT dan net beli positif.
+    Digunakan di sesi siang (12:00) dan sesi malam.
+    """
+    if not nrf_list:
+        return
+
+    sess_label = "🕛 INTRADAY SESI 2" if session == "noon" else "🌆 EVENING SCAN"
+    lines = [
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━",
+        f"<b>💹 NON-RETAIL FLOW — {sess_label}</b>",
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━",
+        f"⏰ {_now_wib()}",
+        f"Threshold: Non-retail buy ≥ <b>{NON_RETAIL_FLOW_MIN_PCT:.0f}%</b> + net beli positif",
+        f"Total saham: <b>{len(nrf_list)}</b>",
+        "",
+        "<b>Daftar saham (Akumulasi Non-Retail):</b>",
+    ]
+
+    for r in nrf_list:
+        bd = r.bandro
+        nr_pct  = float(getattr(bd, "broksum_non_retail_buy_pct", 0) or 0)
+        nr_net  = float(getattr(bd, "broksum_non_retail_net", 0) or 0)
+        score   = r.score_result.total_score if r.score_result else 0
+        status  = r.score_result.status if r.score_result else "-"
+        price   = r.current_price
+        chg     = r.change_pct
+
+        price_txt = f"{price:,.0f}" if price > 0 else "-"
+        chg_sign  = "+" if chg >= 0 else ""
+        net_txt   = _format_idr(nr_net)
+
+        lines.append(
+            f"  <b>{r.symbol}</b> | {price_txt} ({chg_sign}{chg:.2f}%) | "
+            f"NR-buy: <b>{nr_pct:.1f}%</b> | net: {net_txt} | "
+            f"score: {score} ({status})"
+        )
+
+    lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    _send_chunks(lines)
 
 
 # ── Engine Alerts (Ultra plan) ────────────────────────────────
