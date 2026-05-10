@@ -1193,23 +1193,19 @@ def send_non_retail_flow_alert(nrf_list: list, session: str = ""):
     ]
 
     for r in nrf_list:
-        bd = r.bandro
-        nr_pct   = float(getattr(bd, "broksum_non_retail_buy_pct", 0) or 0)
-        nr_net   = float(getattr(bd, "broksum_non_retail_net", 0) or 0)
+        bd       = r.bandro
         score    = r.score_result.total_score if r.score_result else 0
         status   = r.score_result.status if r.score_result else "-"
-        price    = r.current_price
         chg      = r.change_pct
-
-        price_txt = f"{price:,.0f}" if price > 0 else "-"
-        chg_sign  = "+" if chg >= 0 else ""
-        net_txt   = _format_idr(nr_net)
+        chg_txt  = f"+{chg:.1f}%" if chg >= 0 else f"{chg:.1f}%"
+        price    = r.current_price
+        obv      = r.obv_status or "-"
+        vol      = r.volume_ratio
 
         lines.append("")
-        lines.append(
-            f"<b>{r.symbol}</b> | {price_txt} ({chg_sign}{chg:.2f}%) | "
-            f"NR-buy: <b>{nr_pct:.1f}%</b> | net: {net_txt} | score: {score} ({status})"
-        )
+        lines.append(f"📊 <b>{r.symbol}</b> | {price:,.0f} ({chg_txt})")
+        lines.append(f"   └ Score: {score} ({status}) | OBV: {obv} | Vol: {vol:.1f}x")
+        lines.extend(_flow_lines_clean(r))
         lines.extend(_tp_lines_clean(r))
 
     lines.append("")

@@ -528,12 +528,17 @@ def filter_signals(results: list) -> Dict[str, list]:
         if r.is_frequency_analyzer:
             signals["frequency_analyzer"].append(r)
 
-        # Non-retail flow accumulation: % buy non-retail >= threshold DAN net beli positif
+        # Non-retail flow accumulation:
+        # net non-retail (Asing+Pemerintah) sebagai % dari grand total transaksi >= threshold
+        # dan net harus positif (akumulasi, bukan distribusi).
         bd = r.bandro
-        if (bd and getattr(bd, "has_broksum", False)
-                and float(getattr(bd, "broksum_non_retail_buy_pct", 0) or 0) >= NON_RETAIL_FLOW_MIN_PCT
-                and float(getattr(bd, "broksum_non_retail_net", 0) or 0) > 0):
-            signals["non_retail_flow"].append(r)
+        if bd and getattr(bd, "has_broksum", False):
+            nr_net     = float(getattr(bd, "broksum_non_retail_net", 0) or 0)
+            grand_total = float(getattr(bd, "broksum_bandar_grand_total", 0) or 0)
+            if nr_net > 0 and grand_total > 0:
+                nr_net_pct = nr_net / grand_total * 100.0
+                if nr_net_pct >= NON_RETAIL_FLOW_MIN_PCT:
+                    signals["non_retail_flow"].append(r)
 
     for key in signals:
         signals[key].sort(
