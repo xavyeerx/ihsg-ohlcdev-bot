@@ -135,8 +135,8 @@ BROKER_CHART_ENABLED = False
 OHLCV_INTERVAL   = "daily"
 OHLCV_BARS       = 90
 # Sesi 12:00 — teknikal intraday (API: 1m,5m,15m,30m,1h,2h,3h,4h)
-NOON_OHLCV_INTERVAL = "1h"
-NOON_OHLCV_BARS     = 260
+NOON_OHLCV_INTERVAL = "4h"
+NOON_OHLCV_BARS     = 120
 NOON_DAILY_BARS     = 120   # untuk likuiditas + bias harian + bandarmology (asing/freq)
 # Sertakan engine fresh (market sweep/bandar/insider/event) saat sesi 12.
 # Jika terasa "double alert", set False agar sesi 12 hanya alert teknikal intraday.
