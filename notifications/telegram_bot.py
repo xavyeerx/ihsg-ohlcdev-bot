@@ -1189,23 +1189,25 @@ def send_non_retail_flow_alert(nrf_list: list, session: str = ""):
 
     for r in nrf_list:
         bd = r.bandro
-        nr_pct  = float(getattr(bd, "broksum_non_retail_buy_pct", 0) or 0)
-        nr_net  = float(getattr(bd, "broksum_non_retail_net", 0) or 0)
-        score   = r.score_result.total_score if r.score_result else 0
-        status  = r.score_result.status if r.score_result else "-"
-        price   = r.current_price
-        chg     = r.change_pct
+        nr_pct   = float(getattr(bd, "broksum_non_retail_buy_pct", 0) or 0)
+        nr_net   = float(getattr(bd, "broksum_non_retail_net", 0) or 0)
+        score    = r.score_result.total_score if r.score_result else 0
+        status   = r.score_result.status if r.score_result else "-"
+        price    = r.current_price
+        chg      = r.change_pct
 
         price_txt = f"{price:,.0f}" if price > 0 else "-"
         chg_sign  = "+" if chg >= 0 else ""
         net_txt   = _format_idr(nr_net)
 
+        lines.append("")
         lines.append(
-            f"  <b>{r.symbol}</b> | {price_txt} ({chg_sign}{chg:.2f}%) | "
-            f"NR-buy: <b>{nr_pct:.1f}%</b> | net: {net_txt} | "
-            f"score: {score} ({status})"
+            f"<b>{r.symbol}</b> | {price_txt} ({chg_sign}{chg:.2f}%) | "
+            f"NR-buy: <b>{nr_pct:.1f}%</b> | net: {net_txt} | score: {score} ({status})"
         )
+        lines.extend(_tp_lines_clean(r))
 
+    lines.append("")
     lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━━")
     _send_chunks(lines)
 
