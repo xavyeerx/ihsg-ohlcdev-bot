@@ -22,6 +22,7 @@ from config.settings   import (
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA50,
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA20,
     NON_RETAIL_FLOW_MIN_PCT,
+    NON_RETAIL_FLOW_MAX_LOKAL_PCT,
 )
 from core.data_fetcher import (
     fetch_ohlcv, fetch_bandarmology_bundle,
@@ -528,23 +529,40 @@ def filter_signals(results: list) -> Dict[str, list]:
         if r.is_frequency_analyzer:
             signals["frequency_analyzer"].append(r)
 
-        # Non-retail flow accumulation:
-        # net non-retail (Asing+Pemerintah) sebagai % dari grand total transaksi >= threshold
-        # dan net harus positif (akumulasi, bukan distribusi).
+        # Non-retail flow accumulation — semua kondisi harus terpenuhi:
+        #   1. net asing+pemerintah >= NON_RETAIL_FLOW_MIN_PCT dari grand total
+        #   2. lokal_buy_pct <= NON_RETAIL_FLOW_MAX_LOKAL_PCT (retail tidak dominan beli)
+        #   3. dominant == BUYING (net keseluruhan positif)
+        # Tidak ada filter score — AVOID pun masuk jika smart money akumulasi.
         bd = r.bandro
         if bd and getattr(bd, "has_broksum", False):
-            nr_net     = float(getattr(bd, "broksum_non_retail_net", 0) or 0)
+            nr_net      = float(getattr(bd, "broksum_non_retail_net", 0) or 0)
             grand_total = float(getattr(bd, "broksum_bandar_grand_total", 0) or 0)
+            lokal_buy   = float(getattr(bd, "broksum_lokal_buy_pct", 0) or 0)
+            dominant    = str(getattr(bd, "broksum_dominant", "") or "")
             if nr_net > 0 and grand_total > 0:
                 nr_net_pct = nr_net / grand_total * 100.0
-                if nr_net_pct >= NON_RETAIL_FLOW_MIN_PCT:
+                if (nr_net_pct >= NON_RETAIL_FLOW_MIN_PCT
+                        and lokal_buy <= NON_RETAIL_FLOW_MAX_LOKAL_PCT
+                        and dominant == "BUYING"):
                     signals["non_retail_flow"].append(r)
 
     for key in signals:
-        signals[key].sort(
-            key=lambda r: r.score_result.total_score if r.score_result else 0,
-            reverse=True
-        )
+        if key == "non_retail_flow":
+            # Urutkan berdasarkan NR net% dari grand total (terbesar di atas)
+            def _nr_net_pct(r):
+                bd = r.bandro
+                if not bd:
+                    return 0.0
+                nr_net      = float(getattr(bd, "broksum_non_retail_net", 0) or 0)
+                grand_total = float(getattr(bd, "broksum_bandar_grand_total", 0) or 0)
+                return (nr_net / grand_total * 100.0) if grand_total > 0 else 0.0
+            signals[key].sort(key=_nr_net_pct, reverse=True)
+        else:
+            signals[key].sort(
+                key=lambda r: r.score_result.total_score if r.score_result else 0,
+                reverse=True
+            )
 
     return signals
 
