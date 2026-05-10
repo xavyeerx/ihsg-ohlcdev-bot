@@ -26,9 +26,10 @@ logger = logging.getLogger(__name__)
 WIB    = pytz.timezone(TIMEZONE)
 
 MAX_MSG = 3800  # Telegram limit ~4096, beri buffer
-# Freq analyzer spike tetap dipertahankan logic-nya, namun sementara
-# dimatikan dari output alert agar bisa diaktifkan lagi kapan saja.
-ENABLE_FREQ_ANALYZER_ALERT = False
+# Flag alert opsional — logika deteksi tetap jalan, hanya output ke Telegram yang dikontrol.
+# Set True untuk mengaktifkan kembali kapan saja.
+ENABLE_FREQ_ANALYZER_ALERT = False   # Freq Analyzer spike alert
+ENABLE_BULL_DIV_ALERT      = False   # Bullish Divergence alert
 _RETAIL_CARRY_FILE = os.path.join(os.path.dirname(__file__), "..", "database", "retail_carry.json")
 _RETAIL_CARRY_HOURS = 48
 _COMMODITY_CARRY_FILE = os.path.join(os.path.dirname(__file__), "..", "database", "commodity_impact_carry.json")
@@ -791,7 +792,7 @@ def send_all_signals(signals: Dict[str, list]):
         send_strong_buy(signals["strong_buy"]); sent += 1
     if signals.get("accumulation"):
         send_accumulation(signals["accumulation"]); sent += 1
-    if signals.get("bull_div"):
+    if ENABLE_BULL_DIV_ALERT and signals.get("bull_div"):
         send_bull_div(signals["bull_div"]); sent += 1
     if signals.get("early_entry"):
         send_early_entry(signals["early_entry"]); sent += 1
@@ -1045,19 +1046,14 @@ def send_morning_brief(
     engine_results: Optional[dict] = None,
 ):
     """Sesi pagi 08:00 — makro + ringkasan screening (teknikal + insider + agenda)."""
-    total = (
-        len(signals.get("strong_buy", []))
-        + len(signals.get("accumulation", []))
-        + len(signals.get("bull_div", []))
-        + len(signals.get("early_entry", []))
-    )
-    macro_str = _format_macro(macro, signals=signals)
-    extras = _format_screening_extras(engine_results)
-
     n_sb  = len(signals.get("strong_buy", []))
     n_acc = len(signals.get("accumulation", []))
     n_div = len(signals.get("bull_div", []))
     n_ee  = len(signals.get("early_entry", []))
+    total = n_sb + n_acc + n_ee + (n_div if ENABLE_BULL_DIV_ALERT else 0)
+
+    macro_str = _format_macro(macro, signals=signals)
+    extras = _format_screening_extras(engine_results)
 
     header = [
         "━━━━━━━━━━━━━━━━━━━━━━━━━━",
@@ -1067,15 +1063,19 @@ def send_morning_brief(
     ]
     if macro_str:
         header.append(macro_str)
-    header += [
+    signal_rows = [
         "",
         "<b>Sinyal teknikal</b>",
         f"  - Strong Buy  : {n_sb}",
         f"  - Accumulation: {n_acc}",
-        f"  - Bull Div    : {n_div}",
+    ]
+    if ENABLE_BULL_DIV_ALERT:
+        signal_rows.append(f"  - Bull Div    : {n_div}")
+    signal_rows += [
         f"  - Early Entry : {n_ee}",
         f"  Total         : {total}",
     ]
+    header += signal_rows
     if extras:
         header.append(extras)
     header += ["", "━━━━━━━━━━━━━━━━━━━━━━━━━━"]
@@ -1091,27 +1091,32 @@ def send_evening_report(
     engine_results: Optional[dict] = None,
 ):
     """Sesi malam — full scan teknikal + ringkasan insider & agenda."""
-    total = (
-        len(signals.get("strong_buy", []))
-        + len(signals.get("accumulation", []))
-        + len(signals.get("bull_div", []))
-        + len(signals.get("early_entry", []))
-    )
+    n_sb  = len(signals.get("strong_buy", []))
+    n_acc = len(signals.get("accumulation", []))
+    n_div = len(signals.get("bull_div", []))
+    n_ee  = len(signals.get("early_entry", []))
+    total = n_sb + n_acc + n_ee + (n_div if ENABLE_BULL_DIV_ALERT else 0)
+
     extras = _format_screening_extras(engine_results)
 
+    signal_rows = [
+        "",
+        "<b>Sinyal teknikal</b>",
+        f"  - Strong Buy  : {n_sb}",
+        f"  - Accumulation: {n_acc}",
+    ]
+    if ENABLE_BULL_DIV_ALERT:
+        signal_rows.append(f"  - Bull Div    : {n_div}")
+    signal_rows += [
+        f"  - Early Entry : {n_ee}",
+        f"  Total         : {total}",
+    ]
     header = [
         "━━━━━━━━━━━━━━━━━━━━━━━━━━",
         "<b>🌆 EVENING SCAN — IDX</b>",
         "━━━━━━━━━━━━━━━━━━━━━━━━━━",
         f"⏰ {_now_wib()}",
-        "",
-        "<b>Sinyal teknikal</b>",
-        f"  - Strong Buy  : {len(signals.get('strong_buy', []))}",
-        f"  - Accumulation: {len(signals.get('accumulation', []))}",
-        f"  - Bull Div    : {len(signals.get('bull_div', []))}",
-        f"  - Early Entry : {len(signals.get('early_entry', []))}",
-        f"  Total         : {total}",
-    ]
+    ] + signal_rows
     if extras:
         header.append(extras)
     header.append("━━━━━━━━━━━━━━━━━━━━━━━━━━")
