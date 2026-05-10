@@ -1613,27 +1613,26 @@ def send_engine_alerts(engine_results: dict):
     insider = engine_results.get("insider")
     if insider and insider.all_insider:
         rows = _filter_insider_today_big_value(list(insider.all_insider))
-        lines.extend([_sep(), "<b>INSIDER TRADING</b>", _sep(), "⏰ " + _now_wib(), ""])
-        lines.append(
-            f"Filter: data terbaru hari ini | BUY/SELL | transaksi >= {_format_idr(float(INSIDER_ALERT_MIN_VALUE))}"
-        )
-        lines.append("")
-        show = rows[:40]
-        for t in show:
-            if isinstance(t, dict):
-                base = _format_insider_row_html(t)
-                act = str(t.get("actionType") or t.get("type") or t.get("transaction_type") or "").strip().upper()
-                s_val = _insider_signed_value(t)
-                lines.append(
-                    f"{base} | action {act or '-'} | val {_format_idr(s_val)}"
-                )
-            else:
-                lines.append(f"  • {_tg_plain(str(t), 200)}")
-        if not rows:
-            lines.append("  (tidak ada transaksi insider yang lolos filter)")
-        elif len(rows) > len(show):
-            lines.append(f"  … +{len(rows) - len(show)} transaksi lain (total {len(rows)})")
-        lines.append("")
+        if rows:
+            lines.extend([_sep(), "<b>INSIDER TRADING</b>", _sep(), "⏰ " + _now_wib(), ""])
+            lines.append(
+                f"Filter: data terbaru hari ini | BUY/SELL | transaksi >= {_format_idr(float(INSIDER_ALERT_MIN_VALUE))}"
+            )
+            lines.append("")
+            show = rows[:40]
+            for t in show:
+                if isinstance(t, dict):
+                    base = _format_insider_row_html(t)
+                    act = str(t.get("actionType") or t.get("type") or t.get("transaction_type") or "").strip().upper()
+                    s_val = _insider_signed_value(t)
+                    lines.append(
+                        f"{base} | action {act or '-'} | val {_format_idr(s_val)}"
+                    )
+                else:
+                    lines.append(f"  • {_tg_plain(str(t), 200)}")
+            if len(rows) > len(show):
+                lines.append(f"  … +{len(rows) - len(show)} transaksi lain (total {len(rows)})")
+            lines.append("")
 
     # Engine 5 — Sector Rotation
     sector = engine_results.get("sector")
