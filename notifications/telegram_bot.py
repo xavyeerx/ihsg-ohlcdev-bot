@@ -30,6 +30,7 @@ MAX_MSG = 3800  # Telegram limit ~4096, beri buffer
 # Set True untuk mengaktifkan kembali kapan saja.
 ENABLE_FREQ_ANALYZER_ALERT = False   # Freq Analyzer spike alert
 ENABLE_BULL_DIV_ALERT      = False   # Bullish Divergence alert
+ENABLE_RETAIL_OPPORTUNITY_SCORE_ALERT = False  # Blok "RETAIL OPPORTUNITY SCORE" di engine alerts
 _RETAIL_CARRY_FILE = os.path.join(os.path.dirname(__file__), "..", "database", "retail_carry.json")
 _RETAIL_CARRY_HOURS = 48
 _COMMODITY_CARRY_FILE = os.path.join(os.path.dirname(__file__), "..", "database", "commodity_impact_carry.json")
@@ -1599,13 +1600,14 @@ def send_engine_alerts(engine_results: dict):
         lines.append("")
 
     # Retail opportunity score (gabungan breakout + multibagger + RR + risk overlay).
-    try:
-        retail_lines = _build_retail_opportunity_lines(engine_results)
-        if retail_lines:
-            lines.extend(retail_lines)
-            lines.append("")
-    except Exception as e:
-        logger.warning(f"retail opportunity format: {e}")
+    if ENABLE_RETAIL_OPPORTUNITY_SCORE_ALERT:
+        try:
+            retail_lines = _build_retail_opportunity_lines(engine_results)
+            if retail_lines:
+                lines.extend(retail_lines)
+                lines.append("")
+        except Exception as e:
+            logger.warning(f"retail opportunity format: {e}")
 
     # Engine 4 — Insider Trading (nama pelapor + kode broker jika ada di payload API)
     insider = engine_results.get("insider")
