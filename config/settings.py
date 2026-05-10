@@ -170,11 +170,9 @@ INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA20 = True
 # --- Non-Retail Flow Alert ---
 # Filter saham masuk daftar akumulasi non-retail:
 #   1. nr_net / grand_total >= NON_RETAIL_FLOW_MIN_PCT  (net asing+pemerintah signifikan)
-#   2. lokal_buy_pct <= NON_RETAIL_FLOW_MAX_LOKAL_PCT   (retail tidak dominan sisi beli)
-#   3. dominant == "BUYING"                              (net transaksi keseluruhan positif)
+#   2. broksum_bandar in ACC atau BIG_ACC               (konsentrasi beli broker ≥25% grand total)
 # Diurutkan dari NR net% terbesar. Alert hanya di sesi malam dan siang.
-NON_RETAIL_FLOW_MIN_PCT      = 20.0   # % minimum net non-retail dari grand total
-NON_RETAIL_FLOW_MAX_LOKAL_PCT = 40.0  # % maksimum lokal di sisi beli
+NON_RETAIL_FLOW_MIN_PCT = 20.0   # % minimum net non-retail dari grand total
 
 # --- Insider Alert Filter ---
 # Hanya kirim insider transaksi besar + net buy akumulasi dalam window hari ini.

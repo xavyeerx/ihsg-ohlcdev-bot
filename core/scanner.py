@@ -22,7 +22,6 @@ from config.settings   import (
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA50,
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA20,
     NON_RETAIL_FLOW_MIN_PCT,
-    NON_RETAIL_FLOW_MAX_LOKAL_PCT,
 )
 from core.data_fetcher import (
     fetch_ohlcv, fetch_bandarmology_bundle,
@@ -531,20 +530,17 @@ def filter_signals(results: list) -> Dict[str, list]:
 
         # Non-retail flow accumulation — semua kondisi harus terpenuhi:
         #   1. net asing+pemerintah >= NON_RETAIL_FLOW_MIN_PCT dari grand total
-        #   2. lokal_buy_pct <= NON_RETAIL_FLOW_MAX_LOKAL_PCT (retail tidak dominan beli)
-        #   3. dominant == BUYING (net keseluruhan positif)
+        #   2. broksum_bandar = ACC atau BIG_ACC (konsentrasi beli broker ≥25% grand total)
         # Tidak ada filter score — AVOID pun masuk jika smart money akumulasi.
         bd = r.bandro
         if bd and getattr(bd, "has_broksum", False):
             nr_net      = float(getattr(bd, "broksum_non_retail_net", 0) or 0)
             grand_total = float(getattr(bd, "broksum_bandar_grand_total", 0) or 0)
-            lokal_buy   = float(getattr(bd, "broksum_lokal_buy_pct", 0) or 0)
-            dominant    = str(getattr(bd, "broksum_dominant", "") or "")
+            bandar      = str(getattr(bd, "broksum_bandar", "") or "")
             if nr_net > 0 and grand_total > 0:
                 nr_net_pct = nr_net / grand_total * 100.0
                 if (nr_net_pct >= NON_RETAIL_FLOW_MIN_PCT
-                        and lokal_buy <= NON_RETAIL_FLOW_MAX_LOKAL_PCT
-                        and dominant == "BUYING"):
+                        and bandar in ("ACC", "BIG_ACC")):
                     signals["non_retail_flow"].append(r)
 
     for key in signals:
