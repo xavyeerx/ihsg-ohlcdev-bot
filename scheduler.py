@@ -60,7 +60,11 @@ def _now_wib():
 
 
 def _is_weekend_wib(dt=None):
-    """True jika Sabtu/Minggu di zona WIB (bukan hari perdagangan IDX)."""
+    """True jika Sabtu/Minggu di zona WIB (bukan hari perdagangan IDX).
+    Set env var FORCE_RUN=1 untuk bypass (testing lokal).
+    """
+    if os.environ.get("FORCE_RUN", "").strip() in ("1", "true", "yes"):
+        return False
     d = dt if dt is not None else _now_wib()
     if d.tzinfo is None:
         d = WIB.localize(d)
