@@ -530,17 +530,21 @@ def filter_signals(results: list) -> Dict[str, list]:
 
         # Non-retail flow accumulation — semua kondisi harus terpenuhi:
         #   1. net asing+pemerintah >= NON_RETAIL_FLOW_MIN_PCT dari grand total
-        #   2. broksum_bandar = ACC atau BIG_ACC (konsentrasi beli broker ≥25% grand total)
+        #   2. buyer_count < seller_count (beli terkonsentrasi, bukan retail massal)
+        #   3. dominant == BUYING (net nilai keseluruhan positif)
         # Tidak ada filter score — AVOID pun masuk jika smart money akumulasi.
         bd = r.bandro
         if bd and getattr(bd, "has_broksum", False):
-            nr_net      = float(getattr(bd, "broksum_non_retail_net", 0) or 0)
-            grand_total = float(getattr(bd, "broksum_bandar_grand_total", 0) or 0)
-            bandar      = str(getattr(bd, "broksum_bandar", "") or "")
+            nr_net       = float(getattr(bd, "broksum_non_retail_net", 0) or 0)
+            grand_total  = float(getattr(bd, "broksum_bandar_grand_total", 0) or 0)
+            buyer_count  = int(getattr(bd, "broksum_total_buyer", 0) or 0)
+            seller_count = int(getattr(bd, "broksum_total_seller", 0) or 0)
+            dominant     = str(getattr(bd, "broksum_dominant", "") or "")
             if nr_net > 0 and grand_total > 0:
                 nr_net_pct = nr_net / grand_total * 100.0
                 if (nr_net_pct >= NON_RETAIL_FLOW_MIN_PCT
-                        and bandar in ("ACC", "BIG_ACC")):
+                        and buyer_count < seller_count
+                        and dominant == "BUYING"):
                     signals["non_retail_flow"].append(r)
 
     for key in signals:
