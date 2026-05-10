@@ -2,6 +2,7 @@
 # ============================================================
 # SCHEDULER — ihsg-ohlcdev-bot v2
 # Jadwal: 08:00 (morning brief) + 12:00 (intraday sesi-2) + malam (evening scan)
+# Hanya Senin–Jumat WIB (IDX libur Sabtu–Minggu; tidak ada scan/alert otomatis).
 # ============================================================
 # Testing manual:
 #   python run_morning.py
@@ -55,6 +56,16 @@ AUTO_SCHEDULE = False  # True = aktifkan jadwal otomatis
 
 def _now_wib():
     return datetime.now(WIB)
+
+
+def _is_weekend_wib(dt=None):
+    """True jika Sabtu/Minggu di zona WIB (bukan hari perdagangan IDX)."""
+    d = dt if dt is not None else _now_wib()
+    if d.tzinfo is None:
+        d = WIB.localize(d)
+    else:
+        d = d.astimezone(WIB)
+    return d.weekday() >= 5  # Mon=0 … Sun=6
 
 
 def _scan_all(session: str = "evening"):
@@ -116,6 +127,9 @@ def _scan_all(session: str = "evening"):
 # ── Sesi Pagi 08:00 ──────────────────────────────────────────
 
 def run_morning_scan():
+    if _is_weekend_wib():
+        logger.info("SESI PAGI dilewati: akhir pekan (tidak ada perdagangan IDX)")
+        return
     now = _now_wib().strftime("%H:%M WIB")
     logger.info(f"[{now}] SESI PAGI — Morning macro brief only")
 
@@ -153,6 +167,9 @@ def run_morning_scan():
 # ── Sesi Tengah Hari 12:00 ─────────────────────────────────────
 
 def run_noon_scan():
+    if _is_weekend_wib():
+        logger.info("SESI 12:00 dilewati: akhir pekan (tidak ada perdagangan IDX)")
+        return
     now = _now_wib().strftime("%H:%M WIB")
     logger.info(f"[{now}] SESI 2 — Intraday valid signal check")
 
@@ -189,6 +206,9 @@ def run_noon_scan():
 # ── Sesi Malam 16:00 ─────────────────────────────────────────
 
 def run_evening_scan():
+    if _is_weekend_wib():
+        logger.info("SESI MALAM dilewati: akhir pekan (tidak ada perdagangan IDX)")
+        return
     now = _now_wib().strftime("%H:%M WIB")
     logger.info(f"[{now}] SESI MALAM — Full scan + signal filter")
 
@@ -272,12 +292,14 @@ def start_scheduler():
     noon_time = "%02d:%02d" % (NOON_SCAN_HOUR, NOON_SCAN_MINUTE)
     evening_time = "%02d:%02d" % (EVENING_SCAN_HOUR, EVENING_SCAN_MINUTE)
 
-    sch.every().day.at(morning_time).do(run_morning_scan)
-    sch.every().day.at(noon_time).do(run_noon_scan)
-    sch.every().day.at(evening_time).do(run_evening_scan)
+    _weekdays = ("monday", "tuesday", "wednesday", "thursday", "friday")
+    for _d in _weekdays:
+        getattr(sch.every(), _d).at(morning_time).do(run_morning_scan)
+        getattr(sch.every(), _d).at(noon_time).do(run_noon_scan)
+        getattr(sch.every(), _d).at(evening_time).do(run_evening_scan)
 
     logger.info(
-        "Jadwal aktif: pagi=%s, sesi2=%s, malam=%s WIB"
+        "Jadwal aktif (Sen–Jum WIB): pagi=%s, sesi2=%s, malam=%s"
         % (morning_time, noon_time, evening_time)
     )
 

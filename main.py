@@ -9,7 +9,8 @@
 # Bot akan:
 #   1. Kirim pesan startup ke Telegram
 #   2. Sesi pagi 08:00 WIB  : macro brief + signal scan + engine alerts
-#   3. Sesi malam 16:00 WIB : full signal scan
+#   3. Sesi malam (lihat EVENING_* di settings) : full signal scan
+# Scan/alert terjadwal hanya Senin–Jumat WIB (IDX libur Sabtu–Minggu).
 #
 # Screening: Strong Buy, Accumulation, Bull Div, Early Entry, Freq Analyzer;
 #   insider + kalender (dividen, RUPS, RI, SS). Universe: all stocks (API).
