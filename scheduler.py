@@ -26,7 +26,6 @@ from config.settings    import (
     EVENING_SCAN_HOUR, EVENING_SCAN_MINUTE,
     SCAN_MAX_WORKERS,
     NOON_INCLUDE_ENGINE_FRESH_ALERTS,
-    NOON_TEST_MODE_IGNORE_HISTORY,
     COMMAND_ONLY_MODE,
 )
 from config.stocks_list import resolve_scan_universe
@@ -179,6 +178,16 @@ def run_noon_scan():
     logger.info(f"[{now}] SESI 2 — Intraday valid signal check")
 
     try:
+        # Market-level engines (sweep, bandar, insider, sektor, whale, dll.) — data intraday API;
+        # OHLC per-saham scan di bawah pakai candle 4h/daily terbaru dari API (bukan feed tick).
+        engine_results = None
+        if NOON_INCLUDE_ENGINE_FRESH_ALERTS:
+            try:
+                engine_results = run_all_engines()
+                logger.info("  Engines selesai (sesi siang)")
+            except Exception as e:
+                logger.warning("  Engines error (non-fatal): %s", e)
+
         results, state = _scan_all(session="noon")
         if not results:
             send_error("Sesi 12:00: semua saham gagal di-scan")
@@ -204,6 +213,12 @@ def run_noon_scan():
                 send_non_retail_flow_alert(nrf_list, session="noon")
             except Exception as e:
                 logger.warning("  Non-retail flow alert error: %s", e)
+
+        if NOON_INCLUDE_ENGINE_FRESH_ALERTS and engine_results:
+            try:
+                send_engine_alerts(engine_results)
+            except Exception as e:
+                logger.warning("  Engine alerts error (non-fatal): %s", e)
 
         total_raw = sum(len(v) for v in raw_signals.values())
         total_kept = sum(len(v) for v in noon_signals.values())

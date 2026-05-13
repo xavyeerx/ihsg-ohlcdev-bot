@@ -138,8 +138,9 @@ OHLCV_BARS       = 90
 NOON_OHLCV_INTERVAL = "4h"
 NOON_OHLCV_BARS     = 120
 NOON_DAILY_BARS     = 120   # untuk likuiditas + bias harian + bandarmology (asing/freq)
-# Sertakan engine fresh (market sweep/bandar/insider/event) saat sesi 12.
-# Jika terasa "double alert", set False agar sesi 12 hanya alert teknikal intraday.
+# Sertakan run_all_engines + send_engine_alerts setelah scan sesi 12 (sweep, bandar, insider, sektor, whale).
+# OHLC intraday = candle dari API (4h/daily terbaru saat fetch), bukan WebSocket tick-by-tick.
+# Jika terasa "double alert" vs malam, set False agar sesi 12 hanya teknikal intraday + NR flow.
 NOON_INCLUDE_ENGINE_FRESH_ALERTS = True
 # Mode testing sesi 12:
 # True  -> abaikan cache/history fresh, tampilkan data apa adanya setiap run.
