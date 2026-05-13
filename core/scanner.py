@@ -598,6 +598,8 @@ def filter_intraday_session2_signals(signals: Dict[str, list]) -> Dict[str, list
         return ((float(r.tp1) - cp) / cp) * 100.0
 
     for key, items in signals.items():
+        if key not in selected:
+            continue
         for r in items or []:
             sr = getattr(r, "score_result", None)
             score = int(getattr(sr, "total_score", 0) or 0)
