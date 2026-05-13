@@ -26,6 +26,7 @@ from config.settings    import (
     EVENING_SCAN_HOUR, EVENING_SCAN_MINUTE,
     SCAN_MAX_WORKERS,
     NOON_INCLUDE_ENGINE_FRESH_ALERTS,
+    MORNING_BRIEF_ALERT_ENABLED,
     COMMAND_ONLY_MODE,
 )
 from config.stocks_list import resolve_scan_universe
@@ -133,6 +134,9 @@ def _scan_all(session: str = "evening"):
 def run_morning_scan():
     if _is_weekend_wib():
         logger.info("SESI PAGI dilewati: akhir pekan (tidak ada perdagangan IDX)")
+        return
+    if not MORNING_BRIEF_ALERT_ENABLED:
+        logger.info("SESI PAGI dilewati: MORNING_BRIEF_ALERT_ENABLED=False (tanpa morning brief)")
         return
     now = _now_wib().strftime("%H:%M WIB")
     logger.info(f"[{now}] SESI PAGI — Morning macro brief only")

@@ -32,6 +32,9 @@ NOON_SCAN_MINUTE    = 0
 EVENING_SCAN_HOUR   = 18
 EVENING_SCAN_MINUTE = 30
 
+# Kirim Telegram morning brief (makro). False = tidak fetch & tidak kirim (hemat quota).
+MORNING_BRIEF_ALERT_ENABLED = False
+
 # --- Output config ---
 TOP_N_STRONG_BUY   = 3
 TOP_N_ACCUMULATION = 3
