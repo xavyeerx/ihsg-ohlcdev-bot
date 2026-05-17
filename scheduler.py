@@ -227,6 +227,8 @@ def run_noon_scan():
                 if nrf5:
                     logger.info("  NR flow 5D candidates: %d", len(nrf5))
                     send_non_retail_flow_5d_alert(nrf5, session="noon")
+                else:
+                    logger.info("  NR flow 5D: tidak ada saham yang lolos filter (tanpa alert Telegram)")
             except Exception as e:
                 logger.warning("  NR flow 5D alert error: %s", e)
 
@@ -293,8 +295,12 @@ def run_evening_scan():
                 if nrf5:
                     logger.info("  NR flow 5D candidates: %d", len(nrf5))
                     send_non_retail_flow_5d_alert(nrf5, session="evening")
+                else:
+                    logger.info("  NR flow 5D: tidak ada saham yang lolos filter (tanpa alert Telegram)")
             except Exception as e:
                 logger.warning("  NR flow 5D alert error: %s", e)
+        else:
+            logger.info("  NR flow 5D: NON_RETAIL_FLOW_5D_ALERT_ENABLED=False")
 
         # ── Sweep / bandar / insider pasar / sektor / whale (dari API market-level) ──
         if engine_results:

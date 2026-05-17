@@ -113,14 +113,25 @@ def build_nr_flow_5d_candidates(results: list) -> list:
     Return list ScanResult dengan atribut nr_flow_5d_* terisi, diurut nr_net_pct 5D desc.
     """
     out = []
-    for r in results:
+    total = len(results or [])
+    logger.info("NR flow 5D: mulai cek %d simbol (butuh API broksum per hari, bisa beberapa menit)...", total)
+    for i, r in enumerate(results or [], 1):
         sym = getattr(r, "symbol", "")
         try:
             days = fetch_nr_flow_trading_days(sym)
             if not days:
+                logger.debug("[%s] NR 5D skip: kurang dari %d hari data broksum", sym, NON_RETAIL_FLOW_5D_TRADING_DAYS)
                 continue
             agg = aggregate_nr_flow_days(days)
             if not qualifies_nr_flow_5d(agg):
+                logger.debug(
+                    "[%s] NR 5D skip: net%%=%.1f sum_nr=%s buyer=%s seller=%s",
+                    sym,
+                    float(agg.get("nr_net_pct", 0) or 0),
+                    agg.get("sum_nr_net"),
+                    agg.get("latest_n_buy"),
+                    agg.get("latest_n_sell"),
+                )
                 continue
             r.nr_flow_5d_days = agg["days"]
             r.nr_flow_5d_date_from = agg["date_from"]
@@ -131,5 +142,8 @@ def build_nr_flow_5d_candidates(results: list) -> list:
             out.append(r)
         except Exception as e:
             logger.warning("[%s] NR flow 5D error: %s", sym, e)
+        if i % 10 == 0 or i == total:
+            logger.info("NR flow 5D: progres %d/%d ...", i, total)
     out.sort(key=lambda x: float(getattr(x, "nr_flow_5d_net_pct", 0) or 0), reverse=True)
+    logger.info("NR flow 5D: selesai — %d/%d simbol lolos filter", len(out), total)
     return out
