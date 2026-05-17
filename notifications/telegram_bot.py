@@ -1138,7 +1138,7 @@ def send_evening_report(
 
 
 def send_noon_intraday_alert(signals: Dict[str, list]):
-    """Sesi 12:00 — shortlist intraday sesi 2 yang masih fresh/valid."""
+    """Sesi 12:00 — alert sinyal teknikal intraday (TF 4h)."""
     total = (
         len(signals.get("strong_buy", []))
         + len(signals.get("accumulation", []))
@@ -1167,11 +1167,6 @@ def send_noon_intraday_alert(signals: Dict[str, list]):
         f"TF teknikal: <b>{NOON_OHLCV_INTERVAL}</b> | bias daily: <b>{bias_txt}</b>",
         f"Mode: <b>{mode_txt}</b>",
         "",
-        "Filter:",
-        "  - Belum TP1 / tidak mepet target",
-        "  - Belum terlalu naik (masih ada ruang lanjut)",
-        "  - Fokus kandidat lanjut sore / watchlist besok pagi",
-        "",
         "<b>Sinyal teknikal terpilih</b>",
         f"  - Strong Buy  : {len(signals.get('strong_buy', []))}",
         f"  - Accumulation: {len(signals.get('accumulation', []))}",
@@ -1190,7 +1185,7 @@ def send_noon_intraday_alert(signals: Dict[str, list]):
     if total > 0:
         send_all_signals(signals)
     else:
-        _send("Tidak ada kandidat sesi 2 yang masih valid/fresh pada jam 12.")
+        _send("Tidak ada sinyal teknikal sesi 2 pada jam 12.")
 
 
 # ── Non-Retail Flow Accumulation Alert ───────────────────────

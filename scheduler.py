@@ -33,7 +33,7 @@ from config.settings    import (
 )
 from config.stocks_list import resolve_scan_universe
 from core.scanner       import (
-    scan_symbol, filter_signals, has_any_signal, filter_intraday_session2_signals
+    scan_symbol, filter_signals, has_any_signal
 )
 from core.engines       import run_all_engines
 from notifications.telegram_bot import (
@@ -204,16 +204,15 @@ def run_noon_scan():
             return
 
         raw_signals = filter_signals(results)
-        filtered_noon = filter_intraday_session2_signals(raw_signals)
-        # Sesi 12: teknikal saja (NOON_TECHNICAL_ONLY) atau + FA jika flag off.
+        # Sesi 12: semua sinyal teknikal yang lolos scan (tanpa filter fresh/TP1/run-up).
         noon_signals = {
-            "strong_buy": filtered_noon.get("strong_buy", []),
-            "accumulation": filtered_noon.get("accumulation", []),
+            "strong_buy": raw_signals.get("strong_buy", []),
+            "accumulation": raw_signals.get("accumulation", []),
             "bull_div": [],
-            "early_entry": filtered_noon.get("early_entry", []),
+            "early_entry": raw_signals.get("early_entry", []),
         }
         if not NOON_TECHNICAL_ONLY:
-            noon_signals["frequency_analyzer"] = filtered_noon.get("frequency_analyzer", [])
+            noon_signals["frequency_analyzer"] = raw_signals.get("frequency_analyzer", [])
         send_noon_intraday_alert(noon_signals)
 
         if not NOON_TECHNICAL_ONLY:
@@ -242,11 +241,8 @@ def run_noon_scan():
             except Exception as e:
                 logger.warning("  Engine alerts error (non-fatal): %s", e)
 
-        total_raw = sum(len(v) for v in raw_signals.values())
         total_kept = sum(len(v) for v in noon_signals.values())
-        logger.info(
-            "  Sinyal sesi-2: %d kandidat terpilih dari %d sinyal awal", total_kept, total_raw
-        )
+        logger.info("  Sinyal sesi-2: %d kandidat teknikal", total_kept)
     except Exception as e:
         logger.error("Noon scan error: %s" % e, exc_info=True)
         send_error("Sesi 12:00 error: %s" % e)

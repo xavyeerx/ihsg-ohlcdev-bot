@@ -163,11 +163,7 @@ CONFIRMATION_BARS    = 1               # bar konfirmasi breakout supertrend
 MIN_DAILY_TURNOVER   = 5_000_000_000   # 5 Miliar IDR — filter likuiditas
 
 # --- Intraday Session-2 (12:00) ---
-# Filter agar alert jam 12 fokus kandidat yang masih fresh untuk lanjut sesi 2.
-INTRADAY_NOON_MIN_SCORE      = 45
-INTRADAY_NOON_MIN_UPSIDE_PCT = 0.2
-INTRADAY_NOON_MAX_RUNUP_PCT  = 15.0
-# Selaraskan dengan screening malam (daily): hanya jika struktur daily masih mendukung.
+# Opsional: skip simbol jika close daily di bawah EMA (saat REQUIRE_DAILY_BIAS=True).
 INTRADAY_NOON_REQUIRE_DAILY_BIAS = False
 INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA50 = False
 INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA20 = True

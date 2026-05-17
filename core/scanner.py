@@ -16,8 +16,6 @@ from config.settings   import (
     FREQUENCY_SPIKE_THRESHOLD,
     FREQ_ANALYZER_SPIKE_THRESHOLD,
     FA_MIN_STRENGTH, FA_MIN_FLOW_SCORE, FA_MAX_VOLUME_RATIO,
-    INTRADAY_NOON_MIN_SCORE, INTRADAY_NOON_MIN_UPSIDE_PCT,
-    INTRADAY_NOON_MAX_RUNUP_PCT,
     INTRADAY_NOON_REQUIRE_DAILY_BIAS,
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA50,
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA20,
@@ -586,69 +584,4 @@ def has_any_signal(signals: dict) -> bool:
     """True jika ada minimal satu sinyal dari kategori manapun."""
     return any(len(v) > 0 for v in signals.values())
 
-
-def filter_intraday_session2_signals(signals: Dict[str, list]) -> Dict[str, list]:
-    """
-    Filter khusus alert jam 12 (sesi 2):
-    - abaikan kandidat yang sudah TP1 / terlalu dekat target,
-    - abaikan kandidat yang sudah terlalu naik (extended),
-    - fokus kandidat yang masih punya ruang naik.
-    """
-    selected = {
-        "strong_buy": [],
-        "accumulation": [],
-        "bull_div": [],
-        "early_entry": [],
-        "frequency_analyzer": [],
-    }
-    priority = {
-        "strong_buy": 5,
-        "frequency_analyzer": 4,
-        "accumulation": 3,
-        "early_entry": 2,
-        "bull_div": 1,
-    }
-
-    def _upside_to_tp1_pct(r) -> float:
-        if float(getattr(r, "tp1", 0.0) or 0.0) <= 0:
-            return 999.0
-        cp = float(getattr(r, "current_price", 0.0) or 0.0)
-        if cp <= 0:
-            return -999.0
-        return ((float(r.tp1) - cp) / cp) * 100.0
-
-    for key, items in signals.items():
-        if key not in selected:
-            continue
-        for r in items or []:
-            sr = getattr(r, "score_result", None)
-            score = int(getattr(sr, "total_score", 0) or 0)
-            if score < INTRADAY_NOON_MIN_SCORE:
-                continue
-
-            upside_tp1 = _upside_to_tp1_pct(r)
-            if upside_tp1 <= 0:
-                # TP1 sudah tercapai/terlewati.
-                continue
-            if upside_tp1 < INTRADAY_NOON_MIN_UPSIDE_PCT:
-                # Terlalu mepet target, risk/reward menurun.
-                continue
-
-            if float(getattr(r, "change_pct", 0.0) or 0.0) >= INTRADAY_NOON_MAX_RUNUP_PCT:
-                # Sudah naik terlalu tinggi sejak sesi awal.
-                continue
-
-            selected[key].append(r)
-
-    for key in selected:
-        selected[key].sort(
-            key=lambda r: (
-                priority.get(key, 0),
-                int(getattr(getattr(r, "score_result", None), "total_score", 0) or 0),
-                float(getattr(r, "flow_score", 0) or 0.0),
-                float(getattr(r, "change_pct", 0) or 0.0),
-            ),
-            reverse=True,
-        )
-    return selected
 
