@@ -199,13 +199,13 @@ def run_noon_scan():
 
         raw_signals = filter_signals(results)
         noon_signals = filter_intraday_session2_signals(raw_signals)
-        # Sesi 12 khusus teknikal: hanya Strong Buy / Accumulation / Early Entry.
+        # Sesi 12: Strong Buy / Accumulation / Early Entry (+ Freq Analyzer jika flag on).
         noon_signals = {
             "strong_buy": noon_signals.get("strong_buy", []),
             "accumulation": noon_signals.get("accumulation", []),
             "bull_div": [],
             "early_entry": noon_signals.get("early_entry", []),
-            "frequency_analyzer": [],
+            "frequency_analyzer": noon_signals.get("frequency_analyzer", []),
         }
         send_noon_intraday_alert(noon_signals)
 

@@ -28,7 +28,7 @@ WIB    = pytz.timezone(TIMEZONE)
 MAX_MSG = 3800  # Telegram limit ~4096, beri buffer
 # Flag alert opsional — logika deteksi tetap jalan, hanya output ke Telegram yang dikontrol.
 # Set True untuk mengaktifkan kembali kapan saja.
-ENABLE_FREQ_ANALYZER_ALERT = False   # Freq Analyzer spike alert
+ENABLE_FREQ_ANALYZER_ALERT = True    # Freq Analyzer spike alert
 ENABLE_BULL_DIV_ALERT      = False   # Bullish Divergence alert
 ENABLE_RETAIL_OPPORTUNITY_SCORE_ALERT = False  # Blok "RETAIL OPPORTUNITY SCORE" di engine alerts
 _RETAIL_CARRY_FILE = os.path.join(os.path.dirname(__file__), "..", "database", "retail_carry.json")
@@ -1096,7 +1096,12 @@ def send_evening_report(
     n_acc = len(signals.get("accumulation", []))
     n_div = len(signals.get("bull_div", []))
     n_ee  = len(signals.get("early_entry", []))
-    total = n_sb + n_acc + n_ee + (n_div if ENABLE_BULL_DIV_ALERT else 0)
+    n_fa  = len(signals.get("frequency_analyzer", []))
+    total = n_sb + n_acc + n_ee
+    if ENABLE_BULL_DIV_ALERT:
+        total += n_div
+    if ENABLE_FREQ_ANALYZER_ALERT:
+        total += n_fa
 
     extras = _format_screening_extras(engine_results)
 
@@ -1108,10 +1113,10 @@ def send_evening_report(
     ]
     if ENABLE_BULL_DIV_ALERT:
         signal_rows.append(f"  - Bull Div    : {n_div}")
-    signal_rows += [
-        f"  - Early Entry : {n_ee}",
-        f"  Total         : {total}",
-    ]
+    signal_rows.append(f"  - Early Entry : {n_ee}")
+    if ENABLE_FREQ_ANALYZER_ALERT:
+        signal_rows.append(f"  - Freq Analyzer: {n_fa}")
+    signal_rows.append(f"  Total         : {total}")
     header = [
         "━━━━━━━━━━━━━━━━━━━━━━━━━━",
         "<b>🌆 EVENING SCAN — IDX</b>",
@@ -1135,6 +1140,11 @@ def send_noon_intraday_alert(signals: Dict[str, list]):
         len(signals.get("strong_buy", []))
         + len(signals.get("accumulation", []))
         + len(signals.get("early_entry", []))
+        + (
+            len(signals.get("frequency_analyzer", []))
+            if ENABLE_FREQ_ANALYZER_ALERT
+            else 0
+        )
     )
     bias_bits = []
     if INTRADAY_NOON_REQUIRE_DAILY_BIAS:
@@ -1160,6 +1170,12 @@ def send_noon_intraday_alert(signals: Dict[str, list]):
         f"  - Strong Buy  : {len(signals.get('strong_buy', []))}",
         f"  - Accumulation: {len(signals.get('accumulation', []))}",
         f"  - Early Entry : {len(signals.get('early_entry', []))}",
+    ]
+    if ENABLE_FREQ_ANALYZER_ALERT:
+        header.append(
+            f"  - Freq Analyzer: {len(signals.get('frequency_analyzer', []))}"
+        )
+    header += [
         f"  Total         : {total}",
         "━━━━━━━━━━━━━━━━━━━━━━━━━━",
     ]
