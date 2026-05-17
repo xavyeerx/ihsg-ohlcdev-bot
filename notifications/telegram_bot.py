@@ -22,6 +22,7 @@ from config.settings import (
     NON_RETAIL_FLOW_MIN_PCT,
     NON_RETAIL_FLOW_5D_TRADING_DAYS,
     NON_RETAIL_FLOW_5D_MIN_PCT,
+    NOON_TECHNICAL_ONLY,
 )
 
 logger = logging.getLogger(__name__)
@@ -1142,12 +1143,9 @@ def send_noon_intraday_alert(signals: Dict[str, list]):
         len(signals.get("strong_buy", []))
         + len(signals.get("accumulation", []))
         + len(signals.get("early_entry", []))
-        + (
-            len(signals.get("frequency_analyzer", []))
-            if ENABLE_FREQ_ANALYZER_ALERT
-            else 0
-        )
     )
+    if ENABLE_FREQ_ANALYZER_ALERT and not NOON_TECHNICAL_ONLY:
+        total += len(signals.get("frequency_analyzer", []))
     bias_bits = []
     if INTRADAY_NOON_REQUIRE_DAILY_BIAS:
         if INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA20:
@@ -1155,6 +1153,11 @@ def send_noon_intraday_alert(signals: Dict[str, list]):
         if INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA50:
             bias_bits.append("close daily ≥ EMA50")
     bias_txt = " + ".join(bias_bits) if bias_bits else "(off)"
+    mode_txt = (
+        "Strong Buy / Accumulation / Early Entry — tanpa filter broksum"
+        if NOON_TECHNICAL_ONLY
+        else "Strong Buy / Accumulation / Early Entry (+ FA jika aktif)"
+    )
     header = [
         "━━━━━━━━━━━━━━━━━━━━━━━━━━",
         "<b>🕛 INTRADAY SESI 2 ALERT</b>",
@@ -1162,6 +1165,7 @@ def send_noon_intraday_alert(signals: Dict[str, list]):
         f"⏰ {_now_wib()}",
         "",
         f"TF teknikal: <b>{NOON_OHLCV_INTERVAL}</b> | bias daily: <b>{bias_txt}</b>",
+        f"Mode: <b>{mode_txt}</b>",
         "",
         "Filter:",
         "  - Belum TP1 / tidak mepet target",
@@ -1173,7 +1177,7 @@ def send_noon_intraday_alert(signals: Dict[str, list]):
         f"  - Accumulation: {len(signals.get('accumulation', []))}",
         f"  - Early Entry : {len(signals.get('early_entry', []))}",
     ]
-    if ENABLE_FREQ_ANALYZER_ALERT:
+    if ENABLE_FREQ_ANALYZER_ALERT and not NOON_TECHNICAL_ONLY:
         header.append(
             f"  - Freq Analyzer: {len(signals.get('frequency_analyzer', []))}"
         )

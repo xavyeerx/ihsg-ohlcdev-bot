@@ -22,6 +22,7 @@ from config.settings   import (
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA50,
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA20,
     NON_RETAIL_FLOW_MIN_PCT,
+    NOON_TECHNICAL_ONLY,
 )
 from core.data_fetcher import (
     fetch_ohlcv, fetch_bandarmology_bundle,
@@ -77,8 +78,8 @@ class ScanResult:
     df:             Any = field(default=None, repr=False, compare=False)
 
     # ── Signal flags (sama dengan bot lama) ──────────────────
-    is_strong_buy:  bool = False   # Supertrend breakout confirmed + score >= 70
-    is_accumulation:bool = False   # Bullish + stoch oversold + volume spike
+    is_strong_buy:  bool = False   # Breakout + score >= 70 + ADX trending
+    is_accumulation:bool = False   # Stoch momentum + volume spike + score >= 55
     is_bull_div:    bool = False   # Bullish divergence (bearish trend)
     is_early_entry: bool = False   # Serok bawah / healthy correction
     is_frequency_analyzer: bool = False  # Lonjakan frequency (early bandar accumulation)
@@ -259,17 +260,21 @@ def scan_symbol(symbol: str, prev_states: Dict = None, session: str = "") -> Sca
     _n_buy  = int(getattr(_bd, "broksum_total_buyer",  0) or 0) if _bd else 0
     _n_sell = int(getattr(_bd, "broksum_total_seller", 0) or 0) if _bd else 0
     _no_data = (_n_buy == 0 and _n_sell == 0)
+    _broksum_gates = not (is_noon and NOON_TECHNICAL_ONLY)
 
-    if result.change_pct < 0 and not _no_data:
-        # Harga turun: hanya lolos jika buyer < seller (tanda akumulasi tersembunyi)
-        _price_broker_ok = _n_buy < _n_sell
+    if _broksum_gates:
+        if result.change_pct < 0 and not _no_data:
+            # Harga turun: hanya lolos jika buyer < seller (tanda akumulasi tersembunyi)
+            _price_broker_ok = _n_buy < _n_sell
+        else:
+            _price_broker_ok = True
+        _non_retail_net = float(getattr(_bd, "broksum_non_retail_net", 0.0) or 0.0) if _bd else 0.0
+        non_retail_flow_ok = _non_retail_net > 0
     else:
-        # Harga naik/flat atau tidak ada data broker: lolos tanpa syarat broker
         _price_broker_ok = True
-    _non_retail_net = float(getattr(_bd, "broksum_non_retail_net", 0.0) or 0.0) if _bd else 0.0
-    non_retail_flow_ok = _non_retail_net > 0
+        non_retail_flow_ok = True
 
-    if (is_bullish and (breakout_confirmed or breakout_up)
+    if ((breakout_confirmed or breakout_up)
             and recent_breakout
             and score_result.total_score >= STRONG_BUY_THRESHOLD
             and is_trending
@@ -292,13 +297,15 @@ def scan_symbol(symbol: str, prev_states: Dict = None, session: str = "") -> Sca
     acc_volume   = bool(last.get("is_volume_spike", False)) or bool(last.get("is_unusual_volume", False))
     not_sideways = not bool(last.get("is_sideways", False))
 
-    # Filter harga turun: buyer harus < seller (stealth acc) agar lolos
-    if result.change_pct < 0 and not _no_data:
-        _acc_price_ok = _n_buy < _n_sell
+    if _broksum_gates:
+        if result.change_pct < 0 and not _no_data:
+            _acc_price_ok = _n_buy < _n_sell
+        else:
+            _acc_price_ok = True
     else:
         _acc_price_ok = True
 
-    if (is_bullish and acc_momentum and acc_volume
+    if (acc_momentum and acc_volume
             and score_result.total_score >= ACCUMULATE_THRESHOLD
             and not_sideways
             and _acc_price_ok
@@ -343,9 +350,11 @@ def scan_symbol(symbol: str, prev_states: Dict = None, session: str = "") -> Sca
         ])
         result.early_strength = strength
 
-        # Filter harga turun: buyer harus < seller (stealth acc) agar lolos
-        if result.change_pct < 0 and not _no_data:
-            _ee_price_ok = _n_buy < _n_sell
+        if _broksum_gates:
+            if result.change_pct < 0 and not _no_data:
+                _ee_price_ok = _n_buy < _n_sell
+            else:
+                _ee_price_ok = True
         else:
             _ee_price_ok = True
 
@@ -489,7 +498,8 @@ def scan_symbol(symbol: str, prev_states: Dict = None, session: str = "") -> Sca
         result.flow_stage = ""
 
     if (
-        fa_spike_today
+        not (is_noon and NOON_TECHNICAL_ONLY)
+        and fa_spike_today
         and new_spike_today  # alert hanya saat lonjakan BARU freq_analyzer
         and pre_markup_ok
         and price_ok

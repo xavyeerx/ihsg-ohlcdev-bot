@@ -66,7 +66,7 @@ MIN_ATR_PERCENT = 0.5
 
 # --- ADX ---
 ADX_PERIOD    = 14
-ADX_THRESHOLD = 25
+ADX_THRESHOLD = 20
 
 # --- MACD ---
 MACD_FAST   = 12
@@ -75,8 +75,8 @@ MACD_SIGNAL = 9
 
 # --- Volume (sama dengan bot lama ihsg-supertrend-scanner v5) ---
 VOLUME_PERIOD            = 20
-VOLUME_SPIKE_THRESHOLD   = 1.5
-UNUSUAL_VOLUME_THRESHOLD = 2.5
+VOLUME_SPIKE_THRESHOLD   = 1.0
+UNUSUAL_VOLUME_THRESHOLD = 1.5
 MIN_VOLUME               = 100_000
 
 # --- Frequency Analyzer ---
@@ -121,8 +121,8 @@ TP2_MIN_MULTIPLIER = 1.3
 TP2_MAX_MULTIPLIER = 3.0
 
 # --- Scoring Thresholds ---
-# Total max = 100 | Teknikal: 70 pts | Bandarmology: 30 pts
-# Disesuaikan dengan bot lama: BUY_THRESHOLD=70, ACCUMULATE=55, HOLD=40
+# Total max = 100 (pure teknikal; bandarmology tidak masuk score)
+# STRONG BUY=70, ACCUMULATE=55, HOLD=40
 STRONG_BUY_THRESHOLD = 70
 ACCUMULATE_THRESHOLD = 55
 HOLD_THRESHOLD       = 40
@@ -159,7 +159,7 @@ RATE_LIMIT_DELAY = 0.0  # Ultra: tidak perlu delay antar retry
 SCAN_MAX_WORKERS = 72
 
 # --- Signal Detection ---
-CONFIRMATION_BARS    = 2               # bar konfirmasi breakout supertrend
+CONFIRMATION_BARS    = 1               # bar konfirmasi breakout supertrend
 MIN_DAILY_TURNOVER   = 5_000_000_000   # 5 Miliar IDR — filter likuiditas
 
 # --- Intraday Session-2 (12:00) ---
@@ -171,12 +171,15 @@ INTRADAY_NOON_MAX_RUNUP_PCT  = 15.0
 INTRADAY_NOON_REQUIRE_DAILY_BIAS = False
 INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA50 = False
 INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA20 = True
+# Sesi 12: alert hanya Strong Buy / Accumulation / Early Entry (OHLC+indikator).
+# Tanpa gate broksum (buyer<seller, NR net+, FA, NR flow alert). Malam tetap penuh.
+NOON_TECHNICAL_ONLY = True
 
 # --- Non-Retail Flow Alert ---
 # Filter saham masuk daftar akumulasi non-retail:
 #   1. nr_net / grand_total >= NON_RETAIL_FLOW_MIN_PCT  (net asing+pemerintah signifikan)
 #   2. buyer_count < seller_count                       (beli terkonsentrasi = akumulasi)
-# Diurutkan dari NR net% terbesar. Alert hanya di sesi malam dan siang.
+# Diurutkan dari NR net% terbesar. Alert sesi malam (siang off jika NOON_TECHNICAL_ONLY).
 NON_RETAIL_FLOW_MIN_PCT = 20.0   # % minimum net non-retail dari grand total
 
 # Non-retail flow akumulasi 5 hari trading (~1 minggu)

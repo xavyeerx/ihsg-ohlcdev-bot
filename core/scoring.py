@@ -1,5 +1,5 @@
 # ============================================================
-# HYBRID SCORING SYSTEM - Teknikal (70) + Bandarmology (30) = 100
+# SCORING — pure teknikal, maks 100
 # Disesuaikan dengan bot lama ihsg-supertrend-scanner v5
 # ============================================================
 import pandas as pd
@@ -108,21 +108,20 @@ def calculate_technical_score(df: pd.DataFrame) -> Dict[str, float]:
     return {
         "trend": trend, "regime": regime, "volume": vol,
         "momentum": momentum, "position": pos, "pattern": pattern,
-        "total": min(total, 70.0),
+        "total": min(total, 100.0),
     }
 
 
-def calculate_score(symbol: str, df: pd.DataFrame, bandro: BandarmologyResult) -> ScoreResult:
-    tech         = calculate_technical_score(df)
-    bandro_score = bandro.score if bandro else 0
-    total        = max(0, min(100, int(round(tech["total"] + bandro_score))))
+def calculate_score(symbol: str, df: pd.DataFrame, bandro: BandarmologyResult = None) -> ScoreResult:
+    tech  = calculate_technical_score(df)
+    total = max(0, min(100, int(round(tech["total"]))))
 
     row             = df.iloc[-1] if len(df) > 0 else pd.Series(dtype=object)
     is_trending     = bool(row.get("is_trending", False))
     supertrend_bull = bool(row.get("direction", -1) == 1)
     just_broke_up   = bool(row.get("bullish_break", False))
 
-    # STRONG BUY: total >= 70 AND is_trending (ADX>25) -- sama dengan bot lama
+    # STRONG BUY: total >= 70 AND is_trending (ADX > ADX_THRESHOLD)
     if total >= STRONG_BUY_THRESHOLD and is_trending:
         status, emoji = "STRONG BUY", "🟢"
     elif total >= ACCUMULATE_THRESHOLD:
@@ -138,8 +137,8 @@ def calculate_score(symbol: str, df: pd.DataFrame, bandro: BandarmologyResult) -
         volume_score=tech["volume"], momentum_score=tech["momentum"],
         position_score=tech["position"], pattern_score=tech["pattern"],
         technical_total=tech["total"],
-        bandro_score=bandro_score,
-        bandro_breakdown=bandro.score_breakdown if bandro else {},
+        bandro_score=0,
+        bandro_breakdown={},
         is_trending=is_trending, supertrend_bullish=supertrend_bull,
         just_broke_up=just_broke_up,
     )

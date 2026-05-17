@@ -26,6 +26,7 @@ from config.settings    import (
     EVENING_SCAN_HOUR, EVENING_SCAN_MINUTE,
     SCAN_MAX_WORKERS,
     NOON_INCLUDE_ENGINE_FRESH_ALERTS,
+    NOON_TECHNICAL_ONLY,
     MORNING_BRIEF_ALERT_ENABLED,
     NON_RETAIL_FLOW_5D_ALERT_ENABLED,
     COMMAND_ONLY_MODE,
@@ -203,36 +204,37 @@ def run_noon_scan():
             return
 
         raw_signals = filter_signals(results)
-        noon_signals = filter_intraday_session2_signals(raw_signals)
-        # Sesi 12: Strong Buy / Accumulation / Early Entry (+ Freq Analyzer jika flag on).
+        filtered_noon = filter_intraday_session2_signals(raw_signals)
+        # Sesi 12: teknikal saja (NOON_TECHNICAL_ONLY) atau + FA jika flag off.
         noon_signals = {
-            "strong_buy": noon_signals.get("strong_buy", []),
-            "accumulation": noon_signals.get("accumulation", []),
+            "strong_buy": filtered_noon.get("strong_buy", []),
+            "accumulation": filtered_noon.get("accumulation", []),
             "bull_div": [],
-            "early_entry": noon_signals.get("early_entry", []),
-            "frequency_analyzer": noon_signals.get("frequency_analyzer", []),
+            "early_entry": filtered_noon.get("early_entry", []),
         }
+        if not NOON_TECHNICAL_ONLY:
+            noon_signals["frequency_analyzer"] = filtered_noon.get("frequency_analyzer", [])
         send_noon_intraday_alert(noon_signals)
 
-        # Non-retail flow accumulation alert
-        nrf_list = raw_signals.get("non_retail_flow", [])
-        if nrf_list:
-            logger.info("  Non-retail flow candidates: %d", len(nrf_list))
-            try:
-                send_non_retail_flow_alert(nrf_list, session="noon")
-            except Exception as e:
-                logger.warning("  Non-retail flow alert error: %s", e)
+        if not NOON_TECHNICAL_ONLY:
+            nrf_list = raw_signals.get("non_retail_flow", [])
+            if nrf_list:
+                logger.info("  Non-retail flow candidates: %d", len(nrf_list))
+                try:
+                    send_non_retail_flow_alert(nrf_list, session="noon")
+                except Exception as e:
+                    logger.warning("  Non-retail flow alert error: %s", e)
 
-        if NON_RETAIL_FLOW_5D_ALERT_ENABLED:
-            try:
-                nrf5 = build_nr_flow_5d_candidates(results, state)
-                if nrf5:
-                    logger.info("  NR flow 5D candidates: %d", len(nrf5))
-                    send_non_retail_flow_5d_alert(nrf5, session="noon")
-                else:
-                    logger.info("  NR flow 5D: tidak ada saham yang lolos filter (tanpa alert Telegram)")
-            except Exception as e:
-                logger.warning("  NR flow 5D alert error: %s", e)
+            if NON_RETAIL_FLOW_5D_ALERT_ENABLED:
+                try:
+                    nrf5 = build_nr_flow_5d_candidates(results, state)
+                    if nrf5:
+                        logger.info("  NR flow 5D candidates: %d", len(nrf5))
+                        send_non_retail_flow_5d_alert(nrf5, session="noon")
+                    else:
+                        logger.info("  NR flow 5D: tidak ada saham yang lolos filter (tanpa alert Telegram)")
+                except Exception as e:
+                    logger.warning("  NR flow 5D alert error: %s", e)
 
         if NOON_INCLUDE_ENGINE_FRESH_ALERTS and engine_results:
             try:

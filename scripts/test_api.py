@@ -108,7 +108,7 @@ if df is not None and len(df) >= 50:
         direction = "BULLISH" if last.get("direction", -1) == 1 else "BEARISH"
 
         print(f"  OK  Pipeline")
-        print(f"\n  -- TEKNIKAL ({score_result.technical_total:.1f}/70) --")
+        print(f"\n  -- TEKNIKAL ({score_result.technical_total:.1f}/100) --")
         print(f"      Status      : {score_result.status}")
         print(f"      Total Score : {score_result.total_score}/100")
         print(f"      Trend       : {score_result.trend_score:.1f}/25")
