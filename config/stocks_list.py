@@ -30,6 +30,18 @@ KOMPAS100 = [
     "TINS", "TKIM", "TLKM", "TOBA", "TOWR", "TPIA", "UNIQ", "UNTR", "UNVR", "WIFI",
 ]
 
+# Universe scan utama (watchlist kustom). Dipakai oleh resolve_scan_universe().
+CUSTOM_SCAN_UNIVERSE = [
+    "RAJA", "RATU", "MINA", "BUVA", "PADI", "BNBR", "VKTR", "BRMS", "BUMI", "DEWA",
+    "ENRG", "PTRO", "BRPT", "CUAN", "CDIA", "TPIA", "BREN", "DSSA", "IMPC", "BIPI",
+    "COIN", "SUPA", "MBMA", "ESSA", "ADMR", "EMAS", "AADI", "ADRO", "ANTM", "NCKL",
+    "INCO", "INDY", "HRUM", "NICL", "ARCI", "HRTA", "MBSS", "BULL", "OASA", "KETR",
+    "SOCI", "DOOH", "INET", "CBRE", "WIFI", "HUMI", "FORE", "BELL", "ZATA", "ASHA",
+    "RMKE", "RMKO", "GZCO", "COCO", "DATA", "MDIA", "PSKT", "CBDK", "BKSL", "PANI",
+    "TRUE", "TRIN", "WIIM", "TINS", "PPRE", "APLN", "PYFA", "ASSA", "BUKA", "SCMA",
+    "PTBA",
+]
+
 # LQ45 tambahan (di luar IDX30) untuk ekspansi nanti
 PRIORITY_STOCKS = [
     "BBCA", "BBRI", "BMRI", "TLKM", "ASII",
@@ -59,30 +71,48 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-# Daftar statis (fallback bila API /main/symbols gagal). Scan runtime pakai resolve_scan_universe().
-SCAN_UNIVERSE_FALLBACK = list(KOMPAS100)
+# Fallback bila mode API gagal (jarang dipakai jika SCAN_UNIVERSE_MODE=custom).
+SCAN_UNIVERSE_FALLBACK = list(CUSTOM_SCAN_UNIVERSE)
 
 
 def resolve_scan_universe():
     """
-    Universe scan: semua saham aktif IHSG dari API /api/main/symbols.
-    Fallback ke KOMPAS100 jika API kosong / error.
+    Universe scan.
+    Mode default: CUSTOM_SCAN_UNIVERSE (watchlist statis).
+    Set env SCAN_UNIVERSE_MODE=api untuk semua saham dari API /api/main/symbols.
+    Set SCAN_UNIVERSE_MODE=kompas100 untuk fallback KOMPAS100.
     """
-    try:
-        from core.data_fetcher import fetch_all_symbols
+    import os
 
-        syms = fetch_all_symbols()
-        if syms:
-            logger.info("resolve_scan_universe: API all-stocks (%d simbol).", len(syms))
-            return syms
-    except Exception as e:
-        logger.warning("resolve_scan_universe: %s — pakai fallback.", e)
-    logger.info(
-        "resolve_scan_universe: fallback KOMPAS100 (%d simbol).",
-        len(SCAN_UNIVERSE_FALLBACK),
-    )
-    return list(SCAN_UNIVERSE_FALLBACK)
+    mode = os.getenv("SCAN_UNIVERSE_MODE", "custom").strip().lower()
+
+    if mode == "custom":
+        syms = list(CUSTOM_SCAN_UNIVERSE)
+        logger.info("resolve_scan_universe: custom watchlist (%d simbol).", len(syms))
+        return syms
+
+    if mode == "kompas100":
+        logger.info(
+            "resolve_scan_universe: KOMPAS100 (%d simbol).",
+            len(KOMPAS100),
+        )
+        return list(KOMPAS100)
+
+    if mode == "api":
+        try:
+            from core.data_fetcher import fetch_all_symbols
+
+            syms = fetch_all_symbols()
+            if syms:
+                logger.info("resolve_scan_universe: API all-stocks (%d simbol).", len(syms))
+                return syms
+        except Exception as e:
+            logger.warning("resolve_scan_universe: API error %s — pakai custom.", e)
+
+    syms = list(SCAN_UNIVERSE_FALLBACK)
+    logger.info("resolve_scan_universe: fallback custom (%d simbol).", len(syms))
+    return syms
 
 
-# Kompatibilitas: kode lama yang import SCAN_UNIVERSE tetap dapat daftar fallback.
-SCAN_UNIVERSE = SCAN_UNIVERSE_FALLBACK
+# Kompatibilitas: kode lama yang import SCAN_UNIVERSE.
+SCAN_UNIVERSE = list(CUSTOM_SCAN_UNIVERSE)
