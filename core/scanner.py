@@ -65,6 +65,13 @@ class ScanResult:
     flow_score: int = 0
     flow_stage: str = ""
     avg_turnover:   float = 0.0
+    # NR flow 5 hari (diisi oleh build_nr_flow_5d_candidates)
+    nr_flow_5d_days: int = 0
+    nr_flow_5d_date_from: str = ""
+    nr_flow_5d_date_to: str = ""
+    nr_flow_5d_net_sum: float = 0.0
+    nr_flow_5d_grand_sum: float = 0.0
+    nr_flow_5d_net_pct: float = 0.0
     error:          Optional[str] = None
     # DataFrame OHLCV — untuk analisis lanjutan / debug (tidak dikirim ke Telegram)
     df:             Any = field(default=None, repr=False, compare=False)

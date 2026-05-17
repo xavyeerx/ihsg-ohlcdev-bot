@@ -27,6 +27,7 @@ from config.settings    import (
     SCAN_MAX_WORKERS,
     NOON_INCLUDE_ENGINE_FRESH_ALERTS,
     MORNING_BRIEF_ALERT_ENABLED,
+    NON_RETAIL_FLOW_5D_ALERT_ENABLED,
     COMMAND_ONLY_MODE,
 )
 from config.stocks_list import resolve_scan_universe
@@ -38,7 +39,9 @@ from notifications.telegram_bot import (
     send_morning_brief, send_evening_report, send_noon_intraday_alert,
     send_engine_alerts, send_error, send_startup_message, poll_command_updates,
     send_non_retail_flow_alert,
+    send_non_retail_flow_5d_alert,
 )
+from core.nr_flow import build_nr_flow_5d_candidates
 from database.state_manager import (
     load_state, save_state, update_state,
     build_prev_states, cleanup_old_symbols,
@@ -218,6 +221,15 @@ def run_noon_scan():
             except Exception as e:
                 logger.warning("  Non-retail flow alert error: %s", e)
 
+        if NON_RETAIL_FLOW_5D_ALERT_ENABLED:
+            try:
+                nrf5 = build_nr_flow_5d_candidates(results)
+                if nrf5:
+                    logger.info("  NR flow 5D candidates: %d", len(nrf5))
+                    send_non_retail_flow_5d_alert(nrf5, session="noon")
+            except Exception as e:
+                logger.warning("  NR flow 5D alert error: %s", e)
+
         if NOON_INCLUDE_ENGINE_FRESH_ALERTS and engine_results:
             try:
                 send_engine_alerts(engine_results)
@@ -274,6 +286,15 @@ def run_evening_scan():
                 send_non_retail_flow_alert(nrf_list, session="evening")
             except Exception as e:
                 logger.warning("  Non-retail flow alert error: %s", e)
+
+        if NON_RETAIL_FLOW_5D_ALERT_ENABLED:
+            try:
+                nrf5 = build_nr_flow_5d_candidates(results)
+                if nrf5:
+                    logger.info("  NR flow 5D candidates: %d", len(nrf5))
+                    send_non_retail_flow_5d_alert(nrf5, session="evening")
+            except Exception as e:
+                logger.warning("  NR flow 5D alert error: %s", e)
 
         # ── Sweep / bandar / insider pasar / sektor / whale (dari API market-level) ──
         if engine_results:

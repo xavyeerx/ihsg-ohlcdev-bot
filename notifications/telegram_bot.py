@@ -20,6 +20,8 @@ from config.settings import (
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA50,
     COMMAND_ONLY_MODE,
     NON_RETAIL_FLOW_MIN_PCT,
+    NON_RETAIL_FLOW_5D_TRADING_DAYS,
+    NON_RETAIL_FLOW_5D_MIN_PCT,
 )
 
 logger = logging.getLogger(__name__)
@@ -1224,6 +1226,52 @@ def send_non_retail_flow_alert(nrf_list: list, session: str = ""):
         lines.append(
             f"<b>{r.symbol}</b> | Non-retail: {nr_pct:.1f}% | Lokal: {loc_pct:.1f}% | "
             f"Net: {net_txt} | score: {score} ({status})"
+        )
+        lines.extend(_tp_lines_clean(r))
+
+    lines.append("")
+    lines.append("━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    _send_chunks(lines)
+
+
+def send_non_retail_flow_5d_alert(nrf_list: list, session: str = ""):
+    """Akumulasi non-retail flow 5 hari trading (broksum harian)."""
+    if not nrf_list:
+        return
+
+    sess_label = "🕛 INTRADAY SESI 2" if session == "noon" else "🌆 EVENING SCAN"
+    lines = [
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━",
+        f"<b>💹 NON-RETAIL FLOW 5 HARI — {sess_label}</b>",
+        "━━━━━━━━━━━━━━━━━━━━━━━━━━",
+        f"⏰ {_now_wib()}",
+        f"Window: <b>{NON_RETAIL_FLOW_5D_TRADING_DAYS}</b> hari trading | "
+        f"NR net agregat ≥ <b>{NON_RETAIL_FLOW_5D_MIN_PCT:.0f}%</b> dari total transaksi | "
+        f"buyer &lt; seller (hari terbaru)",
+        f"Total saham: <b>{len(nrf_list)}</b>",
+        "",
+        "<b>Daftar saham (Akumulasi NR 5 hari):</b>",
+    ]
+
+    for r in nrf_list:
+        bd = r.bandro
+        nr_pct = float(getattr(bd, "broksum_non_retail_buy_pct", 0) or 0) if bd else 0.0
+        loc_pct = float(getattr(bd, "broksum_lokal_buy_pct", 0) or 0) if bd else 0.0
+        sum_nr = float(getattr(r, "nr_flow_5d_net_sum", 0) or 0)
+        sum_grand = float(getattr(r, "nr_flow_5d_grand_sum", 0) or 0)
+        pct_5d = float(getattr(r, "nr_flow_5d_net_pct", 0) or 0)
+        d_from = getattr(r, "nr_flow_5d_date_from", "") or ""
+        d_to = getattr(r, "nr_flow_5d_date_to", "") or ""
+        score = r.score_result.total_score if r.score_result else 0
+        status = r.score_result.status if r.score_result else "-"
+        net_5d_txt = f"{_format_idr(sum_nr)} ({pct_5d:+.1f}%)" if sum_grand > 0 else _format_idr(sum_nr)
+
+        lines.append("")
+        lines.append(
+            f"<b>{r.symbol}</b> | 5D NR net: {net_5d_txt} | "
+            f"{d_from} → {d_to} | "
+            f"Hari ini NR-buy: {nr_pct:.1f}% | Lokal: {loc_pct:.1f}% | "
+            f"score: {score} ({status})"
         )
         lines.extend(_tp_lines_clean(r))
 
