@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # ============================================================
 # SCHEDULER — ihsg-ohlcdev-bot v2
-# Jadwal: 08:00 (morning brief) + 12:00 (intraday sesi-2) + malam (evening scan)
+# Jadwal: 08:00 (morning brief) + siang (intraday sesi-2, lihat NOON_SCAN_*) + malam (evening scan)
 # Hanya Senin–Jumat WIB (IDX libur Sabtu–Minggu; tidak ada scan/alert otomatis).
 # ============================================================
 # Testing manual:
@@ -178,11 +178,16 @@ def run_morning_scan():
     logger.info("Sesi pagi selesai")
 
 
-# ── Sesi Tengah Hari 12:00 ─────────────────────────────────────
+# ── Sesi Tengah Hari (intraday sesi-2) ───────────────────────────
+
+def _noon_scan_label() -> str:
+    return f"{NOON_SCAN_HOUR:02d}:{NOON_SCAN_MINUTE:02d}"
+
 
 def run_noon_scan():
+    noon_lbl = _noon_scan_label()
     if _is_weekend_wib():
-        logger.info("SESI 12:00 dilewati: akhir pekan (tidak ada perdagangan IDX)")
+        logger.info("SESI %s dilewati: akhir pekan (tidak ada perdagangan IDX)", noon_lbl)
         return
     now = _now_wib().strftime("%H:%M WIB")
     logger.info(f"[{now}] SESI 2 — Intraday valid signal check")
@@ -200,7 +205,7 @@ def run_noon_scan():
 
         results, state = _scan_all(session="noon")
         if not results:
-            send_error("Sesi 12:00: semua saham gagal di-scan")
+            send_error(f"Sesi {noon_lbl}: semua saham gagal di-scan")
             return
 
         raw_signals = filter_signals(results)
@@ -245,9 +250,9 @@ def run_noon_scan():
         logger.info("  Sinyal sesi-2: %d kandidat teknikal", total_kept)
     except Exception as e:
         logger.error("Noon scan error: %s" % e, exc_info=True)
-        send_error("Sesi 12:00 error: %s" % e)
+        send_error(f"Sesi {noon_lbl} error: %s" % e)
 
-    logger.info("Sesi 12:00 selesai")
+    logger.info("Sesi %s selesai", noon_lbl)
 
 
 # ── Sesi Malam 16:00 ─────────────────────────────────────────

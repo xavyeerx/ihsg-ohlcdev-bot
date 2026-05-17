@@ -27,8 +27,8 @@ TIMEZONE              = "Asia/Jakarta"
 # --- Jadwal dual-session ---
 MORNING_SCAN_HOUR   = 8
 MORNING_SCAN_MINUTE = 0
-NOON_SCAN_HOUR      = 12
-NOON_SCAN_MINUTE    = 0
+NOON_SCAN_HOUR      = 11
+NOON_SCAN_MINUTE    = 50
 EVENING_SCAN_HOUR   = 18
 EVENING_SCAN_MINUTE = 30
 

@@ -15,6 +15,10 @@ from config.settings import (
     TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, TIMEZONE,
     INSIDER_ALERT_WINDOW_DAYS, INSIDER_ALERT_MIN_VALUE,
     NOON_OHLCV_INTERVAL,
+    NOON_SCAN_HOUR,
+    NOON_SCAN_MINUTE,
+    EVENING_SCAN_HOUR,
+    EVENING_SCAN_MINUTE,
     INTRADAY_NOON_REQUIRE_DAILY_BIAS,
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA20,
     INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA50,
@@ -1185,7 +1189,9 @@ def send_noon_intraday_alert(signals: Dict[str, list]):
     if total > 0:
         send_all_signals(signals)
     else:
-        _send("Tidak ada sinyal teknikal sesi 2 pada jam 12.")
+        _send(
+            f"Tidak ada sinyal teknikal sesi 2 pada jam {NOON_SCAN_HOUR:02d}:{NOON_SCAN_MINUTE:02d}."
+        )
 
 
 # ── Non-Retail Flow Accumulation Alert ───────────────────────
@@ -1825,8 +1831,8 @@ def send_startup_message():
         "⏰ " + _now_wib() + "\n\n"
         "Jadwal:\n"
         "  - 08:00 WIB — Morning Brief\n"
-        "  - 12:00 WIB — Intraday Sesi 2 Alert\n"
-        "  - 18:30 WIB — Evening Scan\n\n"
+        f"  - {NOON_SCAN_HOUR:02d}:{NOON_SCAN_MINUTE:02d} WIB — Intraday Sesi 2 Alert\n"
+        f"  - {EVENING_SCAN_HOUR:02d}:{EVENING_SCAN_MINUTE:02d} WIB — Evening Scan\n\n"
         "Screening:\n"
         "  - Strong Buy | Accumulation | Bull Div | Early Entry\n"
         "  - Insider (Engine) | Agenda: dividen, RUPS, RI, SS\n" +
