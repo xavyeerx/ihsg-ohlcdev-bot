@@ -52,11 +52,14 @@ def update_state(state: Dict, symbol: str, status: str, score: float) -> Dict:
     """
     Update state untuk satu saham setelah scan.
     Menyimpan: status, score, dan timestamp terakhir update.
+    Mempertahankan nr_history (akumulasi broksum harian).
     """
+    prev = state.get(symbol, {}) if isinstance(state.get(symbol), dict) else {}
     state[symbol] = {
-        "status":    status,
-        "score":     score,
+        "status":     status,
+        "score":      score,
         "updated_at": datetime.now().isoformat(timespec="seconds"),
+        "nr_history": prev.get("nr_history", []),
     }
     return state
 

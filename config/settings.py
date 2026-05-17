@@ -179,10 +179,13 @@ INTRADAY_NOON_DAILY_CLOSE_ABOVE_EMA20 = True
 # Diurutkan dari NR net% terbesar. Alert hanya di sesi malam dan siang.
 NON_RETAIL_FLOW_MIN_PCT = 20.0   # % minimum net non-retail dari grand total
 
-# Non-retail flow akumulasi 5 hari trading (broksum harian, ~1 minggu)
+# Non-retail flow akumulasi 5 hari trading (~1 minggu)
+# Data dari snapshot broksum tiap scan (scan_state.json) — tidak ada API ekstra.
+# Butuh minimal 5 hari scan berturut-turut sebelum alert 5D pertama muncul.
 NON_RETAIL_FLOW_5D_ALERT_ENABLED = True
 NON_RETAIL_FLOW_5D_TRADING_DAYS = 5
 NON_RETAIL_FLOW_5D_MIN_PCT = 20.0   # sum(nr_net 5h) / sum(grand_total 5h) >= ini
+NON_RETAIL_FLOW_5D_API_BACKFILL = False  # True = isi history via API (boros quota)
 NON_RETAIL_FLOW_5D_MAX_CALENDAR_LOOKBACK = 21
 
 # --- Insider Alert Filter ---

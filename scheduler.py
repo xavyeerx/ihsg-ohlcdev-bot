@@ -41,7 +41,7 @@ from notifications.telegram_bot import (
     send_non_retail_flow_alert,
     send_non_retail_flow_5d_alert,
 )
-from core.nr_flow import build_nr_flow_5d_candidates
+from core.nr_flow import build_nr_flow_5d_candidates, record_nr_broksum_snapshot
 from database.state_manager import (
     load_state, save_state, update_state,
     build_prev_states, cleanup_old_symbols,
@@ -119,6 +119,8 @@ def _scan_all(session: str = "evening"):
                         update_state(state, symbol,
                                      result.score_result.status,
                                      result.score_result.total_score)
+                    if result.bandro:
+                        record_nr_broksum_snapshot(state, symbol, result.bandro)
             except Exception as e:
                 logger.error(f"  [{i}/{total}] [{sym}] future exception: {e}")
                 errors.append(sym)
@@ -223,7 +225,7 @@ def run_noon_scan():
 
         if NON_RETAIL_FLOW_5D_ALERT_ENABLED:
             try:
-                nrf5 = build_nr_flow_5d_candidates(results)
+                nrf5 = build_nr_flow_5d_candidates(results, state)
                 if nrf5:
                     logger.info("  NR flow 5D candidates: %d", len(nrf5))
                     send_non_retail_flow_5d_alert(nrf5, session="noon")
@@ -291,7 +293,7 @@ def run_evening_scan():
 
         if NON_RETAIL_FLOW_5D_ALERT_ENABLED:
             try:
-                nrf5 = build_nr_flow_5d_candidates(results)
+                nrf5 = build_nr_flow_5d_candidates(results, state)
                 if nrf5:
                     logger.info("  NR flow 5D candidates: %d", len(nrf5))
                     send_non_retail_flow_5d_alert(nrf5, session="evening")
