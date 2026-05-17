@@ -15,7 +15,7 @@ from config.settings   import (
     EMA_FAST, EMA_MEDIUM,
     FREQUENCY_SPIKE_THRESHOLD,
     FREQ_ANALYZER_SPIKE_THRESHOLD,
-    FA_MIN_STRENGTH, FA_MIN_FLOW_SCORE,
+    FA_MIN_STRENGTH, FA_MIN_FLOW_SCORE, FA_MAX_VOLUME_RATIO,
     INTRADAY_NOON_MIN_SCORE, INTRADAY_NOON_MIN_UPSIDE_PCT,
     INTRADAY_NOON_MAX_RUNUP_PCT,
     INTRADAY_NOON_REQUIRE_DAILY_BIAS,
@@ -396,9 +396,12 @@ def scan_symbol(symbol: str, prev_states: Dict = None, session: str = "") -> Sca
     stoch_cross_up = bool(last.get("stoch_k_cross_up", False))
     macd_cross_up = bool(last.get("macd_cross_up", False))
     vol_ok = bool(last.get("is_volume_spike", False)) or bool(last.get("is_unusual_volume", False))
-    # Entry dini: prefer spike frekuensi dengan volume relatif kecil (stealth accumulation).
+    # Entry dini: spike frekuensi dengan volume relatif kecil (stealth accumulation).
     volume_ratio = float(last.get("volume_ratio", 1.0) or 1.0)
-    stealth_volume_ok = volume_ratio <= 1.3 and not bool(last.get("is_unusual_volume", False))
+    stealth_volume_ok = (
+        volume_ratio < FA_MAX_VOLUME_RATIO
+        and not bool(last.get("is_unusual_volume", False))
+    )
     result.frequency_stealth_volume_ok = stealth_volume_ok
 
     # Hindari candle "naik lalu dibanting" dengan volume besar.

@@ -89,6 +89,7 @@ FREQ_ANALYZER_SURGE_THRESHOLD = 3.2
 # Syarat akhir is_frequency_analyzer (naikkan jika masih terlalu ramai).
 FA_MIN_STRENGTH    = 6   # lebih ketat: spike harus didukung konfirmasi kuat
 FA_MIN_FLOW_SCORE  = 68  # lebih ketat: kurangi kandidat "setengah jadi"
+FA_MAX_VOLUME_RATIO = 0.5  # volume_ratio wajib di bawah ini (stealth / vol kecil)
 
 # --- Momentum ---
 MOMENTUM_PERIOD = 10
